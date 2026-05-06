@@ -48,6 +48,8 @@ jobs:
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
           MAIL_RECIPIENTS: ${{ secrets.MAIL_RECIPIENTS }}
+          ICLOUD_USERNAME: ${{ secrets.ICLOUD_USERNAME }}
+          ICLOUD_APP_PASSWORD: ${{ secrets.ICLOUD_APP_PASSWORD }}
         run: python main.py
 
       - name: Commit updated history files
