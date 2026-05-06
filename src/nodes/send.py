@@ -1,9 +1,10 @@
-"""Send node: SMTP delivery to multiple recipients.
+"""Send node: SMTP delivery via Gmail.
 
 Configure via env vars (set as repo secrets):
-  SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM, MAIL_RECIPIENTS
+  GMAIL_ADDRESS, GMAIL_PASSWORD, MAIL_RECIPIENTS
 
 MAIL_RECIPIENTS is a comma-separated list.
+GMAIL_PASSWORD should be a Gmail App Password (not your account password).
 """
 from __future__ import annotations
 import os
@@ -19,22 +20,20 @@ def send_node(state: dict) -> dict:
     if not recipients:
         return {"errors": ["No recipients configured"]}
 
+    gmail_address = os.environ["GMAIL_ADDRESS"]
+    gmail_password = os.environ["GMAIL_PASSWORD"]
+
     msg = EmailMessage()
     msg["Subject"] = subject
-    msg["From"] = os.environ["SMTP_FROM"]
+    msg["From"] = gmail_address
     msg["To"] = ", ".join(recipients)
     msg.set_content("This briefing is best viewed as HTML.")
     msg.add_alternative(body, subtype="html")
 
-    host = os.environ["SMTP_HOST"]
-    port = int(os.environ.get("SMTP_PORT", "587"))
-    user = os.environ["SMTP_USER"]
-    password = os.environ["SMTP_PASSWORD"]
-
     try:
-        with smtplib.SMTP(host, port, timeout=30) as s:
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=30) as s:
             s.starttls()
-            s.login(user, password)
+            s.login(gmail_address, gmail_password)
             s.send_message(msg)
         return {"errors": []}
     except Exception as e:

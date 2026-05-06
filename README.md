@@ -49,11 +49,8 @@ GOOGLE_REFRESH_TOKEN
 TAVILY_API_KEY
 
 # Email delivery
-SMTP_HOST
-SMTP_PORT
-SMTP_USER
-SMTP_PASSWORD
-SMTP_FROM
+GMAIL_ADDRESS      # your Gmail address
+GMAIL_PASSWORD     # Gmail App Password (not your account password)
 MAIL_RECIPIENTS    # comma-separated
 ```
 
