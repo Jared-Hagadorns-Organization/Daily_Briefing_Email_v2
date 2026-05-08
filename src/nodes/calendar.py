@@ -126,20 +126,28 @@ def _fetch_icloud_events(time_min: str, time_max: str) -> tuple[list[dict], list
             cal_name = str(cal.name) if cal.name else "iCloud"
             events = cal.date_search(start=start_dt, end=end_dt, expand=True)
             for ev in events:
-                vevent = ev.vobject_instance.vevent
-                summary = str(getattr(vevent, "summary", None) and vevent.summary.value or "(no title)")
-                start_val = vevent.dtstart.value if hasattr(vevent, "dtstart") else None
-                end_val = vevent.dtend.value if hasattr(vevent, "dtend") else None
-                location = str(vevent.location.value) if hasattr(vevent, "location") else None
-                description = str(vevent.description.value) if hasattr(vevent, "description") else None
-                events_out.append({
-                    "summary": summary,
-                    "start": start_val.isoformat() if start_val else None,
-                    "end": end_val.isoformat() if end_val else None,
-                    "location": location,
-                    "description": description,
-                    "calendar": cal_name,
-                })
+                try:
+                    instance = ev.vobject_instance
+                    if instance is None or not hasattr(instance, "vevent"):
+                        continue
+                    vevent = instance.vevent
+                    if vevent is None:
+                        continue
+                    summary = str(vevent.summary.value) if hasattr(vevent, "summary") else "(no title)"
+                    start_val = vevent.dtstart.value if hasattr(vevent, "dtstart") else None
+                    end_val = vevent.dtend.value if hasattr(vevent, "dtend") else None
+                    location = str(vevent.location.value) if hasattr(vevent, "location") else None
+                    description = str(vevent.description.value) if hasattr(vevent, "description") else None
+                    events_out.append({
+                        "summary": summary,
+                        "start": start_val.isoformat() if start_val else None,
+                        "end": end_val.isoformat() if end_val else None,
+                        "location": location,
+                        "description": description,
+                        "calendar": cal_name,
+                    })
+                except Exception:
+                    continue
         except Exception as e:
             errors.append(f"iCloud Calendar '{getattr(cal, 'name', '?')}' fetch failed: {e}")
 

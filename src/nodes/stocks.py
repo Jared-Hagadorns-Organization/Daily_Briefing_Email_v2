@@ -315,7 +315,7 @@ def _compute_factors(universe_data: pd.DataFrame) -> pd.DataFrame:
     momentum_5d = closes.pct_change(5).iloc[-1]
 
     vol_20 = volumes.rolling(20).mean().iloc[-2]
-    vol_ratio = volumes.iloc[-1] / vol_20.replace(0, pd.NA)
+    vol_ratio = (volumes.iloc[-1] / vol_20.replace(0, float("nan"))).astype(float)
 
     high_52w = closes.rolling(252, min_periods=60).max().iloc[-1]
     dist_52w = (closes.iloc[-1] - high_52w) / high_52w
