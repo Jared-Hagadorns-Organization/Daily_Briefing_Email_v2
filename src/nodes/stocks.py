@@ -323,7 +323,7 @@ def _compute_factors(universe_data: pd.DataFrame) -> pd.DataFrame:
     delta = closes.diff()
     gain = delta.clip(lower=0).rolling(14).mean()
     loss = (-delta.clip(upper=0)).rolling(14).mean()
-    rs = gain / loss.replace(0, pd.NA)
+    rs = gain / loss.replace(0, float("nan"))
     rsi_14 = (100 - 100 / (1 + rs)).iloc[-1]
 
     df = pd.DataFrame(

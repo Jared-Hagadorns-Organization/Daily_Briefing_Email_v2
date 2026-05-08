@@ -34,12 +34,6 @@ TEAMS: list[dict[str, str]] = [
         "sport_path": "hockey/nhl",
         "team_slug": "car",
     },
-    {
-        "team": "Charlotte FC",
-        "league": "MLS",
-        "sport_path": "soccer/usa.1",
-        "team_slug": "charlotte-fc",
-    },
 ]
 
 
