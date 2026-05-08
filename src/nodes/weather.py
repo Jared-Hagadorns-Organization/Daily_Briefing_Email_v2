@@ -1,4 +1,4 @@
-"""Weather node.
+"""Weather node using Open-Meteo (free, no API key required).
 
 Returns a dict like:
     {
@@ -11,7 +11,6 @@ Returns a dict like:
     }
 """
 from __future__ import annotations
-import os
 import httpx
 
 
@@ -19,36 +18,46 @@ import httpx
 LAT = 35.10
 LON = -81.05
 
+WMO_DESCRIPTIONS = {
+    0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+    45: "Foggy", 48: "Icy fog",
+    51: "Light drizzle", 53: "Moderate drizzle", 55: "Dense drizzle",
+    61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+    71: "Slight snow", 73: "Moderate snow", 75: "Heavy snow",
+    77: "Snow grains",
+    80: "Slight showers", 81: "Moderate showers", 82: "Violent showers",
+    85: "Slight snow showers", 86: "Heavy snow showers",
+    95: "Thunderstorm", 96: "Thunderstorm with hail", 99: "Thunderstorm with heavy hail",
+}
+
 
 def weather_node(state: dict) -> dict:
-    api_key = os.environ.get("OPENWEATHER_API_KEY")
-    if not api_key:
-        return {"weather": None, "errors": ["OPENWEATHER_API_KEY not set"]}
-
     try:
-        url = "https://api.openweathermap.org/data/3.0/onecall"
+        url = "https://api.open-meteo.com/v1/forecast"
         params = {
-            "lat": LAT,
-            "lon": LON,
-            "exclude": "minutely,hourly",
-            "units": "imperial",
-            "appid": api_key,
+            "latitude": LAT,
+            "longitude": LON,
+            "daily": "temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max,weathercode",
+            "temperature_unit": "fahrenheit",
+            "windspeed_unit": "mph",
+            "timezone": "America/New_York",
+            "forecast_days": 1,
         }
         r = httpx.get(url, params=params, timeout=15)
         r.raise_for_status()
-        data = r.json()
+        daily = r.json().get("daily", {})
 
-        today = (data.get("daily") or [{}])[0]
-        weather_summary = (today.get("weather") or [{}])[0].get("description", "")
+        code = (daily.get("weathercode") or [None])[0]
+        summary = WMO_DESCRIPTIONS.get(code, "Unknown") if code is not None else "Unknown"
 
         return {
             "weather": {
-                "summary": weather_summary,
-                "high_f": (today.get("temp") or {}).get("max"),
-                "low_f": (today.get("temp") or {}).get("min"),
-                "precip_chance": int((today.get("pop") or 0) * 100),
-                "wind_mph": today.get("wind_speed"),
-                "alerts": [a.get("event") for a in data.get("alerts", [])],
+                "summary": summary,
+                "high_f": (daily.get("temperature_2m_max") or [None])[0],
+                "low_f": (daily.get("temperature_2m_min") or [None])[0],
+                "precip_chance": (daily.get("precipitation_probability_max") or [None])[0],
+                "wind_mph": (daily.get("windspeed_10m_max") or [None])[0],
+                "alerts": [],
             },
             "errors": [],
         }
