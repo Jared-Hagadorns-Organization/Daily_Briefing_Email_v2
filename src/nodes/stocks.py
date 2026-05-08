@@ -21,6 +21,9 @@ import json
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
+import io
+
+import httpx
 import pandas as pd
 import yfinance as yf
 
@@ -39,7 +42,10 @@ EVENT_SCAN_DEPTH = 75
 # =============================================================================
 
 def _sp500_universe() -> list[str]:
-    tables = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; DailyBriefing/1.0; +https://github.com)"}
+    resp = httpx.get("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies", headers=headers, timeout=15)
+    resp.raise_for_status()
+    tables = pd.read_html(io.StringIO(resp.text))
     df = tables[0]
     return [t.replace(".", "-") for t in df["Symbol"].astype(str).tolist()]
 

@@ -38,7 +38,7 @@ TEAMS: list[dict[str, str]] = [
         "team": "Charlotte FC",
         "league": "MLS",
         "sport_path": "soccer/usa.1",
-        "team_slug": "charlotte",
+        "team_slug": "clt",
     },
 ]
 
