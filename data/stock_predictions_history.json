@@ -108,5 +108,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-11",
+    "picks": [
+      {
+        "ticker": "QCOM",
+        "factor_summary": {
+          "momentum_5d_pct": 40.89,
+          "volume_ratio_vs_20d": 0.48,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 89.5,
+          "composite_score": 7.57
+        }
+      },
+      {
+        "ticker": "MRNA",
+        "factor_summary": {
+          "momentum_5d_pct": 20.23,
+          "volume_ratio_vs_20d": 0.86,
+          "distance_from_52w_high_pct": -1.61,
+          "rsi_14": 55.2,
+          "composite_score": 7.52
+        }
+      },
+      {
+        "ticker": "MU",
+        "factor_summary": {
+          "momentum_5d_pct": 35.78,
+          "volume_ratio_vs_20d": 0.43,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 88.9,
+          "composite_score": 6.47
+        }
+      },
+      {
+        "ticker": "AKAM",
+        "factor_summary": {
+          "momentum_5d_pct": 45.0,
+          "volume_ratio_vs_20d": 0.22,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 88.1,
+          "composite_score": 6.24
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 28.28,
+          "volume_ratio_vs_20d": 0.2,
+          "distance_from_52w_high_pct": -41.01,
+          "rsi_14": 67.9,
+          "composite_score": 5.72
+        }
+      }
+    ]
   }
 ]
