@@ -183,38 +183,41 @@ def _fetch_icloud_reminders(today: str) -> tuple[list[dict], list[str]]:
         return [], [f"iCloud Reminders auth failed: {e}"]
 
     for cal in calendars:
+        cal_name = str(cal.name) if cal.name else "unknown"
         try:
             todos = cal.todos()
-            for todo in todos:
-                try:
-                    instance = todo.vobject_instance
-                    if instance is None or not hasattr(instance, "vtodo"):
-                        continue
-                    vtodo = instance.vtodo
-
-                    status = str(vtodo.status.value).upper() if hasattr(vtodo, "status") else "NEEDS-ACTION"
-                    if status in ("COMPLETED", "CANCELLED"):
-                        continue
-
-                    summary = str(vtodo.summary.value) if hasattr(vtodo, "summary") else "(no title)"
-
-                    due_val = vtodo.due.value if hasattr(vtodo, "due") else None
-                    due_str = None
-                    if due_val is not None:
-                        due_str = due_val.isoformat() if hasattr(due_val, "isoformat") else str(due_val)
-                        due_date = due_str[:10]
-                        if due_date > today:
-                            continue
-
-                    reminders_out.append({
-                        "summary": summary,
-                        "due": due_str,
-                        "overdue": due_str is not None and due_str[:10] < today,
-                    })
-                except Exception:
-                    continue
-        except Exception:
+        except Exception as e:
+            errors.append(f"iCloud Reminders '{cal_name}' todos() failed: {e}")
             continue
+
+        for todo in todos:
+            try:
+                instance = todo.vobject_instance
+                if instance is None or not hasattr(instance, "vtodo"):
+                    continue
+                vtodo = instance.vtodo
+
+                status = str(vtodo.status.value).upper() if hasattr(vtodo, "status") else "NEEDS-ACTION"
+                if status in ("COMPLETED", "CANCELLED"):
+                    continue
+
+                summary = str(vtodo.summary.value) if hasattr(vtodo, "summary") else "(no title)"
+
+                due_val = vtodo.due.value if hasattr(vtodo, "due") else None
+                due_str = None
+                if due_val is not None:
+                    due_str = due_val.isoformat() if hasattr(due_val, "isoformat") else str(due_val)
+                    due_date = due_str[:10]
+                    if due_date > today:
+                        continue
+
+                reminders_out.append({
+                    "summary": summary,
+                    "due": due_str,
+                    "overdue": due_str is not None and due_str[:10] < today,
+                })
+            except Exception as e:
+                errors.append(f"iCloud Reminders '{cal_name}' parse failed: {e}")
 
     return reminders_out, errors
 
