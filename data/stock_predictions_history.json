@@ -163,5 +163,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-12",
+    "picks": [
+      {
+        "ticker": "AKAM",
+        "factor_summary": {
+          "momentum_5d_pct": 44.65,
+          "volume_ratio_vs_20d": 1.74,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 88.0,
+          "composite_score": 5.87
+        }
+      },
+      {
+        "ticker": "QCOM",
+        "factor_summary": {
+          "momentum_5d_pct": 41.07,
+          "volume_ratio_vs_20d": 1.92,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 89.5,
+          "composite_score": 5.65
+        }
+      },
+      {
+        "ticker": "MU",
+        "factor_summary": {
+          "momentum_5d_pct": 37.97,
+          "volume_ratio_vs_20d": 1.65,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 89.3,
+          "composite_score": 4.89
+        }
+      },
+      {
+        "ticker": "MRNA",
+        "factor_summary": {
+          "momentum_5d_pct": 11.8,
+          "volume_ratio_vs_20d": 3.7,
+          "distance_from_52w_high_pct": -8.51,
+          "rsi_14": 47.2,
+          "composite_score": 4.6
+        }
+      },
+      {
+        "ticker": "DDOG",
+        "factor_summary": {
+          "momentum_5d_pct": 37.92,
+          "volume_ratio_vs_20d": 1.19,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 89.1,
+          "composite_score": 4.26
+        }
+      }
+    ]
   }
 ]
