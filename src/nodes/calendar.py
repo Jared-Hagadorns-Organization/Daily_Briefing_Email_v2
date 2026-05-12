@@ -160,6 +160,65 @@ def _fetch_icloud_events(time_min: str, time_max: str) -> tuple[list[dict], list
     return events_out, errors
 
 
+def _fetch_icloud_reminders(today: str) -> tuple[list[dict], list[str]]:
+    import caldav
+
+    errors: list[str] = []
+    reminders_out: list[dict[str, Any]] = []
+
+    username = os.environ.get("ICLOUD_USERNAME")
+    password = os.environ.get("ICLOUD_APP_PASSWORD")
+    if not username or not password:
+        return [], []
+
+    try:
+        client = caldav.DAVClient(
+            url="https://caldav.icloud.com",
+            username=username,
+            password=password,
+        )
+        principal = client.principal()
+        calendars = principal.calendars()
+    except Exception as e:
+        return [], [f"iCloud Reminders auth failed: {e}"]
+
+    for cal in calendars:
+        try:
+            todos = cal.todos()
+            for todo in todos:
+                try:
+                    instance = todo.vobject_instance
+                    if instance is None or not hasattr(instance, "vtodo"):
+                        continue
+                    vtodo = instance.vtodo
+
+                    status = str(vtodo.status.value).upper() if hasattr(vtodo, "status") else "NEEDS-ACTION"
+                    if status in ("COMPLETED", "CANCELLED"):
+                        continue
+
+                    summary = str(vtodo.summary.value) if hasattr(vtodo, "summary") else "(no title)"
+
+                    due_val = vtodo.due.value if hasattr(vtodo, "due") else None
+                    due_str = None
+                    if due_val is not None:
+                        due_str = due_val.isoformat() if hasattr(due_val, "isoformat") else str(due_val)
+                        due_date = due_str[:10]
+                        if due_date > today:
+                            continue
+
+                    reminders_out.append({
+                        "summary": summary,
+                        "due": due_str,
+                        "overdue": due_str is not None and due_str[:10] < today,
+                    })
+                except Exception:
+                    continue
+        except Exception:
+            continue
+
+    return reminders_out, errors
+
+
 def calendar_node(state: dict) -> dict:
     time_min, time_max, today = _today_window()
     all_events: list[dict] = []
@@ -170,11 +229,16 @@ def calendar_node(state: dict) -> dict:
         all_events.extend(events)
         all_errors.extend(errors)
 
+    all_reminders: list[dict] = []
     if os.environ.get("ICLOUD_APP_PASSWORD"):
         events, errors = _fetch_icloud_events(time_min, time_max)
         all_events.extend(events)
         all_errors.extend(errors)
 
+        reminders, errors = _fetch_icloud_reminders(today)
+        all_reminders.extend(reminders)
+        all_errors.extend(errors)
+
     all_events.sort(key=lambda e: e.get("start") or "")
 
-    return {"calendar_events": all_events, "errors": all_errors}
+    return {"calendar_events": all_events, "reminders": all_reminders, "errors": all_errors}

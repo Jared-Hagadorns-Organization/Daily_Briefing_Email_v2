@@ -121,6 +121,7 @@ class BriefingState(TypedDict, total=False):
     sports: list[SportsTeamUpdate] | None
     news_items: list[NewsItem] | None
     local_events_html: str | None
+    reminders: list[dict] | None
     recipes: list[Recipe] | None
 
     # Output
