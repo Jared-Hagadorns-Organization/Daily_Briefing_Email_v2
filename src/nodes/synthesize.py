@@ -109,22 +109,17 @@ def _render_stocks(stocks: dict[str, Any] | None) -> str:
     return "\n".join(parts)
 
 
-def _render_news(news_items: list[dict[str, Any]]) -> str:
+def _render_news_items(news_items: list[dict[str, Any]]) -> str:
     if not news_items:
         return ""
-    topic_labels = {
-        "national": "National",
-        "finance": "Finance",
-        "tech": "Tech",
-        "local": "Local — Charlotte / Belmont / Lake Wylie",
-    }
+    topic_labels = {"national": "National", "finance": "Finance", "tech": "Tech"}
     grouped: dict[str, list[dict[str, Any]]] = {}
     for item in news_items:
         topic = item.get("topic", "national")
         grouped.setdefault(topic, []).append(item)
 
-    parts = ["<h2>📰 News</h2>"]
-    for topic in ["national", "finance", "tech", "local"]:
+    parts = []
+    for topic in ["national", "finance", "tech"]:
         if topic not in grouped:
             continue
         parts.append(f"<h3>{topic_labels.get(topic, topic.title())}</h3><ul>")
@@ -231,8 +226,13 @@ def synthesize_node(state: dict) -> dict:
     except Exception:
         intro_html = f"<p>Good morning — here's your briefing for {date}.</p>"
 
-    if news_items:
-        news_html = _render_news(news_items)
+    local_events_html = state.get("local_events_html") or ""
+    if news_items or local_events_html:
+        news_html = "<h2>📰 News</h2>"
+        if news_items:
+            news_html += _render_news_items(news_items)
+        if local_events_html:
+            news_html += local_events_html
     else:
         news_html = ""
 

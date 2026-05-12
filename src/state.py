@@ -120,6 +120,7 @@ class BriefingState(TypedDict, total=False):
     stocks: StockReport | None
     sports: list[SportsTeamUpdate] | None
     news_items: list[NewsItem] | None
+    local_events_html: str | None
     recipes: list[Recipe] | None
 
     # Output

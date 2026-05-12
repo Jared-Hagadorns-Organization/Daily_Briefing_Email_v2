@@ -1,10 +1,8 @@
 """News + local events node using Gemini with Google Search grounding.
 
 Makes 4 separate calls:
-  1. National news
-  2. Charlotte NC local events
-  3. Belmont NC local events
-  4. Lake Wylie SC local events
+  1. National/finance/tech news → structured JSON
+  2-4. Local events for Charlotte, Belmont, Lake Wylie → HTML snippets
 """
 from __future__ import annotations
 import json
@@ -25,32 +23,35 @@ Output ONLY a JSON array (no prose, no markdown, no code fences):
 
 CHARLOTTE_PROMPT = """Search for events happening TODAY and this coming weekend in Charlotte NC.
 Look for concerts, festivals, farmers markets, sports, community events, outdoor activities.
-Search "Charlotte NC events this weekend" and "Charlotte NC things to do today".
 
-Return ONLY a valid JSON array (no prose, no markdown, no code fences) with up to 3 results:
-[{"topic": "local", "headline": str, "summary": str, "url": str}]
+Return a simple HTML list of up to 3 events you find, like this format:
+<ul>
+<li><a href="URL">Event Name</a> — brief description, date/time if known</li>
+</ul>
 
-If nothing is found, return: []
+If you find no events, return: <p>No local events found for Charlotte this weekend.</p>
 """
 
 BELMONT_PROMPT = """Search for events happening TODAY and this coming weekend in Belmont NC.
 Look for concerts, festivals, farmers markets, sports, community events, outdoor activities.
-Search "Belmont NC events this weekend" and "Belmont NC things to do today".
 
-Return ONLY a valid JSON array (no prose, no markdown, no code fences) with up to 3 results:
-[{"topic": "local", "headline": str, "summary": str, "url": str}]
+Return a simple HTML list of up to 3 events you find, like this format:
+<ul>
+<li><a href="URL">Event Name</a> — brief description, date/time if known</li>
+</ul>
 
-If nothing is found, return: []
+If you find no events, return: <p>No local events found for Belmont this weekend.</p>
 """
 
 LAKE_WYLIE_PROMPT = """Search for events happening TODAY and this coming weekend at Lake Wylie SC.
 Look for concerts, festivals, boat events, outdoor activities, community events, sports.
-Search "Lake Wylie SC events this weekend" and "Lake Wylie SC things to do today".
 
-Return ONLY a valid JSON array (no prose, no markdown, no code fences) with up to 3 results:
-[{"topic": "local", "headline": str, "summary": str, "url": str}]
+Return a simple HTML list of up to 3 events you find, like this format:
+<ul>
+<li><a href="URL">Event Name</a> — brief description, date/time if known</li>
+</ul>
 
-If nothing is found, return: []
+If you find no events, return: <p>No local events found for Lake Wylie this weekend.</p>
 """
 
 
@@ -71,7 +72,7 @@ def _extract_json_array(text: str) -> list[dict[str, Any]]:
         return []
 
 
-def _call_gemini(client: genai.Client, prompt: str) -> list[dict[str, Any]]:
+def _call_gemini_text(client: genai.Client, prompt: str) -> str:
     delays = [20, 40, 60]
     for delay in [0] + delays:
         if delay:
@@ -84,10 +85,14 @@ def _call_gemini(client: genai.Client, prompt: str) -> list[dict[str, Any]]:
                     tools=[types.Tool(google_search=types.GoogleSearch())]
                 ),
             )
-            return _extract_json_array(response.text)
+            return response.text or ""
         except Exception:
             pass
-    return []
+    return ""
+
+
+def _call_gemini_json(client: genai.Client, prompt: str) -> list[dict[str, Any]]:
+    return _extract_json_array(_call_gemini_text(client, prompt))
 
 
 def news_node(state: dict) -> dict:
@@ -97,11 +102,21 @@ def news_node(state: dict) -> dict:
 
     client = genai.Client(api_key=api_key)
 
-    national = _call_gemini(client, NATIONAL_PROMPT)
-    charlotte = _call_gemini(client, CHARLOTTE_PROMPT)
-    belmont = _call_gemini(client, BELMONT_PROMPT)
-    lake_wylie = _call_gemini(client, LAKE_WYLIE_PROMPT)
+    national = _call_gemini_json(client, NATIONAL_PROMPT)
 
-    items = national + charlotte + belmont + lake_wylie
+    charlotte_html = _call_gemini_text(client, CHARLOTTE_PROMPT)
+    belmont_html = _call_gemini_text(client, BELMONT_PROMPT)
+    lake_wylie_html = _call_gemini_text(client, LAKE_WYLIE_PROMPT)
 
-    return {"news_items": items, "errors": [] if items else ["News agent returned no results"]}
+    local_html = (
+        "<h3>Local — Charlotte / Belmont / Lake Wylie</h3>"
+        f"<h4>Charlotte NC</h4>{charlotte_html}"
+        f"<h4>Belmont NC</h4>{belmont_html}"
+        f"<h4>Lake Wylie SC</h4>{lake_wylie_html}"
+    )
+
+    return {
+        "news_items": national,
+        "errors": [],
+        "local_events_html": local_html,
+    }
