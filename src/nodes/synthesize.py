@@ -109,6 +109,43 @@ def _render_stocks(stocks: dict[str, Any] | None) -> str:
     return "\n".join(parts)
 
 
+def _render_news(news_items: list[dict[str, Any]]) -> str:
+    if not news_items:
+        return ""
+    topic_labels = {
+        "national": "National",
+        "finance": "Finance",
+        "tech": "Tech",
+        "local": "Local — Charlotte / Belmont / Lake Wylie",
+    }
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for item in news_items:
+        topic = item.get("topic", "national")
+        grouped.setdefault(topic, []).append(item)
+
+    parts = ["<h2>📰 News</h2>"]
+    for topic in ["national", "finance", "tech", "local"]:
+        if topic not in grouped:
+            continue
+        parts.append(f"<h3>{topic_labels.get(topic, topic.title())}</h3><ul>")
+        for item in grouped[topic]:
+            url = item.get("url", "")
+            headline = item.get("headline", "")
+            summary = item.get("summary", "")
+            link = f'<a href="{url}">{headline}</a>' if url else headline
+            parts.append(f"<li>{link}<br><span style='font-size:0.9em'>{summary}</span></li>")
+        parts.append("</ul>")
+    return "\n".join(parts)
+
+
+def _parse_score(score: Any) -> str:
+    if score is None:
+        return ""
+    if isinstance(score, dict):
+        return str(score.get("displayValue") or score.get("value") or "")
+    return str(score)
+
+
 def _render_sports(sports: list[dict[str, Any]] | None) -> str:
     if not sports:
         return ""
@@ -119,7 +156,7 @@ def _render_sports(sports: list[dict[str, Any]] | None) -> str:
         if last:
             score = ""
             if last.get("home_score") and last.get("away_score"):
-                score = f" — Final: {last['away_team']} {last['away_score']}, {last['home_team']} {last['home_score']}"
+                score = f" — Final: {last['away_team']} {_parse_score(last['away_score'])}, {last['home_team']} {_parse_score(last['home_score'])}"
             parts.append(f"<p><em>Last:</em> {last.get('short_name', '')}{score}</p>")
         nxt = team.get("next_game")
         if nxt:
@@ -195,17 +232,7 @@ def synthesize_node(state: dict) -> dict:
         intro_html = f"<p>Good morning — here's your briefing for {date}.</p>"
 
     if news_items:
-        news_prompt = (
-            "Render this news list as clean HTML. Group by topic with <h3> "
-            "headers (e.g., 'National', 'Tech', 'Local — Charlotte/Belmont/"
-            "Lake Wylie'). Each item is a one-line summary with a link. Be "
-            "concise. No code fences.\n\n"
-            f"{json.dumps(news_items, indent=2)}"
-        )
-        try:
-            news_html = llm.invoke(news_prompt).content
-        except Exception:
-            news_html = "<h2>📰 News</h2><p><em>News rendering failed.</em></p>"
+        news_html = _render_news(news_items)
     else:
         news_html = ""
 
