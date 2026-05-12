@@ -1,7 +1,7 @@
 """News + local events node using Gemini with Google Search grounding.
 
-Requires GEMINI_KEY secret. Uses gemini-2.5-flash with native Google Search
-to reliably find both national news and local Charlotte/Belmont/Lake Wylie events.
+Makes two separate calls to guarantee both national news and local events
+are fetched — one call per topic so neither gets skipped.
 """
 from __future__ import annotations
 import json
@@ -13,24 +13,24 @@ from google import genai
 from google.genai import types
 
 
-PROMPT = """You are a news researcher for a daily personal briefing.
+NATIONAL_PROMPT = """Search for today's top news stories and return ONLY a valid JSON array.
+Find 4-5 major stories from today covering US/world news, finance/markets, and technology.
 
-Produce a curated list of items covering BOTH of the following:
+Output ONLY a JSON array (no prose, no markdown, no code fences):
+[{"topic": "national" | "tech" | "finance", "headline": str, "summary": str, "url": str}]
+"""
 
-1. NATIONAL NEWS — Find 3-5 major stories from today covering US/world news,
-   finance/markets, and technology.
+LOCAL_PROMPT = """Search for local events happening TODAY and this coming weekend near Charlotte NC,
+Belmont NC, and Lake Wylie SC. Search for concerts, festivals, farmers markets, sports,
+community events, and outdoor activities. Run searches like:
+- "Charlotte NC events this weekend"
+- "Belmont NC events today"
+- "Lake Wylie SC events this weekend"
 
-2. LOCAL EVENTS — Search specifically for events happening TODAY or this coming
-   weekend in Charlotte NC, Belmont NC, and Lake Wylie SC. Look for concerts,
-   festivals, farmers markets, sports, community events, outdoor activities.
-   Find up to 5 local events. Search "Charlotte NC events this weekend",
-   "Belmont NC events today", and "Lake Wylie SC events this weekend" separately.
+Return ONLY a valid JSON array (no prose, no markdown, no code fences) with up to 5 results:
+[{"topic": "local", "headline": str, "summary": str, "url": str}]
 
-Output ONLY a valid JSON array (no prose, no code fences) where each element is:
-{"topic": "national" | "local" | "tech" | "finance",
- "headline": str,
- "summary": str (1-2 sentences),
- "url": str}
+If no events are found, return an empty array: []
 """
 
 
@@ -51,31 +51,38 @@ def _extract_json_array(text: str) -> list[dict[str, Any]]:
         return []
 
 
+def _call_gemini(client: genai.Client, prompt: str) -> list[dict[str, Any]]:
+    delays = [20, 40, 60]
+    for delay in [0] + delays:
+        if delay:
+            time.sleep(delay)
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())]
+                ),
+            )
+            return _extract_json_array(response.text)
+        except Exception as e:
+            last = str(e)
+    return []
+
+
 def news_node(state: dict) -> dict:
     api_key = os.environ.get("GEMINI_KEY")
     if not api_key:
         return {"news_items": [], "errors": ["GEMINI_KEY not set"]}
 
     client = genai.Client(api_key=api_key)
+    errors: list[str] = []
 
-    delays = [20, 40, 60]
-    last_error = ""
-    for attempt, delay in enumerate([0] + delays):
-        if delay:
-            time.sleep(delay)
-        try:
-            response = client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=PROMPT,
-                config=types.GenerateContentConfig(
-                    tools=[types.Tool(google_search=types.GoogleSearch())]
-                ),
-            )
-            items = _extract_json_array(response.text)
-            return {"news_items": items, "errors": []}
-        except Exception as e:
-            last_error = str(e)
-            if attempt == len(delays):
-                break
+    national = _call_gemini(client, NATIONAL_PROMPT)
+    local = _call_gemini(client, LOCAL_PROMPT)
 
-    return {"news_items": [], "errors": [f"News agent failed: {last_error}"]}
+    items = national + local
+    if not items:
+        errors.append("News agent returned no results")
+
+    return {"news_items": items, "errors": errors}
