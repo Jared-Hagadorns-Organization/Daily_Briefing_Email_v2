@@ -40,15 +40,17 @@ def _get_google_credentials() -> Credentials:
     return creds
 
 
-def _today_window() -> tuple[str, str]:
-    local_tz = datetime.now().astimezone().tzinfo or timezone.utc
-    today = datetime.now(local_tz).date()
-    start = datetime.combine(today, time.min, tzinfo=local_tz)
-    end = datetime.combine(today, time.max, tzinfo=local_tz)
-    return start.isoformat(), end.isoformat()
+def _today_window() -> tuple[str, str, str]:
+    """Returns (time_min, time_max, today_date_str) in Eastern time."""
+    from zoneinfo import ZoneInfo
+    eastern = ZoneInfo("America/New_York")
+    today = datetime.now(eastern).date()
+    start = datetime.combine(today, time.min, tzinfo=eastern)
+    end = datetime.combine(today, time.max, tzinfo=eastern)
+    return start.isoformat(), end.isoformat(), today.isoformat()
 
 
-def _fetch_google_events(time_min: str, time_max: str) -> tuple[list[dict], list[str]]:
+def _fetch_google_events(time_min: str, time_max: str, today: str) -> tuple[list[dict], list[str]]:
     errors: list[str] = []
     events_out: list[dict[str, Any]] = []
     try:
@@ -81,6 +83,10 @@ def _fetch_google_events(time_min: str, time_max: str) -> tuple[list[dict], list
             for ev in result.get("items", []):
                 start = ev.get("start", {})
                 end = ev.get("end", {})
+                # Skip all-day events that started before today
+                event_start_date = start.get("date")
+                if event_start_date and event_start_date < today:
+                    continue
                 events_out.append({
                     "summary": ev.get("summary", "(no title)"),
                     "start": start.get("dateTime") or start.get("date"),
@@ -155,12 +161,12 @@ def _fetch_icloud_events(time_min: str, time_max: str) -> tuple[list[dict], list
 
 
 def calendar_node(state: dict) -> dict:
-    time_min, time_max = _today_window()
+    time_min, time_max, today = _today_window()
     all_events: list[dict] = []
     all_errors: list[str] = []
 
     if os.environ.get("GOOGLE_REFRESH_TOKEN"):
-        events, errors = _fetch_google_events(time_min, time_max)
+        events, errors = _fetch_google_events(time_min, time_max, today)
         all_events.extend(events)
         all_errors.extend(errors)
 
