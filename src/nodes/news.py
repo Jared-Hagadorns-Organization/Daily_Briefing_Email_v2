@@ -1,49 +1,36 @@
-"""News + local events node: a single ReAct agent backed by MCP tools.
+"""News + local events node using Gemini with Google Search grounding.
 
-Tools (stdio MCP servers):
-  - tavily-mcp:        web search
-  - mcp-server-fetch:  retrieve full article text
-
-The agent's job: scan general topical news, then specifically search for
-events in Charlotte / Belmont / Lake Wylie for today and the upcoming weekend.
-
-Returns a list of {topic, headline, summary, url}.
+Requires GEMINI_KEY secret. Uses gemini-2.5-flash with native Google Search
+to reliably find both national news and local Charlotte/Belmont/Lake Wylie events.
 """
 from __future__ import annotations
-import asyncio
 import json
+import os
+import time
 from typing import Any
 
-from langchain_mcp_adapters.client import MultiServerMCPClient
-from langgraph.prebuilt import create_react_agent
-
-from ..llm import get_llm
+from google import genai
+from google.genai import types
 
 
-SYSTEM_PROMPT = """You are a news researcher for a daily personal briefing.
+PROMPT = """You are a news researcher for a daily personal briefing.
 
-You MUST complete BOTH steps below before producing your final output:
+Produce a curated list of items covering BOTH of the following:
 
-STEP 1 — Search for national news:
-  Search for 3-5 major topical news stories (US/world, finance/markets, technology).
+1. NATIONAL NEWS — Find 3-5 major stories from today covering US/world news,
+   finance/markets, and technology.
 
-STEP 2 — Search for local events (required, do not skip):
-  Run at least 2 separate searches for events happening today or this coming
-  weekend in Charlotte NC, Belmont NC, and Lake Wylie SC. Search for things like
-  concerts, festivals, farmers markets, sports, community events, outdoor activities.
-  Try searches like:
-    - "Charlotte NC events this weekend"
-    - "Belmont NC events today"
-    - "Lake Wylie SC events this weekend"
-  Include up to 5 local results even if details are sparse.
+2. LOCAL EVENTS — Search specifically for events happening TODAY or this coming
+   weekend in Charlotte NC, Belmont NC, and Lake Wylie SC. Look for concerts,
+   festivals, farmers markets, sports, community events, outdoor activities.
+   Find up to 5 local events. Search "Charlotte NC events this weekend",
+   "Belmont NC events today", and "Lake Wylie SC events this weekend" separately.
 
-Skip clickbait, paywalled-only sources, and outdated content.
-
-Output ONLY a JSON array (no prose, no code fences) where each element is:
-  {"topic": "national" | "local" | "tech" | "finance",
-   "headline": str,
-   "summary": str (1-2 sentences),
-   "url": str}
+Output ONLY a valid JSON array (no prose, no code fences) where each element is:
+{"topic": "national" | "local" | "tech" | "finance",
+ "headline": str,
+ "summary": str (1-2 sentences),
+ "url": str}
 """
 
 
@@ -58,41 +45,37 @@ def _extract_json_array(text: str) -> list[dict[str, Any]]:
     if start == -1 or end == -1:
         return []
     try:
-        parsed = json.loads(text[start : end + 1])
+        parsed = json.loads(text[start:end + 1])
         return parsed if isinstance(parsed, list) else []
     except json.JSONDecodeError:
         return []
 
 
-async def _run_agent() -> list[dict[str, Any]]:
-    client = MultiServerMCPClient(
-        {
-            "tavily": {
-                "command": "npx",
-                "args": ["-y", "tavily-mcp"],
-                "transport": "stdio",
-            },
-            "fetch": {
-                "command": "uvx",
-                "args": ["mcp-server-fetch"],
-                "transport": "stdio",
-            },
-        }
-    )
-    tools = await client.get_tools()
-    agent = create_react_agent(get_llm(temperature=0.2), tools)
-
-    result = await agent.ainvoke(
-        {"messages": [("system", SYSTEM_PROMPT), ("user", "Build today's list.")]}
-    )
-    last = result["messages"][-1]
-    content = last.content if hasattr(last, "content") else str(last)
-    return _extract_json_array(content)
-
-
 def news_node(state: dict) -> dict:
-    try:
-        items = asyncio.run(_run_agent())
-        return {"news_items": items, "errors": []}
-    except Exception as e:
-        return {"news_items": [], "errors": [f"News agent failed: {e}"]}
+    api_key = os.environ.get("GEMINI_KEY")
+    if not api_key:
+        return {"news_items": [], "errors": ["GEMINI_KEY not set"]}
+
+    client = genai.Client(api_key=api_key)
+
+    delays = [20, 40, 60]
+    last_error = ""
+    for attempt, delay in enumerate([0] + delays):
+        if delay:
+            time.sleep(delay)
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=PROMPT,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())]
+                ),
+            )
+            items = _extract_json_array(response.text)
+            return {"news_items": items, "errors": []}
+        except Exception as e:
+            last_error = str(e)
+            if attempt == len(delays):
+                break
+
+    return {"news_items": [], "errors": [f"News agent failed: {last_error}"]}
