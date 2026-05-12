@@ -493,5 +493,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-12",
+    "picks": [
+      {
+        "ticker": "TYL",
+        "factor_summary": {
+          "momentum_5d_pct": -5.54,
+          "volume_ratio_vs_20d": 7.01,
+          "distance_from_52w_high_pct": -49.38,
+          "rsi_14": 33.0,
+          "composite_score": 7.95
+        }
+      },
+      {
+        "ticker": "DDOG",
+        "factor_summary": {
+          "momentum_5d_pct": 37.2,
+          "volume_ratio_vs_20d": 0.7,
+          "distance_from_52w_high_pct": -1.18,
+          "rsi_14": 86.5,
+          "composite_score": 4.99
+        }
+      },
+      {
+        "ticker": "ZBRA",
+        "factor_summary": {
+          "momentum_5d_pct": 5.87,
+          "volume_ratio_vs_20d": 3.57,
+          "distance_from_52w_high_pct": -29.17,
+          "rsi_14": 57.1,
+          "composite_score": 4.56
+        }
+      },
+      {
+        "ticker": "DVA",
+        "factor_summary": {
+          "momentum_5d_pct": 27.7,
+          "volume_ratio_vs_20d": 1.45,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 87.0,
+          "composite_score": 4.27
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 17.82,
+          "volume_ratio_vs_20d": 0.87,
+          "distance_from_52w_high_pct": -45.99,
+          "rsi_14": 58.2,
+          "composite_score": 4.17
+        }
+      }
+    ]
   }
 ]
