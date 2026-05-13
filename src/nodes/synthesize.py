@@ -173,27 +173,15 @@ def _render_sports(sports: list[dict[str, Any]] | None) -> str:
     return "\n".join(parts)
 
 
-def _render_calendar(events: list[dict[str, Any]] | None, reminders: list[dict[str, Any]] | None) -> str:
-    parts = ["<h2>📅 Calendar</h2>"]
-    if events:
-        rows = []
-        for ev in events:
-            start = (ev.get("start") or "")[11:16] if "T" in (ev.get("start") or "") else "All day"
-            loc = f" — {ev['location']}" if ev.get("location") else ""
-            rows.append(f"<li><strong>{start}</strong> · {ev['summary']}{loc}</li>")
-        parts.append("<ul>" + "".join(rows) + "</ul>")
-    else:
-        parts.append("<p>Nothing on the calendar today.</p>")
-
-    if reminders:
-        parts.append("<h3>🔔 Reminders</h3><ul>")
-        for r in reminders:
-            overdue = " <span style='color:red'>(overdue)</span>" if r.get("overdue") else ""
-            due = f" — due {r['due'][:10]}" if r.get("due") else ""
-            parts.append(f"<li>{r['summary']}{due}{overdue}</li>")
-        parts.append("</ul>")
-
-    return "\n".join(parts)
+def _render_calendar(events: list[dict[str, Any]] | None) -> str:
+    if not events:
+        return "<h2>📅 Calendar</h2><p>Nothing on the calendar today.</p>"
+    rows = []
+    for ev in events:
+        start = (ev.get("start") or "")[11:16] if "T" in (ev.get("start") or "") else "All day"
+        loc = f" — {ev['location']}" if ev.get("location") else ""
+        rows.append(f"<li><strong>{start}</strong> · {ev['summary']}{loc}</li>")
+    return "<h2>📅 Calendar</h2><ul>" + "".join(rows) + "</ul>"
 
 
 def _render_recipes(recipes: list[dict[str, Any]] | None) -> str:
@@ -253,7 +241,7 @@ def synthesize_node(state: dict) -> dict:
             max-width:720px;margin:0 auto;color:#222;line-height:1.5">
   <h1>Daily Briefing — {date}</h1>
   {intro_html}
-  {_render_calendar(state.get('calendar_events'), state.get('reminders'))}
+  {_render_calendar(state.get('calendar_events'))}
   {_render_stocks(state.get('stocks'))}
   {_render_sports(state.get('sports'))}
   {news_html}

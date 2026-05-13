@@ -240,16 +240,11 @@ def calendar_node(state: dict) -> dict:
         all_events.extend(events)
         all_errors.extend(errors)
 
-    all_reminders: list[dict] = []
     if os.environ.get("ICLOUD_APP_PASSWORD"):
         events, errors = _fetch_icloud_events(time_min, time_max)
         all_events.extend(events)
         all_errors.extend(errors)
 
-        reminders, errors = _fetch_icloud_reminders(today)
-        all_reminders.extend(reminders)
-        all_errors.extend(errors)
-
     all_events.sort(key=lambda e: e.get("start") or "")
 
-    return {"calendar_events": all_events, "reminders": all_reminders, "errors": all_errors}
+    return {"calendar_events": all_events, "errors": all_errors}
