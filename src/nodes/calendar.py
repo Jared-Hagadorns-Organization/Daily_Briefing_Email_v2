@@ -205,6 +205,10 @@ def _fetch_icloud_reminders(today: str) -> tuple[list[dict], list[str]]:
 
                 summary = str(vtodo.summary.value) if hasattr(vtodo, "summary") else "(no title)"
 
+                # Skip Apple iCloud migration placeholder messages
+                if "upgraded these reminders" in summary or "Where are my reminders" in summary:
+                    continue
+
                 due_val = vtodo.due.value if hasattr(vtodo, "due") else None
                 due_str = None
                 if due_val is not None:

@@ -103,9 +103,11 @@ def news_node(state: dict) -> dict:
     client = genai.Client(api_key=api_key)
 
     national = _call_gemini_json(client, NATIONAL_PROMPT)
-
+    time.sleep(5)
     charlotte_html = _call_gemini_text(client, CHARLOTTE_PROMPT)
+    time.sleep(5)
     belmont_html = _call_gemini_text(client, BELMONT_PROMPT)
+    time.sleep(5)
     lake_wylie_html = _call_gemini_text(client, LAKE_WYLIE_PROMPT)
 
     local_html = (
