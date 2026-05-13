@@ -182,6 +182,8 @@ def _fetch_icloud_reminders(today: str) -> tuple[list[dict], list[str]]:
     except Exception as e:
         return [], [f"iCloud Reminders auth failed: {e}"]
 
+    errors.append(f"iCloud Reminders: found {len(calendars)} collections: {[str(c.name) for c in calendars]}")
+
     for cal in calendars:
         cal_name = str(cal.name) if cal.name else "unknown"
         try:
