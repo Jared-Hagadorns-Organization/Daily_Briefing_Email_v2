@@ -185,14 +185,16 @@ def _fetch_icloud_reminders(today: str) -> tuple[list[dict], list[str]]:
     for cal in calendars:
         cal_name = str(cal.name) if cal.name else "unknown"
         try:
-            todos = cal.todos()
-        except Exception as e:
-            errors.append(f"iCloud Reminders '{cal_name}' todos() failed: {e}")
+            objects = cal.objects(load_objects=True)
+        except Exception:
             continue
 
-        for todo in todos:
+        for obj in objects:
             try:
-                instance = todo.vobject_instance
+                data = obj.data or ""
+                if "VTODO" not in data:
+                    continue
+                instance = obj.vobject_instance
                 if instance is None or not hasattr(instance, "vtodo"):
                     continue
                 vtodo = instance.vtodo
@@ -216,8 +218,8 @@ def _fetch_icloud_reminders(today: str) -> tuple[list[dict], list[str]]:
                     "due": due_str,
                     "overdue": due_str is not None and due_str[:10] < today,
                 })
-            except Exception as e:
-                errors.append(f"iCloud Reminders '{cal_name}' parse failed: {e}")
+            except Exception:
+                continue
 
     return reminders_out, errors
 
