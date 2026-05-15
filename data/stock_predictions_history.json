@@ -1043,5 +1043,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-15",
+    "picks": [
+      {
+        "ticker": "CSCO",
+        "factor_summary": {
+          "momentum_5d_pct": 25.36,
+          "volume_ratio_vs_20d": 3.44,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 86.7,
+          "composite_score": 6.96
+        }
+      },
+      {
+        "ticker": "F",
+        "factor_summary": {
+          "momentum_5d_pct": 20.38,
+          "volume_ratio_vs_20d": 3.65,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 73.8,
+          "composite_score": 6.4
+        }
+      },
+      {
+        "ticker": "AKAM",
+        "factor_summary": {
+          "momentum_5d_pct": 33.4,
+          "volume_ratio_vs_20d": 0.67,
+          "distance_from_52w_high_pct": -3.39,
+          "rsi_14": 83.6,
+          "composite_score": 4.76
+        }
+      },
+      {
+        "ticker": "COIN",
+        "factor_summary": {
+          "momentum_5d_pct": 9.87,
+          "volume_ratio_vs_20d": 1.63,
+          "distance_from_52w_high_pct": -49.49,
+          "rsi_14": 56.2,
+          "composite_score": 4.16
+        }
+      },
+      {
+        "ticker": "HPE",
+        "factor_summary": {
+          "momentum_5d_pct": 14.92,
+          "volume_ratio_vs_20d": 2.34,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 76.3,
+          "composite_score": 3.71
+        }
+      }
+    ]
   }
 ]
