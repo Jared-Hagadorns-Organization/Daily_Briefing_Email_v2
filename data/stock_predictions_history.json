@@ -1263,5 +1263,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-21",
+    "picks": [
+      {
+        "ticker": "DXCM",
+        "factor_summary": {
+          "momentum_5d_pct": 21.97,
+          "volume_ratio_vs_20d": 1.8,
+          "distance_from_52w_high_pct": -20.21,
+          "rsi_14": 73.4,
+          "composite_score": 5.91
+        }
+      },
+      {
+        "ticker": "NOW",
+        "factor_summary": {
+          "momentum_5d_pct": 18.67,
+          "volume_ratio_vs_20d": 0.95,
+          "distance_from_52w_high_pct": -50.56,
+          "rsi_14": 69.8,
+          "composite_score": 5.53
+        }
+      },
+      {
+        "ticker": "EPAM",
+        "factor_summary": {
+          "momentum_5d_pct": 15.39,
+          "volume_ratio_vs_20d": 0.88,
+          "distance_from_52w_high_pct": -52.89,
+          "rsi_14": 37.8,
+          "composite_score": 4.83
+        }
+      },
+      {
+        "ticker": "INTU",
+        "factor_summary": {
+          "momentum_5d_pct": 3.29,
+          "volume_ratio_vs_20d": 2.64,
+          "distance_from_52w_high_pct": -52.13,
+          "rsi_14": 48.4,
+          "composite_score": 4.42
+        }
+      },
+      {
+        "ticker": "FISV",
+        "factor_summary": {
+          "momentum_5d_pct": 7.71,
+          "volume_ratio_vs_20d": 0.82,
+          "distance_from_52w_high_pct": -67.87,
+          "rsi_14": 33.8,
+          "composite_score": 4.17
+        }
+      }
+    ]
   }
 ]
