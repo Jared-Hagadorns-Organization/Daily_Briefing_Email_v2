@@ -1373,5 +1373,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-25",
+    "picks": [
+      {
+        "ticker": "HPQ",
+        "factor_summary": {
+          "momentum_5d_pct": 21.29,
+          "volume_ratio_vs_20d": 3.17,
+          "distance_from_52w_high_pct": -10.68,
+          "rsi_14": 73.5,
+          "composite_score": 6.93
+        }
+      },
+      {
+        "ticker": "DELL",
+        "factor_summary": {
+          "momentum_5d_pct": 21.98,
+          "volume_ratio_vs_20d": 2.65,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 74.7,
+          "composite_score": 5.9
+        }
+      },
+      {
+        "ticker": "IBM",
+        "factor_summary": {
+          "momentum_5d_pct": 15.75,
+          "volume_ratio_vs_20d": 2.69,
+          "distance_from_52w_high_pct": -18.35,
+          "rsi_14": 70.2,
+          "composite_score": 5.43
+        }
+      },
+      {
+        "ticker": "NTAP",
+        "factor_summary": {
+          "momentum_5d_pct": 16.2,
+          "volume_ratio_vs_20d": 3.11,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 85.5,
+          "composite_score": 5.19
+        }
+      },
+      {
+        "ticker": "DECK",
+        "factor_summary": {
+          "momentum_5d_pct": 14.01,
+          "volume_ratio_vs_20d": 2.57,
+          "distance_from_52w_high_pct": -13.91,
+          "rsi_14": 63.9,
+          "composite_score": 4.68
+        }
+      }
+    ]
   }
 ]
