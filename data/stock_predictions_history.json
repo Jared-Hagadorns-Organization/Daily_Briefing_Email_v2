@@ -1538,5 +1538,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-29",
+    "picks": [
+      {
+        "ticker": "DELL",
+        "factor_summary": {
+          "momentum_5d_pct": 30.51,
+          "volume_ratio_vs_20d": 3.48,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 78.0,
+          "composite_score": 6.98
+        }
+      },
+      {
+        "ticker": "BBY",
+        "factor_summary": {
+          "momentum_5d_pct": 22.56,
+          "volume_ratio_vs_20d": 3.79,
+          "distance_from_52w_high_pct": -8.48,
+          "rsi_14": 82.7,
+          "composite_score": 6.46
+        }
+      },
+      {
+        "ticker": "DLTR",
+        "factor_summary": {
+          "momentum_5d_pct": 20.88,
+          "volume_ratio_vs_20d": 3.45,
+          "distance_from_52w_high_pct": -19.98,
+          "rsi_14": 69.2,
+          "composite_score": 6.34
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 23.43,
+          "volume_ratio_vs_20d": 1.82,
+          "distance_from_52w_high_pct": -31.97,
+          "rsi_14": 69.8,
+          "composite_score": 5.35
+        }
+      },
+      {
+        "ticker": "A",
+        "factor_summary": {
+          "momentum_5d_pct": 18.98,
+          "volume_ratio_vs_20d": 2.87,
+          "distance_from_52w_high_pct": -13.53,
+          "rsi_14": 72.2,
+          "composite_score": 4.99
+        }
+      }
+    ]
   }
 ]
