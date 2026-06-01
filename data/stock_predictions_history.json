@@ -1593,5 +1593,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-01",
+    "picks": [
+      {
+        "ticker": "DELL",
+        "factor_summary": {
+          "momentum_5d_pct": 66.5,
+          "volume_ratio_vs_20d": 5.32,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 85.1,
+          "composite_score": 9.98
+        }
+      },
+      {
+        "ticker": "NTAP",
+        "factor_summary": {
+          "momentum_5d_pct": 40.61,
+          "volume_ratio_vs_20d": 5.24,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 93.6,
+          "composite_score": 6.39
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 37.75,
+          "volume_ratio_vs_20d": 2.22,
+          "distance_from_52w_high_pct": -24.08,
+          "rsi_14": 73.9,
+          "composite_score": 5.59
+        }
+      },
+      {
+        "ticker": "HOOD",
+        "factor_summary": {
+          "momentum_5d_pct": 24.21,
+          "volume_ratio_vs_20d": 2.76,
+          "distance_from_52w_high_pct": -38.15,
+          "rsi_14": 70.1,
+          "composite_score": 4.74
+        }
+      },
+      {
+        "ticker": "NOW",
+        "factor_summary": {
+          "momentum_5d_pct": 24.76,
+          "volume_ratio_vs_20d": 2.37,
+          "distance_from_52w_high_pct": -40.48,
+          "rsi_14": 79.2,
+          "composite_score": 4.72
+        }
+      }
+    ]
   }
 ]
