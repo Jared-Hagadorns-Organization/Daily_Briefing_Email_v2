@@ -1868,5 +1868,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-08",
+    "picks": [
+      {
+        "ticker": "COO",
+        "factor_summary": {
+          "momentum_5d_pct": 10.01,
+          "volume_ratio_vs_20d": 3.27,
+          "distance_from_52w_high_pct": -20.14,
+          "rsi_14": 75.3,
+          "composite_score": 5.5
+        }
+      },
+      {
+        "ticker": "LULU",
+        "factor_summary": {
+          "momentum_5d_pct": -12.92,
+          "volume_ratio_vs_20d": 4.61,
+          "distance_from_52w_high_pct": -56.94,
+          "rsi_14": 42.6,
+          "composite_score": 4.23
+        }
+      },
+      {
+        "ticker": "PODD",
+        "factor_summary": {
+          "momentum_5d_pct": 5.71,
+          "volume_ratio_vs_20d": 1.43,
+          "distance_from_52w_high_pct": -56.57,
+          "rsi_14": 56.3,
+          "composite_score": 3.91
+        }
+      },
+      {
+        "ticker": "AXON",
+        "factor_summary": {
+          "momentum_5d_pct": 8.33,
+          "volume_ratio_vs_20d": 1.27,
+          "distance_from_52w_high_pct": -44.19,
+          "rsi_14": 72.9,
+          "composite_score": 3.63
+        }
+      },
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 5.25,
+          "volume_ratio_vs_20d": 0.79,
+          "distance_from_52w_high_pct": -65.0,
+          "rsi_14": 60.4,
+          "composite_score": 3.35
+        }
+      }
+    ]
   }
 ]
