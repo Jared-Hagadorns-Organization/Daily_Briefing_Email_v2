@@ -1978,5 +1978,20 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-10",
+    "picks": [
+      {
+        "ticker": "HUBB",
+        "factor_summary": {
+          "momentum_5d_pct": 1.25,
+          "volume_ratio_vs_20d": 1.15,
+          "distance_from_52w_high_pct": -12.53,
+          "rsi_14": 64.7,
+          "composite_score": NaN
+        }
+      }
+    ]
   }
 ]
