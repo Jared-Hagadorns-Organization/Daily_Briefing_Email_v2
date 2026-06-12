@@ -2048,5 +2048,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-12",
+    "picks": [
+      {
+        "ticker": "KIM",
+        "factor_summary": {
+          "momentum_5d_pct": 8.42,
+          "volume_ratio_vs_20d": 4.03,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 76.2,
+          "composite_score": 4.82
+        }
+      },
+      {
+        "ticker": "CASY",
+        "factor_summary": {
+          "momentum_5d_pct": 20.31,
+          "volume_ratio_vs_20d": 1.39,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 65.4,
+          "composite_score": 3.56
+        }
+      },
+      {
+        "ticker": "CHTR",
+        "factor_summary": {
+          "momentum_5d_pct": 7.82,
+          "volume_ratio_vs_20d": 0.64,
+          "distance_from_52w_high_pct": -66.73,
+          "rsi_14": 36.6,
+          "composite_score": 3.46
+        }
+      },
+      {
+        "ticker": "CMG",
+        "factor_summary": {
+          "momentum_5d_pct": 10.89,
+          "volume_ratio_vs_20d": 0.8,
+          "distance_from_52w_high_pct": -46.34,
+          "rsi_14": 41.2,
+          "composite_score": 3.27
+        }
+      },
+      {
+        "ticker": "TSCO",
+        "factor_summary": {
+          "momentum_5d_pct": 6.44,
+          "volume_ratio_vs_20d": 1.16,
+          "distance_from_52w_high_pct": -49.25,
+          "rsi_14": 49.2,
+          "composite_score": 3.04
+        }
+      }
+    ]
   }
 ]
