@@ -2103,5 +2103,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-15",
+    "picks": [
+      {
+        "ticker": "SATS",
+        "factor_summary": {
+          "momentum_5d_pct": -1.89,
+          "volume_ratio_vs_20d": 6.28,
+          "distance_from_52w_high_pct": -19.55,
+          "rsi_14": 41.8,
+          "composite_score": 6.52
+        }
+      },
+      {
+        "ticker": "KLAC",
+        "factor_summary": {
+          "momentum_5d_pct": 31.94,
+          "volume_ratio_vs_20d": 0.91,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 76.3,
+          "composite_score": 5.43
+        }
+      },
+      {
+        "ticker": "INTC",
+        "factor_summary": {
+          "momentum_5d_pct": 25.61,
+          "volume_ratio_vs_20d": 1.18,
+          "distance_from_52w_high_pct": -3.76,
+          "rsi_14": 53.4,
+          "composite_score": 4.68
+        }
+      },
+      {
+        "ticker": "SNDK",
+        "factor_summary": {
+          "momentum_5d_pct": 26.98,
+          "volume_ratio_vs_20d": 1.05,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 71.9,
+          "composite_score": 4.6
+        }
+      },
+      {
+        "ticker": "CHTR",
+        "factor_summary": {
+          "momentum_5d_pct": 10.37,
+          "volume_ratio_vs_20d": 1.09,
+          "distance_from_52w_high_pct": -65.13,
+          "rsi_14": 50.8,
+          "composite_score": 4.44
+        }
+      }
+    ]
   }
 ]
