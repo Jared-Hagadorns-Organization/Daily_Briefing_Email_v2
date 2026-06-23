@@ -2393,5 +2393,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-23",
+    "picks": [
+      {
+        "ticker": "WDC",
+        "factor_summary": {
+          "momentum_5d_pct": 30.14,
+          "volume_ratio_vs_20d": 1.64,
+          "distance_from_52w_high_pct": -1.82,
+          "rsi_14": 70.6,
+          "composite_score": 5.27
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 16.41,
+          "volume_ratio_vs_20d": 1.82,
+          "distance_from_52w_high_pct": -41.59,
+          "rsi_14": 37.1,
+          "composite_score": 5.1
+        }
+      },
+      {
+        "ticker": "DASH",
+        "factor_summary": {
+          "momentum_5d_pct": 14.28,
+          "volume_ratio_vs_20d": 1.58,
+          "distance_from_52w_high_pct": -38.92,
+          "rsi_14": 55.1,
+          "composite_score": 4.26
+        }
+      },
+      {
+        "ticker": "NRG",
+        "factor_summary": {
+          "momentum_5d_pct": 10.71,
+          "volume_ratio_vs_20d": 2.2,
+          "distance_from_52w_high_pct": -24.29,
+          "rsi_14": 61.8,
+          "composite_score": 3.96
+        }
+      },
+      {
+        "ticker": "Q",
+        "factor_summary": {
+          "momentum_5d_pct": 16.59,
+          "volume_ratio_vs_20d": 2.13,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 65.1,
+          "composite_score": 3.7
+        }
+      }
+    ]
   }
 ]
