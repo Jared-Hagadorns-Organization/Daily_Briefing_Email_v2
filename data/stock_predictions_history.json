@@ -2558,5 +2558,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-26",
+    "picks": [
+      {
+        "ticker": "DD",
+        "factor_summary": {
+          "momentum_5d_pct": 187.38,
+          "volume_ratio_vs_20d": 0.57,
+          "distance_from_52w_high_pct": -4.68,
+          "rsi_14": 90.8,
+          "composite_score": 17.57
+        }
+      },
+      {
+        "ticker": "TECH",
+        "factor_summary": {
+          "momentum_5d_pct": 28.55,
+          "volume_ratio_vs_20d": 18.08,
+          "distance_from_52w_high_pct": -0.64,
+          "rsi_14": 78.5,
+          "composite_score": 12.35
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 14.04,
+          "volume_ratio_vs_20d": 0.6,
+          "distance_from_52w_high_pct": -47.82,
+          "rsi_14": 31.6,
+          "composite_score": 2.88
+        }
+      },
+      {
+        "ticker": "TTD",
+        "factor_summary": {
+          "momentum_5d_pct": -4.57,
+          "volume_ratio_vs_20d": 0.64,
+          "distance_from_52w_high_pct": -80.69,
+          "rsi_14": 19.6,
+          "composite_score": 2.81
+        }
+      },
+      {
+        "ticker": "BLDR",
+        "factor_summary": {
+          "momentum_5d_pct": 16.52,
+          "volume_ratio_vs_20d": 1.15,
+          "distance_from_52w_high_pct": -40.54,
+          "rsi_14": 68.2,
+          "composite_score": 2.66
+        }
+      }
+    ]
   }
 ]
