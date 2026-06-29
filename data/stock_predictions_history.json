@@ -2613,5 +2613,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-29",
+    "picks": [
+      {
+        "ticker": "ABBV",
+        "factor_summary": {
+          "momentum_5d_pct": 17.03,
+          "volume_ratio_vs_20d": 8.38,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 71.8,
+          "composite_score": 5.63
+        }
+      },
+      {
+        "ticker": "IT",
+        "factor_summary": {
+          "momentum_5d_pct": 5.86,
+          "volume_ratio_vs_20d": 1.15,
+          "distance_from_52w_high_pct": -66.82,
+          "rsi_14": 23.7,
+          "composite_score": 3.59
+        }
+      },
+      {
+        "ticker": "VEEV",
+        "factor_summary": {
+          "momentum_5d_pct": 11.78,
+          "volume_ratio_vs_20d": 1.93,
+          "distance_from_52w_high_pct": -44.04,
+          "rsi_14": 48.8,
+          "composite_score": 3.18
+        }
+      },
+      {
+        "ticker": "TECH",
+        "factor_summary": {
+          "momentum_5d_pct": 22.54,
+          "volume_ratio_vs_20d": 2.3,
+          "distance_from_52w_high_pct": -0.21,
+          "rsi_14": 81.8,
+          "composite_score": 3.18
+        }
+      },
+      {
+        "ticker": "FISV",
+        "factor_summary": {
+          "momentum_5d_pct": 3.32,
+          "volume_ratio_vs_20d": 2.06,
+          "distance_from_52w_high_pct": -71.83,
+          "rsi_14": 36.7,
+          "composite_score": 3.11
+        }
+      }
+    ]
   }
 ]
