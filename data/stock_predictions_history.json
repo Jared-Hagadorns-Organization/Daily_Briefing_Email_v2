@@ -2668,5 +2668,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-06-30",
+    "picks": [
+      {
+        "ticker": "CHTR",
+        "factor_summary": {
+          "momentum_5d_pct": 16.43,
+          "volume_ratio_vs_20d": 3.42,
+          "distance_from_52w_high_pct": -65.05,
+          "rsi_14": 61.9,
+          "composite_score": 8.43
+        }
+      },
+      {
+        "ticker": "CMCSA",
+        "factor_summary": {
+          "momentum_5d_pct": 8.51,
+          "volume_ratio_vs_20d": 3.76,
+          "distance_from_52w_high_pct": -25.75,
+          "rsi_14": 54.5,
+          "composite_score": 5.96
+        }
+      },
+      {
+        "ticker": "TECH",
+        "factor_summary": {
+          "momentum_5d_pct": 27.5,
+          "volume_ratio_vs_20d": 2.56,
+          "distance_from_52w_high_pct": -0.35,
+          "rsi_14": 81.1,
+          "composite_score": 5.81
+        }
+      },
+      {
+        "ticker": "AXON",
+        "factor_summary": {
+          "momentum_5d_pct": 24.53,
+          "volume_ratio_vs_20d": 1.6,
+          "distance_from_52w_high_pct": -41.38,
+          "rsi_14": 60.4,
+          "composite_score": 5.73
+        }
+      },
+      {
+        "ticker": "ACN",
+        "factor_summary": {
+          "momentum_5d_pct": -0.07,
+          "volume_ratio_vs_20d": 1.57,
+          "distance_from_52w_high_pct": -58.52,
+          "rsi_14": 14.8,
+          "composite_score": 3.68
+        }
+      }
+    ]
   }
 ]
