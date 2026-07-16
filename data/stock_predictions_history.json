@@ -3328,5 +3328,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-16",
+    "picks": [
+      {
+        "ticker": "PYPL",
+        "factor_summary": {
+          "momentum_5d_pct": 24.68,
+          "volume_ratio_vs_20d": 5.61,
+          "distance_from_52w_high_pct": -28.41,
+          "rsi_14": 84.0,
+          "composite_score": 12.16
+        }
+      },
+      {
+        "ticker": "PNR",
+        "factor_summary": {
+          "momentum_5d_pct": -12.19,
+          "volume_ratio_vs_20d": 5.24,
+          "distance_from_52w_high_pct": -42.42,
+          "rsi_14": 25.8,
+          "composite_score": 4.23
+        }
+      },
+      {
+        "ticker": "MOS",
+        "factor_summary": {
+          "momentum_5d_pct": 11.57,
+          "volume_ratio_vs_20d": 0.69,
+          "distance_from_52w_high_pct": -36.22,
+          "rsi_14": 67.9,
+          "composite_score": 3.5
+        }
+      },
+      {
+        "ticker": "COIN",
+        "factor_summary": {
+          "momentum_5d_pct": 4.93,
+          "volume_ratio_vs_20d": 0.97,
+          "distance_from_52w_high_pct": -60.17,
+          "rsi_14": 62.7,
+          "composite_score": 3.39
+        }
+      },
+      {
+        "ticker": "KKR",
+        "factor_summary": {
+          "momentum_5d_pct": 8.2,
+          "volume_ratio_vs_20d": 1.31,
+          "distance_from_52w_high_pct": -33.21,
+          "rsi_14": 71.2,
+          "composite_score": 3.27
+        }
+      }
+    ]
   }
 ]
