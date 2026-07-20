@@ -3438,5 +3438,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-20",
+    "picks": [
+      {
+        "ticker": "PYPL",
+        "factor_summary": {
+          "momentum_5d_pct": 22.11,
+          "volume_ratio_vs_20d": 0.97,
+          "distance_from_52w_high_pct": -27.06,
+          "rsi_14": 83.0,
+          "composite_score": 4.86
+        }
+      },
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 4.9,
+          "volume_ratio_vs_20d": 0.78,
+          "distance_from_52w_high_pct": -69.25,
+          "rsi_14": 48.1,
+          "composite_score": 3.29
+        }
+      },
+      {
+        "ticker": "DPZ",
+        "factor_summary": {
+          "momentum_5d_pct": 7.59,
+          "volume_ratio_vs_20d": 1.55,
+          "distance_from_52w_high_pct": -32.36,
+          "rsi_14": 63.9,
+          "composite_score": 3.09
+        }
+      },
+      {
+        "ticker": "INTU",
+        "factor_summary": {
+          "momentum_5d_pct": 5.87,
+          "volume_ratio_vs_20d": 0.66,
+          "distance_from_52w_high_pct": -63.54,
+          "rsi_14": 63.7,
+          "composite_score": 3.06
+        }
+      },
+      {
+        "ticker": "IT",
+        "factor_summary": {
+          "momentum_5d_pct": 5.22,
+          "volume_ratio_vs_20d": 0.8,
+          "distance_from_52w_high_pct": -60.84,
+          "rsi_14": 54.6,
+          "composite_score": 2.99
+        }
+      }
+    ]
   }
 ]
