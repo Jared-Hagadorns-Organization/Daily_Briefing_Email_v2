@@ -3658,5 +3658,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-24",
+    "picks": [
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 26.42,
+          "volume_ratio_vs_20d": 1.86,
+          "distance_from_52w_high_pct": -48.61,
+          "rsi_14": 63.4,
+          "composite_score": 7.6
+        }
+      },
+      {
+        "ticker": "STX",
+        "factor_summary": {
+          "momentum_5d_pct": 22.52,
+          "volume_ratio_vs_20d": 0.89,
+          "distance_from_52w_high_pct": -16.46,
+          "rsi_14": 58.6,
+          "composite_score": 4.39
+        }
+      },
+      {
+        "ticker": "DGX",
+        "factor_summary": {
+          "momentum_5d_pct": 8.83,
+          "volume_ratio_vs_20d": 4.11,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 63.9,
+          "composite_score": 4.17
+        }
+      },
+      {
+        "ticker": "ALLE",
+        "factor_summary": {
+          "momentum_5d_pct": 10.82,
+          "volume_ratio_vs_20d": 2.99,
+          "distance_from_52w_high_pct": -13.34,
+          "rsi_14": 71.1,
+          "composite_score": 4.08
+        }
+      },
+      {
+        "ticker": "WDC",
+        "factor_summary": {
+          "momentum_5d_pct": 19.6,
+          "volume_ratio_vs_20d": 0.64,
+          "distance_from_52w_high_pct": -25.18,
+          "rsi_14": 52.7,
+          "composite_score": 4.0
+        }
+      }
+    ]
   }
 ]
