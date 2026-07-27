@@ -3713,5 +3713,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-27",
+    "picks": [
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 24.48,
+          "volume_ratio_vs_20d": 1.03,
+          "distance_from_52w_high_pct": -50.42,
+          "rsi_14": 59.1,
+          "composite_score": 7.59
+        }
+      },
+      {
+        "ticker": "DLR",
+        "factor_summary": {
+          "momentum_5d_pct": 14.49,
+          "volume_ratio_vs_20d": 2.82,
+          "distance_from_52w_high_pct": -1.72,
+          "rsi_14": 77.2,
+          "composite_score": 5.47
+        }
+      },
+      {
+        "ticker": "IP",
+        "factor_summary": {
+          "momentum_5d_pct": 12.25,
+          "volume_ratio_vs_20d": 2.37,
+          "distance_from_52w_high_pct": -20.66,
+          "rsi_14": 62.9,
+          "composite_score": 5.21
+        }
+      },
+      {
+        "ticker": "SLB",
+        "factor_summary": {
+          "momentum_5d_pct": 11.56,
+          "volume_ratio_vs_20d": 2.34,
+          "distance_from_52w_high_pct": -9.64,
+          "rsi_14": 80.2,
+          "composite_score": 4.47
+        }
+      },
+      {
+        "ticker": "LMT",
+        "factor_summary": {
+          "momentum_5d_pct": 14.51,
+          "volume_ratio_vs_20d": 1.38,
+          "distance_from_52w_high_pct": -13.34,
+          "rsi_14": 68.9,
+          "composite_score": 3.98
+        }
+      }
+    ]
   }
 ]
