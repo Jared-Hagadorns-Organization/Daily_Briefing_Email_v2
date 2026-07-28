@@ -3768,5 +3768,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-28",
+    "picks": [
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 25.09,
+          "volume_ratio_vs_20d": 0.73,
+          "distance_from_52w_high_pct": -50.9,
+          "rsi_14": 61.6,
+          "composite_score": 6.85
+        }
+      },
+      {
+        "ticker": "CPRT",
+        "factor_summary": {
+          "momentum_5d_pct": 8.37,
+          "volume_ratio_vs_20d": 1.95,
+          "distance_from_52w_high_pct": -40.38,
+          "rsi_14": 53.8,
+          "composite_score": 4.49
+        }
+      },
+      {
+        "ticker": "IP",
+        "factor_summary": {
+          "momentum_5d_pct": 16.99,
+          "volume_ratio_vs_20d": 1.35,
+          "distance_from_52w_high_pct": -19.93,
+          "rsi_14": 66.7,
+          "composite_score": 4.48
+        }
+      },
+      {
+        "ticker": "SW",
+        "factor_summary": {
+          "momentum_5d_pct": 16.11,
+          "volume_ratio_vs_20d": 1.57,
+          "distance_from_52w_high_pct": -2.27,
+          "rsi_14": 63.7,
+          "composite_score": 3.78
+        }
+      },
+      {
+        "ticker": "UHS",
+        "factor_summary": {
+          "momentum_5d_pct": 5.76,
+          "volume_ratio_vs_20d": 1.87,
+          "distance_from_52w_high_pct": -34.55,
+          "rsi_14": 47.6,
+          "composite_score": 3.47
+        }
+      }
+    ]
   }
 ]
