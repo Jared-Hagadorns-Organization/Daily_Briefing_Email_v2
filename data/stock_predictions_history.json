@@ -3878,5 +3878,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-30",
+    "picks": [
+      {
+        "ticker": "CTSH",
+        "factor_summary": {
+          "momentum_5d_pct": 29.62,
+          "volume_ratio_vs_20d": 1.97,
+          "distance_from_52w_high_pct": -34.66,
+          "rsi_14": 81.4,
+          "composite_score": 4.96
+        }
+      },
+      {
+        "ticker": "GRMN",
+        "factor_summary": {
+          "momentum_5d_pct": 22.59,
+          "volume_ratio_vs_20d": 4.44,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 78.5,
+          "composite_score": 4.83
+        }
+      },
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 7.73,
+          "volume_ratio_vs_20d": 2.5,
+          "distance_from_52w_high_pct": -69.19,
+          "rsi_14": 52.7,
+          "composite_score": 4.54
+        }
+      },
+      {
+        "ticker": "IT",
+        "factor_summary": {
+          "momentum_5d_pct": 25.4,
+          "volume_ratio_vs_20d": 1.15,
+          "distance_from_52w_high_pct": -51.82,
+          "rsi_14": 72.6,
+          "composite_score": 4.48
+        }
+      },
+      {
+        "ticker": "WDAY",
+        "factor_summary": {
+          "momentum_5d_pct": 26.88,
+          "volume_ratio_vs_20d": 1.66,
+          "distance_from_52w_high_pct": -32.17,
+          "rsi_14": 68.6,
+          "composite_score": 4.21
+        }
+      }
+    ]
   }
 ]
