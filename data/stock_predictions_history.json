@@ -3933,5 +3933,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-07-31",
+    "picks": [
+      {
+        "ticker": "BAX",
+        "factor_summary": {
+          "momentum_5d_pct": 23.44,
+          "volume_ratio_vs_20d": 3.95,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 71.9,
+          "composite_score": 5.06
+        }
+      },
+      {
+        "ticker": "PTC",
+        "factor_summary": {
+          "momentum_5d_pct": 20.57,
+          "volume_ratio_vs_20d": 2.14,
+          "distance_from_52w_high_pct": -37.05,
+          "rsi_14": 62.3,
+          "composite_score": 4.77
+        }
+      },
+      {
+        "ticker": "CTSH",
+        "factor_summary": {
+          "momentum_5d_pct": 25.32,
+          "volume_ratio_vs_20d": 1.31,
+          "distance_from_52w_high_pct": -37.07,
+          "rsi_14": 76.7,
+          "composite_score": 4.68
+        }
+      },
+      {
+        "ticker": "MSFT",
+        "factor_summary": {
+          "momentum_5d_pct": 18.22,
+          "volume_ratio_vs_20d": 3.41,
+          "distance_from_52w_high_pct": -16.25,
+          "rsi_14": 73.6,
+          "composite_score": 4.59
+        }
+      },
+      {
+        "ticker": "WDAY",
+        "factor_summary": {
+          "momentum_5d_pct": 23.65,
+          "volume_ratio_vs_20d": 1.49,
+          "distance_from_52w_high_pct": -36.17,
+          "rsi_14": 60.8,
+          "composite_score": 4.56
+        }
+      }
+    ]
   }
 ]
