@@ -4113,5 +4113,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-06",
+    "picks": [
+      {
+        "ticker": "COHR",
+        "factor_summary": {
+          "momentum_5d_pct": 47.81,
+          "volume_ratio_vs_20d": 1.17,
+          "distance_from_52w_high_pct": -23.11,
+          "rsi_14": 60.5,
+          "composite_score": 6.37
+        }
+      },
+      {
+        "ticker": "SNDK",
+        "factor_summary": {
+          "momentum_5d_pct": 32.94,
+          "volume_ratio_vs_20d": 0.96,
+          "distance_from_52w_high_pct": -42.16,
+          "rsi_14": 48.0,
+          "composite_score": 5.26
+        }
+      },
+      {
+        "ticker": "LITE",
+        "factor_summary": {
+          "momentum_5d_pct": 37.17,
+          "volume_ratio_vs_20d": 0.76,
+          "distance_from_52w_high_pct": -21.54,
+          "rsi_14": 59.3,
+          "composite_score": 4.53
+        }
+      },
+      {
+        "ticker": "PODD",
+        "factor_summary": {
+          "momentum_5d_pct": -21.9,
+          "volume_ratio_vs_20d": 5.45,
+          "distance_from_52w_high_pct": -62.23,
+          "rsi_14": 28.0,
+          "composite_score": 4.38
+        }
+      },
+      {
+        "ticker": "ORCL",
+        "factor_summary": {
+          "momentum_5d_pct": 22.63,
+          "volume_ratio_vs_20d": 0.6,
+          "distance_from_52w_high_pct": -55.52,
+          "rsi_14": 66.4,
+          "composite_score": 4.29
+        }
+      }
+    ]
   }
 ]
