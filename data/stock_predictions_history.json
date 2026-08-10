@@ -4223,5 +4223,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-10",
+    "picks": [
+      {
+        "ticker": "COHR",
+        "factor_summary": {
+          "momentum_5d_pct": 44.22,
+          "volume_ratio_vs_20d": 2.2,
+          "distance_from_52w_high_pct": -11.19,
+          "rsi_14": 66.4,
+          "composite_score": 7.96
+        }
+      },
+      {
+        "ticker": "PLTR",
+        "factor_summary": {
+          "momentum_5d_pct": 39.78,
+          "volume_ratio_vs_20d": 1.77,
+          "distance_from_52w_high_pct": -16.98,
+          "rsi_14": 70.0,
+          "composite_score": 7.09
+        }
+      },
+      {
+        "ticker": "TTD",
+        "factor_summary": {
+          "momentum_5d_pct": -23.5,
+          "volume_ratio_vs_20d": 7.13,
+          "distance_from_52w_high_pct": -75.07,
+          "rsi_14": 29.9,
+          "composite_score": 6.31
+        }
+      },
+      {
+        "ticker": "ABNB",
+        "factor_summary": {
+          "momentum_5d_pct": 17.52,
+          "volume_ratio_vs_20d": 4.37,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 79.6,
+          "composite_score": 5.31
+        }
+      },
+      {
+        "ticker": "FSLR",
+        "factor_summary": {
+          "momentum_5d_pct": 18.49,
+          "volume_ratio_vs_20d": 2.24,
+          "distance_from_52w_high_pct": -21.43,
+          "rsi_14": 76.7,
+          "composite_score": 4.38
+        }
+      }
+    ]
   }
 ]
