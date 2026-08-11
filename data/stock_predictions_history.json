@@ -4278,5 +4278,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-11",
+    "picks": [
+      {
+        "ticker": "PLTR",
+        "factor_summary": {
+          "momentum_5d_pct": 39.46,
+          "volume_ratio_vs_20d": 1.24,
+          "distance_from_52w_high_pct": -15.42,
+          "rsi_14": 72.6,
+          "composite_score": 7.55
+        }
+      },
+      {
+        "ticker": "IT",
+        "factor_summary": {
+          "momentum_5d_pct": 27.48,
+          "volume_ratio_vs_20d": 1.1,
+          "distance_from_52w_high_pct": -26.85,
+          "rsi_14": 80.4,
+          "composite_score": 5.75
+        }
+      },
+      {
+        "ticker": "ABNB",
+        "factor_summary": {
+          "momentum_5d_pct": 22.61,
+          "volume_ratio_vs_20d": 2.32,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 82.9,
+          "composite_score": 5.4
+        }
+      },
+      {
+        "ticker": "NEM",
+        "factor_summary": {
+          "momentum_5d_pct": 22.95,
+          "volume_ratio_vs_20d": 1.32,
+          "distance_from_52w_high_pct": -10.75,
+          "rsi_14": 82.4,
+          "composite_score": 4.43
+        }
+      },
+      {
+        "ticker": "TSCO",
+        "factor_summary": {
+          "momentum_5d_pct": 7.82,
+          "volume_ratio_vs_20d": 1.8,
+          "distance_from_52w_high_pct": -43.8,
+          "rsi_14": 78.6,
+          "composite_score": 4.23
+        }
+      }
+    ]
   }
 ]
