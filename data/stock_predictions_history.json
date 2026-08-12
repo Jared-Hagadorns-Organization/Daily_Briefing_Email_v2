@@ -4333,5 +4333,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-12",
+    "picks": [
+      {
+        "ticker": "ABNB",
+        "factor_summary": {
+          "momentum_5d_pct": 23.39,
+          "volume_ratio_vs_20d": 1.75,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 88.8,
+          "composite_score": 5.75
+        }
+      },
+      {
+        "ticker": "TSCO",
+        "factor_summary": {
+          "momentum_5d_pct": 6.55,
+          "volume_ratio_vs_20d": 1.88,
+          "distance_from_52w_high_pct": -42.71,
+          "rsi_14": 82.5,
+          "composite_score": 4.79
+        }
+      },
+      {
+        "ticker": "CRL",
+        "factor_summary": {
+          "momentum_5d_pct": 20.45,
+          "volume_ratio_vs_20d": 1.28,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 84.3,
+          "composite_score": 4.27
+        }
+      },
+      {
+        "ticker": "PSKY",
+        "factor_summary": {
+          "momentum_5d_pct": 11.93,
+          "volume_ratio_vs_20d": 0.69,
+          "distance_from_52w_high_pct": -51.8,
+          "rsi_14": 61.5,
+          "composite_score": 4.17
+        }
+      },
+      {
+        "ticker": "NEM",
+        "factor_summary": {
+          "momentum_5d_pct": 19.93,
+          "volume_ratio_vs_20d": 0.87,
+          "distance_from_52w_high_pct": -10.78,
+          "rsi_14": 80.6,
+          "composite_score": 3.96
+        }
+      }
+    ]
   }
 ]
