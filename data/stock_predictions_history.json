@@ -4388,5 +4388,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-13",
+    "picks": [
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 24.04,
+          "volume_ratio_vs_20d": 3.36,
+          "distance_from_52w_high_pct": -35.91,
+          "rsi_14": 64.5,
+          "composite_score": 8.97
+        }
+      },
+      {
+        "ticker": "LITE",
+        "factor_summary": {
+          "momentum_5d_pct": 12.85,
+          "volume_ratio_vs_20d": 2.45,
+          "distance_from_52w_high_pct": -11.45,
+          "rsi_14": 56.5,
+          "composite_score": 4.34
+        }
+      },
+      {
+        "ticker": "PSKY",
+        "factor_summary": {
+          "momentum_5d_pct": 8.45,
+          "volume_ratio_vs_20d": 1.31,
+          "distance_from_52w_high_pct": -51.18,
+          "rsi_14": 70.6,
+          "composite_score": 3.8
+        }
+      },
+      {
+        "ticker": "TSCO",
+        "factor_summary": {
+          "momentum_5d_pct": 9.04,
+          "volume_ratio_vs_20d": 1.4,
+          "distance_from_52w_high_pct": -40.86,
+          "rsi_14": 82.9,
+          "composite_score": 3.54
+        }
+      },
+      {
+        "ticker": "ORCL",
+        "factor_summary": {
+          "momentum_5d_pct": 6.16,
+          "volume_ratio_vs_20d": 1.25,
+          "distance_from_52w_high_pct": -52.78,
+          "rsi_14": 76.2,
+          "composite_score": 3.37
+        }
+      }
+    ]
   }
 ]
