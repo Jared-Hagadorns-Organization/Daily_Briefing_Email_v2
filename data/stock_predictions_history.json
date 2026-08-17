@@ -4498,5 +4498,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-17",
+    "picks": [
+      {
+        "ticker": "SNDK",
+        "factor_summary": {
+          "momentum_5d_pct": 35.38,
+          "volume_ratio_vs_20d": 1.24,
+          "distance_from_52w_high_pct": -29.72,
+          "rsi_14": 62.5,
+          "composite_score": 7.18
+        }
+      },
+      {
+        "ticker": "SMCI",
+        "factor_summary": {
+          "momentum_5d_pct": 27.98,
+          "volume_ratio_vs_20d": 1.02,
+          "distance_from_52w_high_pct": -32.11,
+          "rsi_14": 71.9,
+          "composite_score": 5.59
+        }
+      },
+      {
+        "ticker": "WDC",
+        "factor_summary": {
+          "momentum_5d_pct": 17.15,
+          "volume_ratio_vs_20d": 1.2,
+          "distance_from_52w_high_pct": -31.82,
+          "rsi_14": 51.6,
+          "composite_score": 4.07
+        }
+      },
+      {
+        "ticker": "CPRT",
+        "factor_summary": {
+          "momentum_5d_pct": 6.57,
+          "volume_ratio_vs_20d": 1.59,
+          "distance_from_52w_high_pct": -36.74,
+          "rsi_14": 62.1,
+          "composite_score": 3.29
+        }
+      },
+      {
+        "ticker": "WDAY",
+        "factor_summary": {
+          "momentum_5d_pct": 10.6,
+          "volume_ratio_vs_20d": 1.61,
+          "distance_from_52w_high_pct": -19.79,
+          "rsi_14": 74.0,
+          "composite_score": 3.2
+        }
+      }
+    ]
   }
 ]
