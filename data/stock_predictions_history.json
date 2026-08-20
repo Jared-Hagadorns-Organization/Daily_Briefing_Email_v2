@@ -4623,5 +4623,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-20",
+    "picks": [
+      {
+        "ticker": "MRNA",
+        "factor_summary": {
+          "momentum_5d_pct": 173.88,
+          "volume_ratio_vs_20d": 36.38,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 93.9,
+          "composite_score": 22.86
+        }
+      },
+      {
+        "ticker": "TTD",
+        "factor_summary": {
+          "momentum_5d_pct": 0.37,
+          "volume_ratio_vs_20d": 0.47,
+          "distance_from_52w_high_pct": -75.54,
+          "rsi_14": 26.5,
+          "composite_score": 3.66
+        }
+      },
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 10.59,
+          "volume_ratio_vs_20d": 0.79,
+          "distance_from_52w_high_pct": -63.02,
+          "rsi_14": 66.8,
+          "composite_score": 3.18
+        }
+      },
+      {
+        "ticker": "COIN",
+        "factor_summary": {
+          "momentum_5d_pct": 7.49,
+          "volume_ratio_vs_20d": 2.26,
+          "distance_from_52w_high_pct": -58.63,
+          "rsi_14": 47.6,
+          "composite_score": 3.03
+        }
+      },
+      {
+        "ticker": "APP",
+        "factor_summary": {
+          "momentum_5d_pct": 2.31,
+          "volume_ratio_vs_20d": 0.59,
+          "distance_from_52w_high_pct": -57.63,
+          "rsi_14": 25.9,
+          "composite_score": 2.97
+        }
+      }
+    ]
   }
 ]
