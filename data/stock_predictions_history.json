@@ -4788,5 +4788,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-25",
+    "picks": [
+      {
+        "ticker": "MRNA",
+        "factor_summary": {
+          "momentum_5d_pct": 115.47,
+          "volume_ratio_vs_20d": 1.31,
+          "distance_from_52w_high_pct": -20.35,
+          "rsi_14": 72.0,
+          "composite_score": 15.83
+        }
+      },
+      {
+        "ticker": "COIN",
+        "factor_summary": {
+          "momentum_5d_pct": 19.22,
+          "volume_ratio_vs_20d": 1.4,
+          "distance_from_52w_high_pct": -53.66,
+          "rsi_14": 67.3,
+          "composite_score": 5.55
+        }
+      },
+      {
+        "ticker": "EL",
+        "factor_summary": {
+          "momentum_5d_pct": 23.46,
+          "volume_ratio_vs_20d": 1.37,
+          "distance_from_52w_high_pct": -12.33,
+          "rsi_14": 75.9,
+          "composite_score": 3.81
+        }
+      },
+      {
+        "ticker": "ARE",
+        "factor_summary": {
+          "momentum_5d_pct": 15.13,
+          "volume_ratio_vs_20d": 1.11,
+          "distance_from_52w_high_pct": -34.44,
+          "rsi_14": 65.3,
+          "composite_score": 3.44
+        }
+      },
+      {
+        "ticker": "TTD",
+        "factor_summary": {
+          "momentum_5d_pct": -0.97,
+          "volume_ratio_vs_20d": 0.47,
+          "distance_from_52w_high_pct": -76.03,
+          "rsi_14": 16.3,
+          "composite_score": 3.26
+        }
+      }
+    ]
   }
 ]
