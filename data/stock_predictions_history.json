@@ -5008,5 +5008,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-08-31",
+    "picks": [
+      {
+        "ticker": "CRM",
+        "factor_summary": {
+          "momentum_5d_pct": 24.21,
+          "volume_ratio_vs_20d": 0.27,
+          "distance_from_52w_high_pct": -1.96,
+          "rsi_14": 81.2,
+          "composite_score": 6.17
+        }
+      },
+      {
+        "ticker": "CRWD",
+        "factor_summary": {
+          "momentum_5d_pct": 19.05,
+          "volume_ratio_vs_20d": 0.51,
+          "distance_from_52w_high_pct": -0.42,
+          "rsi_14": 52.4,
+          "composite_score": 5.66
+        }
+      },
+      {
+        "ticker": "NOW",
+        "factor_summary": {
+          "momentum_5d_pct": 13.82,
+          "volume_ratio_vs_20d": 0.34,
+          "distance_from_52w_high_pct": -24.18,
+          "rsi_14": 68.1,
+          "composite_score": 5.03
+        }
+      },
+      {
+        "ticker": "TTD",
+        "factor_summary": {
+          "momentum_5d_pct": 2.96,
+          "volume_ratio_vs_20d": 0.2,
+          "distance_from_52w_high_pct": -74.78,
+          "rsi_14": 51.4,
+          "composite_score": 4.6
+        }
+      },
+      {
+        "ticker": "VEEV",
+        "factor_summary": {
+          "momentum_5d_pct": 15.09,
+          "volume_ratio_vs_20d": 0.31,
+          "distance_from_52w_high_pct": -6.62,
+          "rsi_14": 74.2,
+          "composite_score": 4.29
+        }
+      }
+    ]
   }
 ]
