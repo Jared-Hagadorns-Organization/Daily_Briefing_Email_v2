@@ -5283,5 +5283,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-09-07",
+    "picks": [
+      {
+        "ticker": "LULU",
+        "factor_summary": {
+          "momentum_5d_pct": -16.72,
+          "volume_ratio_vs_20d": 8.67,
+          "distance_from_52w_high_pct": -53.4,
+          "rsi_14": 36.5,
+          "composite_score": 6.05
+        }
+      },
+      {
+        "ticker": "SNDK",
+        "factor_summary": {
+          "momentum_5d_pct": 17.17,
+          "volume_ratio_vs_20d": 1.25,
+          "distance_from_52w_high_pct": -25.48,
+          "rsi_14": 46.7,
+          "composite_score": 5.25
+        }
+      },
+      {
+        "ticker": "TTD",
+        "factor_summary": {
+          "momentum_5d_pct": 6.34,
+          "volume_ratio_vs_20d": 0.93,
+          "distance_from_52w_high_pct": -73.34,
+          "rsi_14": 64.5,
+          "composite_score": 4.89
+        }
+      },
+      {
+        "ticker": "HOOD",
+        "factor_summary": {
+          "momentum_5d_pct": 17.12,
+          "volume_ratio_vs_20d": 1.16,
+          "distance_from_52w_high_pct": -19.91,
+          "rsi_14": 68.1,
+          "composite_score": 4.84
+        }
+      },
+      {
+        "ticker": "KLAC",
+        "factor_summary": {
+          "momentum_5d_pct": 5.73,
+          "volume_ratio_vs_20d": 1.44,
+          "distance_from_52w_high_pct": -38.41,
+          "rsi_14": 31.4,
+          "composite_score": 3.75
+        }
+      }
+    ]
   }
 ]
