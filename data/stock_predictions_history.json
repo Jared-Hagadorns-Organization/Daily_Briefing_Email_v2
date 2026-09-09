@@ -5393,5 +5393,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-09-09",
+    "picks": [
+      {
+        "ticker": "INTC",
+        "factor_summary": {
+          "momentum_5d_pct": 16.71,
+          "volume_ratio_vs_20d": 1.43,
+          "distance_from_52w_high_pct": -25.88,
+          "rsi_14": 61.8,
+          "composite_score": 4.79
+        }
+      },
+      {
+        "ticker": "ORCL",
+        "factor_summary": {
+          "momentum_5d_pct": 8.99,
+          "volume_ratio_vs_20d": 1.65,
+          "distance_from_52w_high_pct": -49.94,
+          "rsi_14": 68.8,
+          "composite_score": 4.69
+        }
+      },
+      {
+        "ticker": "GLW",
+        "factor_summary": {
+          "momentum_5d_pct": 11.58,
+          "volume_ratio_vs_20d": 1.59,
+          "distance_from_52w_high_pct": -34.97,
+          "rsi_14": 56.1,
+          "composite_score": 4.36
+        }
+      },
+      {
+        "ticker": "VST",
+        "factor_summary": {
+          "momentum_5d_pct": 10.45,
+          "volume_ratio_vs_20d": 1.77,
+          "distance_from_52w_high_pct": -30.09,
+          "rsi_14": 68.0,
+          "composite_score": 4.05
+        }
+      },
+      {
+        "ticker": "PCG",
+        "factor_summary": {
+          "momentum_5d_pct": 11.68,
+          "volume_ratio_vs_20d": 1.37,
+          "distance_from_52w_high_pct": -22.0,
+          "rsi_14": 34.5,
+          "composite_score": 3.7
+        }
+      }
+    ]
   }
 ]
