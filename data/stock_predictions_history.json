@@ -5503,5 +5503,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-09-11",
+    "picks": [
+      {
+        "ticker": "ORCL",
+        "factor_summary": {
+          "momentum_5d_pct": 4.93,
+          "volume_ratio_vs_20d": 2.38,
+          "distance_from_52w_high_pct": -52.86,
+          "rsi_14": 59.2,
+          "composite_score": 4.93
+        }
+      },
+      {
+        "ticker": "COO",
+        "factor_summary": {
+          "momentum_5d_pct": -22.31,
+          "volume_ratio_vs_20d": 9.02,
+          "distance_from_52w_high_pct": -35.76,
+          "rsi_14": 6.5,
+          "composite_score": 4.93
+        }
+      },
+      {
+        "ticker": "SWKS",
+        "factor_summary": {
+          "momentum_5d_pct": 17.25,
+          "volume_ratio_vs_20d": 2.02,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 83.5,
+          "composite_score": 4.68
+        }
+      },
+      {
+        "ticker": "GLW",
+        "factor_summary": {
+          "momentum_5d_pct": 13.18,
+          "volume_ratio_vs_20d": 0.6,
+          "distance_from_52w_high_pct": -36.08,
+          "rsi_14": 61.7,
+          "composite_score": 4.26
+        }
+      },
+      {
+        "ticker": "INTC",
+        "factor_summary": {
+          "momentum_5d_pct": 11.4,
+          "volume_ratio_vs_20d": 1.0,
+          "distance_from_52w_high_pct": -28.82,
+          "rsi_14": 61.3,
+          "composite_score": 3.83
+        }
+      }
+    ]
   }
 ]
