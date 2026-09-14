@@ -5558,5 +5558,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-09-14",
+    "picks": [
+      {
+        "ticker": "KHC",
+        "factor_summary": {
+          "momentum_5d_pct": -1.68,
+          "volume_ratio_vs_20d": 7.68,
+          "distance_from_52w_high_pct": -9.51,
+          "rsi_14": 43.2,
+          "composite_score": 7.1
+        }
+      },
+      {
+        "ticker": "SWKS",
+        "factor_summary": {
+          "momentum_5d_pct": 23.57,
+          "volume_ratio_vs_20d": 1.87,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 88.5,
+          "composite_score": 5.63
+        }
+      },
+      {
+        "ticker": "COHR",
+        "factor_summary": {
+          "momentum_5d_pct": 15.49,
+          "volume_ratio_vs_20d": 1.13,
+          "distance_from_52w_high_pct": -28.47,
+          "rsi_14": 56.3,
+          "composite_score": 4.61
+        }
+      },
+      {
+        "ticker": "ORCL",
+        "factor_summary": {
+          "momentum_5d_pct": -2.44,
+          "volume_ratio_vs_20d": 3.31,
+          "distance_from_52w_high_pct": -53.68,
+          "rsi_14": 53.3,
+          "composite_score": 4.52
+        }
+      },
+      {
+        "ticker": "GLW",
+        "factor_summary": {
+          "momentum_5d_pct": 13.97,
+          "volume_ratio_vs_20d": 0.54,
+          "distance_from_52w_high_pct": -34.8,
+          "rsi_14": 65.9,
+          "composite_score": 3.98
+        }
+      }
+    ]
   }
 ]
