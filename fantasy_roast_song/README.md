@@ -164,13 +164,12 @@ Four rings. Tepper-Nom-Ass. Out.
 ## Production notes
 
 ### Beat
-- The instrumental belongs to Carolina MiC. In the league group chat, playing the original track behind your vocals is a common parody move. If you post to TikTok, Instagram, or YouTube, expect the audio to get flagged or muted.
-- To do it properly, reach out to him. His music is on [Bandcamp](https://carolinamic.bandcamp.com/) and [YouTube](https://www.youtube.com/carolinamic). He's a local Panthers-fan artist, and a league shout-out could land well.
-- For a public post, use an original beat with the same feel. Here's a Suno/Udio-style prompt that doesn't name him: *"upbeat retro funk, bouncy slap bass, bright synth stabs, handclaps, cheerful and corny, feel-good party groove, male vocal, playful half-sung half-rapped delivery."*
+- **`beat.wav` / `beat.mid`:** an original retro-funk instrumental built by `make_beat.py`. It runs 104 BPM in F major: slap bass, e-piano stabs, synth brass, handclaps. The feel is in the same lane as the original, but the groove is written from scratch. It's 132 bars (~5:05), laid out one lyric line per bar, with a brass hit on the first bar of each verse for the rank reveal. The WAV is a rough synth preview. For a fuller sound, open `beat.mid` in GarageBand and swap in real instruments. `beat_preview.wav` is the first 74 seconds.
+- The original instrumental belongs to Carolina MiC. If you want his actual beat, reach out through [Bandcamp](https://carolinamic.bandcamp.com/) or [YouTube](https://www.youtube.com/carolinamic).
 
 ### Vocals
-- Perform it yourself. You're already dancing in the video, and hearing your own voice roast them is funnier to the league than any AI voice.
-- For an AI vocal, pick a generic voice with the vibe described above. Voice-cloning tools that copy a specific real artist are off the table (consent and platform rules).
+- **AI vocal:** see `SUNO.md` for a paste-ready style box, exclude list, and lyrics split into two parts. It describes a generic smooth, playful funk-crooner style rather than cloning his voice.
+- **Your own vocal:** record over `beat.wav`. It's still the funniest option for the league.
 
 ### Video: living-room shoot (one afternoon, one phone)
 1. **Setup:** Phone on a tripod, landscape, wide shot of the couch and TV. Leave the Sleeper standings or the NFL RedZone on the TV behind you.
