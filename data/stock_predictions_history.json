@@ -6123,5 +6123,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-09-29",
+    "picks": [
+      {
+        "ticker": "CCL",
+        "factor_summary": {
+          "momentum_5d_pct": 8.39,
+          "volume_ratio_vs_20d": 0.36,
+          "distance_from_52w_high_pct": -27.81,
+          "rsi_14": 63.3,
+          "composite_score": 7.19
+        }
+      },
+      {
+        "ticker": "SPGI",
+        "factor_summary": {
+          "momentum_5d_pct": -2.04,
+          "volume_ratio_vs_20d": 0.32,
+          "distance_from_52w_high_pct": -23.2,
+          "rsi_14": 26.3,
+          "composite_score": 4.15
+        }
+      },
+      {
+        "ticker": "P",
+        "factor_summary": {
+          "momentum_5d_pct": 18.17,
+          "volume_ratio_vs_20d": 0.01,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 80.0,
+          "composite_score": 4.01
+        }
+      },
+      {
+        "ticker": "RCL",
+        "factor_summary": {
+          "momentum_5d_pct": 9.78,
+          "volume_ratio_vs_20d": 0.06,
+          "distance_from_52w_high_pct": -24.68,
+          "rsi_14": 49.8,
+          "composite_score": 3.78
+        }
+      },
+      {
+        "ticker": "NCLH",
+        "factor_summary": {
+          "momentum_5d_pct": 6.93,
+          "volume_ratio_vs_20d": 0.05,
+          "distance_from_52w_high_pct": -39.23,
+          "rsi_14": 55.0,
+          "composite_score": 3.62
+        }
+      }
+    ]
   }
 ]
