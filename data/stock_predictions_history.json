@@ -6288,5 +6288,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-02",
+    "picks": [
+      {
+        "ticker": "ACN",
+        "factor_summary": {
+          "momentum_5d_pct": 19.67,
+          "volume_ratio_vs_20d": 5.44,
+          "distance_from_52w_high_pct": -24.91,
+          "rsi_14": 67.7,
+          "composite_score": 6.71
+        }
+      },
+      {
+        "ticker": "SNPS",
+        "factor_summary": {
+          "momentum_5d_pct": 15.45,
+          "volume_ratio_vs_20d": 3.32,
+          "distance_from_52w_high_pct": -8.23,
+          "rsi_14": 76.8,
+          "composite_score": 3.79
+        }
+      },
+      {
+        "ticker": "CCL",
+        "factor_summary": {
+          "momentum_5d_pct": 15.05,
+          "volume_ratio_vs_20d": 1.01,
+          "distance_from_52w_high_pct": -25.06,
+          "rsi_14": 66.5,
+          "composite_score": 3.31
+        }
+      },
+      {
+        "ticker": "ON",
+        "factor_summary": {
+          "momentum_5d_pct": 9.47,
+          "volume_ratio_vs_20d": 0.95,
+          "distance_from_52w_high_pct": -40.21,
+          "rsi_14": 56.3,
+          "composite_score": 3.02
+        }
+      },
+      {
+        "ticker": "INTU",
+        "factor_summary": {
+          "momentum_5d_pct": 2.04,
+          "volume_ratio_vs_20d": 1.27,
+          "distance_from_52w_high_pct": -58.23,
+          "rsi_14": 31.6,
+          "composite_score": 2.96
+        }
+      }
+    ]
   }
 ]
