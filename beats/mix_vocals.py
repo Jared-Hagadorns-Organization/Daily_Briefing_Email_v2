@@ -15,6 +15,10 @@ Options worth knowing:
     --vocal-db D   make the vocal louder (+) or quieter (-) relative to the beat
     --reverb R     0 = dry, 0.25 = default room, 0.5 = big arena
     --no-duck      don't dip the beat slightly while the vocal is singing
+    --autotune     snap the vocal to the song's key (classic auto-tuned pop sound)
+    --key K        key to tune to, e.g. D, F#, Bb (default D, matching the beat)
+    --scale S      major (default), minor, or chromatic
+    --retune MS    0 = hard robotic snap (default), 40-80 = more natural
 """
 import argparse
 import shutil
@@ -28,6 +32,123 @@ import soundfile as sf
 from scipy.signal import butter, fftconvolve, sosfilt
 
 SR = 44100
+
+NOTE_NAMES = {"C": 0, "C#": 1, "DB": 1, "D": 2, "D#": 3, "EB": 3, "E": 4, "F": 5, "F#": 6,
+              "GB": 6, "G": 7, "G#": 8, "AB": 8, "A": 9, "A#": 10, "BB": 10, "B": 11}
+SCALES = {"major": [0, 2, 4, 5, 7, 9, 11], "minor": [0, 2, 3, 5, 7, 8, 10],
+          "chromatic": list(range(12))}
+
+
+def detect_pitch(x: np.ndarray, hop: int = 256, fmin: float = 70, fmax: float = 700) -> np.ndarray:
+    """YIN pitch tracker. Returns f0 in Hz per hop (0 = unvoiced)."""
+    win, maxlag, minlag = 1024, int(SR / fmin), int(SR / fmax)
+    n_frames = max(0, (len(x) - win - maxlag) // hop)
+    f0 = np.zeros(n_frames + 1)
+    nfft = 1 << int(np.ceil(np.log2(win + maxlag + win)))
+    gate = 10 ** (-45 / 20) * (np.abs(x).max() + 1e-9)
+    taus = np.arange(maxlag + 1)
+    for i in range(n_frames):
+        frame = x[i * hop: i * hop + win + maxlag]
+        if np.sqrt(np.mean(frame[:win] ** 2)) < gate:
+            continue
+        r = np.fft.irfft(np.conj(np.fft.rfft(frame[:win], nfft)) * np.fft.rfft(frame, nfft), nfft)[: maxlag + 1]
+        csum = np.concatenate([[0.0], np.cumsum(frame ** 2)])
+        e = csum[taus + win] - csum[taus]
+        d = e[0] + e - 2 * r
+        d[0] = 0
+        cmnd = d * np.arange(len(d)) / np.maximum(np.cumsum(d), 1e-12)
+        cmnd[0] = 1
+        below = np.nonzero(cmnd[minlag:] < 0.15)[0]
+        if len(below) == 0:
+            continue
+        tau = minlag + below[0]
+        while tau + 1 <= maxlag and cmnd[tau + 1] < cmnd[tau]:
+            tau += 1
+        if 1 <= tau < maxlag:  # parabolic interpolation for sub-sample accuracy
+            a, b, c = cmnd[tau - 1], cmnd[tau], cmnd[tau + 1]
+            denom = a - 2 * b + c
+            tau = tau + (0.5 * (a - c) / denom if denom else 0)
+        f0[i] = SR / tau
+    # Median filter knocks out stray octave jumps.
+    pad = np.pad(f0, 2, mode="edge")
+    med = np.median(np.lib.stride_tricks.sliding_window_view(pad, 5), axis=1)
+    return np.where((f0 > 0) & (med > 0), med, 0.0)
+
+
+def target_pitch(f0: np.ndarray, key: str, scale: str, retune_ms: float, hop: int) -> np.ndarray:
+    """Snap each detected pitch to the nearest note in the key."""
+    root = NOTE_NAMES[key.upper()]
+    allowed = np.array([(root + s) % 12 for s in SCALES[scale]])
+    out = np.zeros_like(f0)
+    voiced = f0 > 0
+    midi = 69 + 12 * np.log2(f0[voiced] / 440)
+    base = np.floor(midi)
+    cands = base[:, None] + np.arange(-2, 3)[None, :]  # nearby semitones
+    ok = np.isin(np.mod(cands, 12), allowed)
+    dist = np.where(ok, np.abs(cands - midi[:, None]), np.inf)
+    snapped = cands[np.arange(len(cands)), np.argmin(dist, axis=1)]
+    if retune_ms > 0:  # glide toward the target note instead of jumping
+        alpha = 1 - np.exp(-hop / (SR * retune_ms / 1000))
+        smooth, prev = np.empty_like(snapped), None
+        for i, (s, m) in enumerate(zip(snapped, midi)):
+            prev = m if prev is None else prev + alpha * (s - prev)
+            smooth[i] = prev
+        snapped = smooth
+    out[voiced] = 440 * 2 ** ((snapped - 69) / 12)
+    return out
+
+
+def autotune(vox: np.ndarray, key: str, scale: str, retune_ms: float) -> np.ndarray:
+    """Pitch-correct a vocal with TD-PSOLA (keeps the voice's tone, moves the notes)."""
+    hop = 256
+    x = vox.mean(axis=1).astype(np.float64)
+    f0 = detect_pitch(x, hop)
+    tgt = target_pitch(f0, key, scale, retune_ms, hop)
+    t_frames = np.arange(len(f0)) * hop + 512  # frame centres
+    idx = np.arange(len(x))
+    f_src = np.interp(idx, t_frames, f0)
+    f_tgt = np.interp(idx, t_frames, tgt)
+    voiced = np.interp(idx, t_frames, (f0 > 0).astype(float)) > 0.5
+
+    out = np.zeros_like(x)
+    wsum = np.zeros_like(x)
+    # Unvoiced parts (breaths, "s", "t") pass through untouched.
+    out[~voiced] = x[~voiced]
+    wsum[~voiced] = 1.0
+
+    edges = np.diff(np.concatenate([[0], voiced.astype(int), [0]]))
+    for start, end in zip(np.nonzero(edges == 1)[0], np.nonzero(edges == -1)[0]):
+        # Analysis pitch marks: one per period, locked to waveform peaks.
+        period = SR / max(f_src[start], 60)
+        lo, hi = start, int(min(end, start + period))
+        marks = [lo + int(np.argmax(x[lo:hi]))] if hi > lo else []
+        while marks:
+            period = SR / max(f_src[marks[-1]], 60)
+            lo, hi = int(marks[-1] + 0.75 * period), int(min(end, marks[-1] + 1.25 * period))
+            if hi <= lo:
+                break
+            marks.append(lo + int(np.argmax(x[lo:hi])))
+        if len(marks) < 2:
+            out[start:end] = x[start:end]
+            wsum[start:end] = 1.0
+            continue
+        marks = np.array(marks)
+        # Synthesis marks spaced at the corrected period; reuse the nearest grain.
+        t = float(marks[0])
+        while t < end:
+            k = int(np.argmin(np.abs(marks - t)))
+            a = marks[k]
+            half = int(SR / max(f_src[a], 60))
+            g0, g1 = max(0, a - half), min(len(x), a + half)
+            grain = x[g0:g1] * np.hanning(g1 - g0)
+            s0 = int(t) - (a - g0)
+            o0, o1 = max(0, s0), min(len(x), s0 + len(grain))
+            if o1 > o0:
+                out[o0:o1] += grain[o0 - s0: o1 - s0]
+                wsum[o0:o1] += np.hanning(g1 - g0)[o0 - s0: o1 - s0]
+            t += SR / max(f_tgt[int(min(t, len(x) - 1))] or f_src[a], 60)
+    tuned = out / np.maximum(wsum, 0.5)
+    return np.repeat(tuned[:, None], 2, axis=1).astype(np.float32)
 
 
 def load(path: Path, tmp: Path) -> np.ndarray:
@@ -106,7 +227,14 @@ def main() -> None:
     ap.add_argument("--reverb", type=float, default=0.25, help="reverb amount (0 = dry)")
     ap.add_argument("--isolate", action="store_true", help="strip music from the vocal file with Demucs first")
     ap.add_argument("--no-duck", action="store_true", help="don't dip the beat under the vocal")
+    ap.add_argument("--autotune", action="store_true", help="pitch-correct the vocal to the key")
+    ap.add_argument("--key", default="D", help="key for --autotune, e.g. D, F#, Bb (default D)")
+    ap.add_argument("--scale", choices=SCALES, default="major", help="scale for --autotune")
+    ap.add_argument("--retune", type=float, default=0.0,
+                    help="retune speed in ms: 0 = hard robotic snap, 40-80 = natural")
     args = ap.parse_args()
+    if args.key.upper() not in NOTE_NAMES:
+        sys.exit(f"Unknown key '{args.key}'. Use e.g. C, D, F#, Bb.")
 
     for p in (args.vocals, args.beat):
         if not p.is_file():
@@ -126,6 +254,9 @@ def main() -> None:
         vox = load(vocal_src, tmp)
         beat = load(args.beat, tmp)
 
+    if args.autotune:
+        print(f"[3/4] Auto-tuning to {args.key} {args.scale} (retune {args.retune:g} ms) ...")
+        vox = autotune(vox, args.key, args.scale, args.retune)
     print("[3/4] Processing vocal (clean-up, compression, reverb) ...")
     vox = sosfilt(butter(2, 90, "high", fs=SR, output="sos"), vox, axis=0).astype(np.float32)
     vox = compress(vox)
