@@ -6343,5 +6343,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-05",
+    "picks": [
+      {
+        "ticker": "PTC",
+        "factor_summary": {
+          "momentum_5d_pct": 38.44,
+          "volume_ratio_vs_20d": 8.34,
+          "distance_from_52w_high_pct": -6.06,
+          "rsi_14": 87.8,
+          "composite_score": 16.26
+        }
+      },
+      {
+        "ticker": "INTU",
+        "factor_summary": {
+          "momentum_5d_pct": 5.53,
+          "volume_ratio_vs_20d": 0.29,
+          "distance_from_52w_high_pct": -58.01,
+          "rsi_14": 22.8,
+          "composite_score": 3.53
+        }
+      },
+      {
+        "ticker": "CIEN",
+        "factor_summary": {
+          "momentum_5d_pct": 13.41,
+          "volume_ratio_vs_20d": 0.21,
+          "distance_from_52w_high_pct": -37.74,
+          "rsi_14": 73.7,
+          "composite_score": 3.33
+        }
+      },
+      {
+        "ticker": "ORCL",
+        "factor_summary": {
+          "momentum_5d_pct": 8.19,
+          "volume_ratio_vs_20d": 0.21,
+          "distance_from_52w_high_pct": -53.73,
+          "rsi_14": 53.6,
+          "composite_score": 3.26
+        }
+      },
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 1.89,
+          "volume_ratio_vs_20d": 0.15,
+          "distance_from_52w_high_pct": -66.08,
+          "rsi_14": 18.2,
+          "composite_score": 3.23
+        }
+      }
+    ]
   }
 ]
