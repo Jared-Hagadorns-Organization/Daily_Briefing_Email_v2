@@ -61,6 +61,12 @@ Nine is Jarrod, cold beer on the back nine while he's still on the clock all day
 Chicken Little Bro, but Bryce leads the league in passing yards, so Jarrod was "Early," and he gets his say.
 
 **[Hook]**
+If I had a hundred-fifty points *(a hundred-fifty!)*
+I'd set my lineup and I'd check the injury report
+If I had a hundred-fifty points *(a hundred-fifty!)*
+I wouldn't be the punchline of the Wizards sport
+But you don't — so let me break it down
+From the basement to the crown, c'mon!
 
 **[#8 — Kyle, SheriffKyle]**
 Eight is Sheriff Kyle, who hyped that four-twenty-five Commanders-Cowboys game like the Super Bowl came to town.
@@ -79,6 +85,12 @@ Five is Pollitto, screaming "AMC to the moon" like it's still twenty-twenty-one.
 He beat me while I put up one-oh-three, so his team's like his portfolio: dumb luck, but it won.
 
 **[Hook]**
+If I had a hundred-fifty points *(a hundred-fifty!)*
+I'd set my lineup and I'd check the injury report
+If I had a hundred-fifty points *(a hundred-fifty!)*
+I wouldn't be the punchline of the Wizards sport
+But you don't — so let me break it down
+From the basement to the crown, c'mon!
 
 **[#4 — Matt, Bo Knows]**
 Four is Matt, dressed like a Daytona float with rhinestones on his fire-suit coat.
