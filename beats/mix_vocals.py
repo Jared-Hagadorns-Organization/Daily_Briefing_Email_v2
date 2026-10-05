@@ -218,6 +218,84 @@ def find_offset(music: np.ndarray, beat: np.ndarray) -> tuple[float, float]:
     return -lags[peak] / rate, confidence
 
 
+def find_repeat(music: np.ndarray, beat: np.ndarray, expected: int) -> int | None:
+    """Look for the beat being restarted near sample `expected` of the recording.
+
+    Matches the first 20 s of the beat against the recording from just before
+    the previous copy ends to 30 s after. Returns the start sample, or None if
+    the beat can't be heard there.
+    """
+    sos = butter(4, [150, 1800], "band", fs=SR, output="sos")
+    dec, head, min_overlap = 10, 20 * SR, 8 * SR
+    lo = max(0, expected - SR // 2)
+    hi = min(len(music), expected + 30 * SR + head)
+    if hi - lo < min_overlap:
+        return None
+    a = sosfilt(sos, music[lo:hi].mean(axis=1))[::dec]
+    b = sosfilt(sos, beat[:head].mean(axis=1))[::dec]
+    n = 1 << int(np.ceil(np.log2(len(a) + len(b))))
+    corr = np.abs(np.fft.irfft(np.fft.rfft(a, n) * np.conj(np.fft.rfft(b, n)), n)[: len(a)])
+    corr[max(1, len(a) - min_overlap // dec):] = 0  # need 8 s of overlap to trust a match
+    peak = int(np.argmax(corr))
+    if corr[peak] / (np.median(corr) + 1e-12) < 20:
+        return None
+    return lo + peak * dec
+
+
+def singing_end(vox: np.ndarray) -> int:
+    """Sample where the last sung phrase ends (ignores trailing room noise)."""
+    hop, win = SR // 100, SR // 33
+    power = np.convolve(vox.mean(axis=1) ** 2, np.ones(win) / win, mode="same")[::hop]
+    level = 10 * np.log10(power + 1e-12)
+    noise, voice = np.percentile(level, 10), np.percentile(level, 95)
+    active = np.nonzero(level > noise + 0.4 * (voice - noise))[0]
+    return int((active[-1] + 1) * hop) if len(active) else len(vox)
+
+
+def plan_beat(first_start: int, beat_len: int, vocal_len: int,
+              music: np.ndarray | None, beat: np.ndarray) -> list[int]:
+    """Where each copy of the beat starts (recording samples), repeating it
+    until the singing is covered."""
+    starts = [first_start]
+    while starts[-1] + beat_len < vocal_len - SR:  # singing runs on past this copy
+        expected = starts[-1] + beat_len
+        found = find_repeat(music, beat, expected) if music is not None else None
+        if found is not None and found > starts[-1] + SR:
+            print(f"  Beat restarts at {found / SR:.2f}s in your recording; repeating it there")
+            starts.append(found)
+        else:
+            print(f"  Recording is longer than the beat; repeating it back-to-back at {expected / SR:.2f}s")
+            starts.append(expected)
+    return starts
+
+
+# Krumhansl-Schmuckler key profiles (relative weight of each scale degree).
+_MAJOR_PROFILE = np.array([6.35, 2.23, 3.48, 2.33, 4.38, 4.09, 2.52, 5.19, 2.39, 3.66, 2.29, 2.88])
+_MINOR_PROFILE = np.array([6.33, 2.68, 3.52, 5.38, 2.60, 3.53, 2.54, 4.75, 3.98, 2.69, 3.34, 3.17])
+_KEY_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+
+
+def detect_key(beat: np.ndarray) -> tuple[str, str]:
+    """Estimate the beat's key from which pitch classes it uses most."""
+    x = beat.mean(axis=1)[: 120 * SR]
+    win, hop = 16384, 8192  # long window: enough resolution to tell bass notes apart
+    frames = np.lib.stride_tricks.sliding_window_view(x, win)[::hop] * np.hanning(win)
+    mag = np.abs(np.fft.rfft(frames, axis=1))
+    mag = (mag / (mag.max(axis=1, keepdims=True) + 1e-12)).mean(axis=0)  # loud bars don't dominate
+    freqs = np.fft.rfftfreq(win, 1 / SR)
+    keep = (freqs > 80) & (freqs < 2500)
+    midi = 12 * np.log2(freqs[keep] / 440) + 69
+    near = np.abs(midi - np.round(midi)) < 0.3  # ignore bins between semitones
+    weight = mag[keep] * near * np.where(freqs[keep] < 250, 2.0, 1.0)  # bass outlines the key
+    chroma = np.bincount(np.round(midi).astype(int) % 12, weights=weight, minlength=12)
+    best = max(
+        (np.corrcoef(chroma, np.roll(profile, root))[0, 1], _KEY_NAMES[root], scale)
+        for root in range(12)
+        for profile, scale in ((_MAJOR_PROFILE, "major"), (_MINOR_PROFILE, "minor"))
+    )
+    return best[1], best[2]
+
+
 def rms_db(x: np.ndarray) -> float:
     active = x[np.abs(x).max(axis=1) > 1e-3]  # ignore silence when measuring level
     if len(active) == 0:
@@ -340,8 +418,10 @@ def main() -> None:
     ap.add_argument("--align", action="store_true",
                     help="auto-detect --offset from beat audible in the recording (implies --isolate)")
     ap.add_argument("--autotune", action="store_true", help="pitch-correct the vocal to the key")
-    ap.add_argument("--key", default="D", help="key for --autotune, e.g. D, F#, Bb (default D)")
-    ap.add_argument("--scale", choices=SCALES, default="major", help="scale for --autotune")
+    ap.add_argument("--key", default="auto",
+                    help="key for --autotune, e.g. D, F#, Bb (default: detect from the beat)")
+    ap.add_argument("--scale", choices=SCALES, default=None,
+                    help="scale for --autotune (default: detected with the key, else major)")
     ap.add_argument("--retune", type=float, default=0.0,
                     help="retune speed in ms: 0 = hard robotic snap, 40-80 = natural")
     ap.add_argument("--polish", action="store_true",
@@ -350,8 +430,8 @@ def main() -> None:
     args = ap.parse_args()
     if args.polish or args.harmony:
         args.autotune = True
-    if args.key.upper() not in NOTE_NAMES:
-        sys.exit(f"Unknown key '{args.key}'. Use e.g. C, D, F#, Bb.")
+    if args.key != "auto" and args.key.upper() not in NOTE_NAMES:
+        sys.exit(f"Unknown key '{args.key}'. Use auto, or e.g. C, D, F#, Bb.")
 
     for p in (args.vocals, args.beat):
         if not p.is_file():
@@ -359,7 +439,10 @@ def main() -> None:
     if not shutil.which("ffmpeg"):
         sys.exit("ffmpeg not found on PATH; install it first.")
 
-    out = args.output or args.vocals.with_name(f"{args.vocals.stem}_on_{args.beat.stem}.wav")
+    # Name the output after the options used, so different versions don't overwrite each other.
+    style = "polish" if args.polish else "autotune" if args.autotune else ""
+    tags = "".join(f"_{t}" for t in (style, "harmony" if args.harmony else "") if t)
+    out = args.output or args.vocals.with_name(f"{args.vocals.stem}_on_{args.beat.stem}{tags}.wav")
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
@@ -370,8 +453,9 @@ def main() -> None:
         print("[2/4] Loading audio ...")
         vox = load(vocal_src, tmp)
         beat = load(args.beat, tmp)
+        music = load(music_src, tmp) if args.align else None
         if args.align:
-            offset, confidence = find_offset(load(music_src, tmp), beat)
+            offset, confidence = find_offset(music, beat)
             if confidence < 20:
                 print(f"  Couldn't hear the beat in the recording (confidence {confidence:.1f}); "
                       f"keeping --offset {args.offset:g}. Set it by hand if the timing is off.")
@@ -379,7 +463,16 @@ def main() -> None:
                 print(f"  Beat found in the recording; using --offset {offset:.2f} "
                       f"(confidence {confidence:.0f})")
                 args.offset = offset
+            if confidence < 20:
+                music = None  # can't hear the beat, so don't try to find repeats either
 
+    if args.autotune and args.key == "auto":
+        args.key, detected_scale = detect_key(beat)
+        args.scale = args.scale or detected_scale
+        print(f"  Detected key: {args.key} {args.scale} (override with --key / --scale)")
+    args.scale = args.scale or "major"
+
+    sung_until = singing_end(vox)  # measured on the raw vocal, before any effects
     if args.polish:
         vox = gate(vox)
     if args.autotune:
@@ -395,16 +488,28 @@ def main() -> None:
         vox = vox + 0.22 * np.stack([delayed(slap[:, 0], 0.105), delayed(slap[:, 1], 0.115)], axis=1)
     vox = reverb(vox, args.reverb)
 
-    # Place the vocal on the timeline.
-    shift = int(round(args.offset * SR))
-    if shift < 0:
-        vox = vox[-shift:]
-        shift = 0
-    length = max(len(beat), shift + len(vox))
+    # Lay out the timeline in recording time: the vocal runs 0..len(vox), and
+    # each copy of the beat starts at starts[k] (repeated if the vocal outlasts it).
+    starts = plan_beat(-int(round(args.offset * SR)), len(beat), sung_until, music, beat)
+    t0 = starts[0]  # the mix begins where the first beat begins
+    if len(starts) == 1:
+        end = max(starts[0] + len(beat), len(vox))
+    else:  # don't play a whole extra copy after the singing stops
+        end = max(sung_until + 2 * SR, min(starts[-1] + len(beat), sung_until + 6 * SR))
+    length = end - t0
     vox_line = np.zeros((length, 2), np.float32)
-    vox_line[shift:shift + len(vox)] = vox
+    v0, v1 = max(0, t0), min(len(vox), end)
+    vox_line[v0 - t0: v1 - t0] = vox[v0:v1]
     beat_line = np.zeros((length, 2), np.float32)
-    beat_line[: len(beat)] = beat
+    xfade = int(0.02 * SR)
+    for k, s in enumerate(starts):
+        stop = min(starts[k + 1] if k + 1 < len(starts) else s + len(beat), s + len(beat), end)
+        piece = beat[: stop - s].copy()
+        if k > 0:  # short crossfades so the restart doesn't click
+            piece[:xfade] *= np.linspace(0, 1, min(xfade, len(piece)), dtype=np.float32)[:, None]
+        if k + 1 < len(starts) and len(piece) > xfade:
+            piece[-xfade:] *= np.linspace(1, 0, xfade, dtype=np.float32)[:, None]
+        beat_line[s - t0: s - t0 + len(piece)] += piece
 
     # Level-match: vocal sits ~1 dB above the beat by default, then user offset.
     gain_db = rms_db(beat_line) - rms_db(vox_line) + 1.0 + args.vocal_db
