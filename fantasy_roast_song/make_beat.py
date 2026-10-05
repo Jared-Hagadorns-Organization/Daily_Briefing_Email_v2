@@ -30,20 +30,20 @@ OUT = Path(__file__).parent
 ARRANGEMENT = [
     ("intro", 4), ("hook", 8),
     ("verse", 6),  # 12 Jon
-    ("verse", 8),  # 11 Jarrod
-    ("verse", 6),  # 10 Leeroy
+    ("verse", 6),  # 11 Leeroy
     ("hook", 8),
-    ("verse", 8),  # 9 Luke
-    ("verse", 8),  # 8 Ben
-    ("verse", 10),  # 7 Brandon
+    ("verse", 8),  # 10 Luke
+    ("verse", 8),  # 9 Jarrod
+    ("verse", 6),  # 8 Kyle
     ("hook", 8),
-    ("verse", 6),  # 6 Kyle
+    ("verse", 8),  # 7 Ben
+    ("verse", 8),  # 6 Andy
     ("verse", 6),  # 5 Pollitto
-    ("verse", 6),  # 4 Craig
+    ("verse", 6),  # 4 Matt
+    ("verse", 12),  # 3 Brandon
     ("hook", 8),
-    ("verse", 6),  # 3 Matt
-    ("verse", 6),  # 2 Jared
-    ("verse", 8),  # 1 Andy
+    ("verse", 6),  # 2 Craig
+    ("verse", 8),  # 1 Jared
     ("hook", 8), ("outro", 4),
 ]
 

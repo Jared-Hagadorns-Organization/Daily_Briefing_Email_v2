@@ -1,23 +1,27 @@
-# "If I Had a Hundred-Fifty Points" — Wizards League Roast (Week 2)
+# "If I Had a Hundred-Fifty Points" — Wizards League Roast (Week 4 update)
 
 A parody of Carolina MiC's *If I Had $150,000*, ranking the league worst to best.
 
-**Data:** Sleeper league `1312062559569862656`, official standings through **Week 2**. These records include the league-median game, so each week counts as two games. "Last week" means Week 2, the most recent week Sleeper has finalized. Week 3 is still live. To refresh the numbers, run `python fantasy_roast_song/standings.py`.
+**Data:** Sleeper league `1312062559569862656`, pulled Monday, Oct 5, before *Monday Night Football*. Rankings use Sleeper's official standings through **Week 3**, which include the league-median game, so each week counts as two games. Ties are broken by points for.
 
-| Rank | Manager | Team | Record | PF | Week 2 |
-|---:|---|---|:-:|--:|---|
-| 12 | Jon | Blue Tent FC | 0-4 | 227.78 | L 100.78–123.72 vs Craig (Jaxson Dart 0.8) |
-| 11 | Jarrod | MAGAritaville | 0-4 | 250.04 | L 103.52–174.76 vs Andy (Puka 0.0) |
-| 10 | Leeroy | Big Toe Suckers | 0-4 | 270.56 | L 125.48–143.34 vs Matt (Jayden Reed 1.4) |
-| 9 | Luke | Rico's Roughnecks | 2-2 | 282.46 | W 165.86–133.14 vs Ben (JSN 42.5, RJ Harvey 0.0) |
-| 8 | Ben | Fragile Scammers | 2-2 | 287.88 | L 133.14–165.86 vs Luke (DJ Moore −0.1) |
-| 7 | Brandon | Coach Cornstarch | 2-2 | 295.42 | W 175.26–160.10 vs Jared |
-| 6 | Kyle | SheriffKyle | 2-2 | 314.72 | L 122.64–142.84 vs Pollitto |
-| 5 | Pollitto | Fortnite | 3-1 | 282.94 | W 142.84–122.64 vs Kyle (Saquon 3.0) |
-| 4 | Craig | The Money Team | 3-1 | 286.14 | W 123.72–100.78 vs Jon (Josh Allen 39.8) |
-| 3 | Matt | Bo Knows | 3-1 | 290.04 | W 143.34–125.48 vs Leeroy (Loveland 1.3) |
-| 2 | Jared | Tepper-Nom-Ass | 3-1 | **354.38** (league high) | L 160.10–175.26 vs Brandon |
-| 1 | Andy | Blousesss | **4-0** | 324.98 | W 174.76–103.52 vs Jarrod |
+**Week 4:** every NFL game is final except **ATL @ NO** tonight. The lyrics only call a Week 4 result when that matchup can't change. The three matchups that depend on tonight's game are written as suspense, with no winner called. Run `python fantasy_roast_song/standings.py --week 4` for fresh numbers.
+
+| Rank | Manager | Team | Record (thru Wk 3) | PF | Week 3 (final) | Week 4 |
+|---:|---|---|:-:|--:|---|---|
+| 12 | Jon | Blue Tent FC | 0-6 | 323.52 | L 95.74–105.48 vs Ben | **L** 155.26–169.22 vs Matt (T-Mac 44.2) |
+| 11 | Leeroy | Big Toe Suckers | 1-5 | 443.04 | L 172.48–178.18 vs Brandon | Trails Kyle 95.58–162.66; Bijan, London, Shough play MNF |
+| 10 | Luke | Rico's Roughnecks | 2-4 | 417.24 | L 134.78–147.92 vs Matt | Leads Brandon 136.14–136.06; Juwan Johnson vs. Olave on MNF |
+| 9 | Jarrod | MAGAritaville | 2-4 | 438.32 | W 188.28–152.96 vs Pollitto (week high) | Leads Craig 148.42–133.58; Kendre Miller plays MNF |
+| 8 | Kyle | SheriffKyle | 2-4 | 456.08 | L 141.36–156.18 vs Jared | Leads Leeroy by 67 going into MNF |
+| 7 | Ben | Fragile Scammers | 3-3 | 393.36 | W 105.48–95.74 vs Jon | **W** 160.66–140.52 vs Andy (Bryce Young 21.5) |
+| 6 | Andy | Blousesss | 4-2 | 429.20 | L 104.22–152.00 vs Craig | **L** 140.52–160.66 vs Ben |
+| 5 | Pollitto | Fortnite | 4-2 | 435.90 | L 152.96–188.28 vs Jarrod | **W** 114.90–103.16 vs Jared (Kamara still to play, can only add) |
+| 4 | Matt | Bo Knows | 4-2 | 437.96 | W 147.92–134.78 vs Luke | **W** 169.22–155.26 vs Jon |
+| 3 | Brandon | Coach Cornstarch | 4-2 | 473.60 | W 178.18–172.48 vs Leeroy | Trails Luke by 0.08; Olave plays MNF |
+| 2 | Craig | The Money Team | 5-1 | 438.14 | W 152.00–104.22 vs Andy | Trails Jarrod by 14.84; needs Kendre Miller |
+| 1 | Jared | Tepper-Nom-Ass | 5-1 | **510.56** (league high) | W 156.18–141.36 vs Kyle | **L** 103.16–114.90 vs Pollitto (Mariota 5.3) |
+
+**Bryce Young check:** Bryce leads the NFL in passing yards (1,268 through Week 4). In this league's fantasy scoring he's **QB3** (90.6 pts), behind Josh Allen and Brock Purdy, so the lyrics call him #1 *in yards*. Brandon's starting QB, Kyler Murray, is **QB36** with 21.5 points all season. Bryce scored 21.5 in Week 4 alone.
 
 ---
 
@@ -25,8 +29,8 @@ A parody of Carolina MiC's *If I Had $150,000*, ranking the league worst to best
 
 **[Intro — spoken, dancing into frame]**
 Yeahhh… Wizards League…
-Week Two's in the books, and y'all are in trouble.
-We're going worst to first. Let's go.
+Week Three's official, Week Four's got one game left on Monday night.
+If your game ain't over, I ain't calling it. Worst to first. Let's go.
 
 **[Hook]**
 If I had a hundred-fifty points *(a hundred-fifty!)*
@@ -36,135 +40,140 @@ I wouldn't be the punchline of the Wizards sport
 But you don't — so let me break it down
 From the basement to the crown, c'mon!
 
-**[#12 — Jon, Blue Tent FC, 0-4]**
+**[#12 — Jon, Blue Tent FC, 0-6]**
 Number twelve is Jon, the Blue Tent crew,
 He drafted every Giant and some Titans too,
-Nabers, Skattebo, Likely, Cam Ward,
-Started Jaxson Dart: point-eight. Good Lord!
-Oh-and-four, fewest points in the league,
-Blue Tent FC? More like Blue Tent fatigue.
+Week Three, ninety-five, Ben beat you, that's low,
+Week Four T-Mac dropped forty-four, and you still lost the show,
+You put up one-fifty-five, Matt hung one-sixty-nine,
+Oh-and-six, my guy, the Blue Tent's in decline.
 
-**[#11 — Jarrod, MAGAritaville, 0-4]**
-Eleven's Jarrod, straight outta MAGAritaville,
-Cold beer on the back nine, still on the clock, still,
-Chicken Little Bro, "the sky is falling," yeah it fell,
-Started Puka for a goose egg: zero-point-zero, oh well,
-Andy dropped one-seventy-five, you barely cracked a hundred,
-Most points against in the league, you got plundered,
-You been riding Bryce forever, say you're "Early," that's cute,
-Only thing early is your tee time, you're 0-and-4, dude.
-
-**[#10 — Leeroy, Big Toe Suckers, 0-4]**
-Number ten, the commish, the reigning champ,
+**[#11 — Leeroy, Big Toe Suckers, 1-5]**
+Number eleven, the commish, the reigning champ,
 Big Toe Suckers, and the crown's got a cramp,
-Defending the title from the bottom of the cellar,
-Jayden Reed gave you one-point-four, what a fella,
-You set the rules, you run the chat, you run the site,
-Now run your lineup, Leeroy, just one time right.
+Week Three you dropped one-seventy-two and still took the L,
+Brandon hung one-seventy-eight, man, oh well,
+Now you need sixty-seven from Bijan, London and Shough,
+Monday night miracle, Leeroy, pray it's enough.
 
 **[Hook]**
 
-**[#9 — Luke, Rico's Roughnecks, 2-2]**
-Nine is Luke, pour him up that demon water,
+**[#10 — Luke, Rico's Roughnecks, 2-4]**
+Ten is Luke, pour him up that demon water,
 Bourbon in the glass while the mortgage gets hotter,
 "Trump's economy," he says, "can't afford a house,"
 Brother, you voted for it, don't be a grouch,
-JSN dropped forty-two, you rode him to a W,
-RJ Harvey gave you zero, didn't wanna trouble you,
-Mad I'm cutting grass at noon on a Tuesday?
-I work from home, Luke. I'll mow when I choose, hey!
+JSN dropped thirty-five, Matt beat you anyway,
+Now you're up on Brandon by eight-hundredths, hey!
+Juwan versus Olave, Monday night's the fight,
+And I'll be cutting grass at noon while you sweat it tonight.
 
-**[#8 — Ben, Fragile Scammers, 2-2]**
-Number eight is Ben, blow the whistle, ref,
+**[#9 — Jarrod, MAGAritaville, 2-4]**
+Nine is Jarrod, straight outta MAGAritaville,
+Cold beer on the back nine, still on the clock, still,
+Chicken Little Bro, but Week Three the sky held up,
+One-eighty-eight, the high score, Darnold filled the cup,
+And Bryce Young's leading the whole league in passing yards,
+Jarrod's been "Early" since the draft, give the man his cards,
+Up fifteen on Craig with one Saint left to play,
+Kendre Miller, don't you dare ruin Jarrod's day.
+
+**[#8 — Kyle, SheriffKyle, 2-4]**
+Eight is Sheriff Kyle, all week long he'd say,
+"Four-twenty-five, Commanders-Cowboys, that's the game today!"
+Hyped it up like the Super Bowl came to town,
+Kickoff hit, and Jayden Daniels went down,
+Week Three I beat you, one-fifty-six to one-forty-one,
+Now you're up sixty-seven on Leeroy. Sheriff, don't hype this one!
+
+**[Hook]**
+
+**[#7 — Ben, Fragile Scammers, 3-3]**
+Number seven is Ben, blow the whistle, ref,
 Big ol' head, gotta special-order the helmet himself,
 Loves Charlotte FC, loves the flop and the roll,
 Hamstring, ankle, stretcher, then he's back for the goal,
 Nobody knows when the game's gonna end,
 "Stoppage time!" That's your season, my friend,
-DJ Moore gave you negative point-one,
-Red card for the lineup, Ben, you're done.
+But two straight W's with Bryce at QB,
+Beat Jon, then beat Andy, Ben's on a Panther spree.
 
-**[#7 — Brandon, Coach Cornstarch, 2-2]**
-Seven's Brandon: "AI's only gonna do harm!"
+**[#6 — Andy, Blousesss, 4-2]**
+Number six is Andy, remember four-and-oh?
+Craig dropped you Week Three by forty-eight, so,
+Then Week Four you lost to Ben, and guess who he starts?
+Bryce Young, twenty-one points, straight through your heart,
+App State Mountaineer, said Bryce would never be the guy,
+Now Bryce leads the league in yards and Andy's asking why,
+Worst drafter in the league, the blind squirrel lost the nut,
+Mad that you were wrong, and now you're stuck in a rut.
+
+**[#5 — Pollitto, Fortnite, 4-2]**
+Number five, Pollitto, diamond hands on the phone,
+"AMC to the moon!" Bro, leave that squeeze alone,
+Twenty-twenty-one called, it wants its meme back,
+Jarrod beat you Week Three, but you bounced right back,
+Beat me in Week Four, one-fifteen to one-oh-three,
+Your team's like your portfolio: lucky, not a strategy.
+
+**[#4 — Matt, Bo Knows, 4-2]**
+Number four is Matt, dressed like a Daytona float,
+Sequins on the fire suit, rhinestones on the coat,
+Loves NASCAR: go fast and turn left all day,
+Beat Luke in Week Three, then beat Jon the same way,
+Loveland finally scored, eleven-point-seven, clap!
+McConkey got a goose egg, Matt, check the pit crew's map.
+
+**[#3 — Brandon, Coach Cornstarch, 4-2]**
+Three is Brandon: "AI's only gonna do harm!"
 Then he wrote his weekly update with a chatbot's charm,
 It flopped so hard the robot filed a complaint,
 Mr. Anti-AI got caught using it, ain't that quaint?
 Carolina boy with a Minnesota heart,
 'Cause Favre played there two years? That's where you start??
-Skol from the Tar Heel State, zero ties, bless your soul,
-Rostered Kyler and Addison, still purple in the bowl,
-You beat me Week Two, okay, I'll give you that one,
-Frame it, Cornstarch, 'cause it's never gonna come again, son.
+Skol from the Tar Heel State, so how's your Vikings QB?
+Kyler Murray's number thirty-six, a fantasy tragedy,
+Twenty-one points ALL SEASON, Brandon, do the math,
+Bryce beat that in ONE GAME, now feel the Panther wrath,
+Bryce Young's number one in yards, the hometown kid,
+You picked the Vikings anyway. Brandon, what'd you did?
 
 **[Hook]**
 
-**[#6 — Kyle, SheriffKyle, 2-2]**
-Six is Sheriff Kyle, all week long he'd say,
-"Four-twenty-five, Commanders-Cowboys, that's the game today!"
-Hyped it up like the Super Bowl came to town,
-Kickoff hit, and Jayden Daniels went down,
-Dropped one-ninety-two in Week One, what a show,
-Then lost to the AMC guy. Sheriff, where'd it go?
-
-**[#5 — Pollitto, Fortnite, 3-1]**
-Number five, Pollitto, diamond hands on the phone,
-"AMC to the moon!" Bro, leave that squeeze alone,
-Twenty-twenty-one called, it wants its meme back,
-But you're 3-and-1, somehow, that's a short-squeeze attack,
-Amon-Ra carried you, Saquon gave you three,
-Your team's like your portfolio: hold it and pray, you'll see.
-
-**[#4 — Craig, The Money Team, 3-1]**
-Four is Craig, Money Team, he's all-in on AI,
+**[#2 — Craig, The Money Team, 5-1]**
+Two is Craig, Money Team, he's all-in on AI,
 Degen.ai told him every parlay's gonna fly,
-Three-and-one, but check the points against,
-Easiest schedule in the league, ain't no defense,
-Josh Allen dropped forty, rest of the squad took a nap,
-Asked the bot who's winning. Bot said "Jared. That's a wrap."
+Week Three you smoked Andy, one-fifty-two, for sure,
+But now you're down fifteen, and Kendre Miller's the cure?
+Ask the bot if Kendre's gonna save you tonight,
+Bot said, "I'm just a language model." Aight.
 
-**[Hook]**
-
-**[#3 — Matt, Bo Knows, 3-1]**
-Number three is Matt, dressed like a Daytona float,
-Sequins on the fire suit, rhinestones on the coat,
-Loves NASCAR: go fast and turn left all day,
-Just like your tight end: Loveland left, no play,
-Zero, then one-point-three, the man is a ghost,
-Still beat the champ, so, Matt, raise a toast.
-
-**[#2 — Jared, Tepper-Nom-Ass, 3-1]**
-Number two? That's me, Tepper-Nom-Ass,
-Most points in the league, three-fifty-four, first class,
-Four championships, count 'em on my hand,
-Only L came from Cornstarch, still don't understand,
-Number two on paper, number one in the rings,
+**[#1 — Jared, Tepper-Nom-Ass, 5-1]**
+And number one? It's me, Tepper-Nom-Ass,
+Five-ten in points, most in the league, first class,
+Beat the Sheriff Week Three, four rings on my hand,
+Then Week Four… Marcus Mariota? I don't understand,
+Five-point-three from my QB, Ja'Marr gave me five,
+Lost to the AMC guy, now he's talking 'bout the sky,
+Still number one, and the fifth ring's coming soon,
 Hundred-fifty thousand? Nah, I'm counting championships.
-
-**[#1 — Andy, Blousesss, 4-0]**
-And number one… Andy? Is this a mistake?
-Worst drafter in the league, undefeated, for heaven's sake,
-App State Mountaineer, blind squirrel found a nut,
-Burrow, CeeDee, Mahomes, did the auto-draft do what??
-Hated on Bryce Young, said he'd never be the guy,
-Now Bryce is balling, and Andy can't look him in the eye,
-Sitting on top while you're mad that you were wrong,
-Enjoy it, 'cause the ring is mine by the end of the song.
 
 **[Final Hook]**
 If I had a hundred-fifty points *(a hundred-fifty!)*
-Oh wait, I do. I got three-fifty-four
+Week Four I had one-oh-three, don't say a word
 If I had a hundred-fifty points *(a hundred-fifty!)*
-Wizards League, see y'all next week for more!
+Bryce Young's number one in yards, Brandon, have you heard?
 
 **[Outro — spoken, still dancing]**
-Four rings. Tepper-Nom-Ass. Out.
+Four rings. Tepper-Nom-Ass. Bryce Young, number one in yards. Skol? Nah. Keep pounding. Out.
 
 ---
 
 ## Production notes
 
 ### Beat
-- **`beat.wav` / `beat.mid`:** an original retro-funk instrumental built by `make_beat.py`. It runs 104 BPM in F major: slap bass, e-piano stabs, synth brass, handclaps. The feel is in the same lane as the original, but the groove is written from scratch. It's 132 bars (~5:05), laid out one lyric line per bar, with a brass hit on the first bar of each verse for the rank reveal. The WAV is a rough synth preview. For a fuller sound, open `beat.mid` in GarageBand and swap in real instruments. `beat_preview.wav` is the first 74 seconds.
+- **`beat.wav` / `beat.mid`:** an original retro-funk instrumental built by `make_beat.py`. It runs 104 BPM in F major: slap bass, e-piano stabs, synth brass, handclaps. The feel is in the same lane as the original, but the groove is written from scratch. It's 136 bars (~5:14), laid out one lyric line per bar, with a brass hit on the first bar of each verse for the rank reveal. The WAV is a rough synth preview. For a fuller sound, open `beat.mid` in GarageBand and swap in real instruments. `beat_preview.wav` is the first 74 seconds.
+- **`beat_pfunk.wav` / `beat_pfunk.mid` (v2, closer feel):** built by `make_beat_pfunk.py` at the reference song's 109 BPM, in a P-Funk / Earth, Wind & Fire style: driving synth bass, clavinet, a synth lead on the hooks, and horn stabs. It follows the same lyric layout (~4:59). No audio from the original was sampled or transcribed.
 - The original instrumental belongs to Carolina MiC. If you want his actual beat, reach out through [Bandcamp](https://carolinamic.bandcamp.com/) or [YouTube](https://www.youtube.com/carolinamic).
 
 ### Vocals
