@@ -22,6 +22,9 @@ Options worth knowing:
     --key K        key to tune to, e.g. D, F#, Bb (default D, matching the beat)
     --scale S      major (default), minor, or chromatic
     --retune MS    0 = hard robotic snap (default), 40-80 = more natural
+    --polish       make an untrained voice sound produced: auto-tune plus
+                   doubled vocals, noise gate, vocal EQ and slapback echo
+    --harmony      add a quiet harmony a third above the lead (pairs with --polish)
 """
 import argparse
 import shutil
@@ -32,7 +35,7 @@ from pathlib import Path
 
 import numpy as np
 import soundfile as sf
-from scipy.signal import butter, fftconvolve, sosfilt
+from scipy.signal import butter, fftconvolve, lfilter, sosfilt
 
 SR = 44100
 
@@ -78,8 +81,13 @@ def detect_pitch(x: np.ndarray, hop: int = 256, fmin: float = 70, fmax: float = 
     return np.where((f0 > 0) & (med > 0), med, 0.0)
 
 
-def target_pitch(f0: np.ndarray, key: str, scale: str, retune_ms: float, hop: int) -> np.ndarray:
-    """Snap each detected pitch to the nearest note in the key."""
+def target_pitch(f0: np.ndarray, key: str, scale: str, retune_ms: float, hop: int,
+                 degree: int = 0, cents: float = 0.0) -> np.ndarray:
+    """Snap each detected pitch to the nearest note in the key.
+
+    degree moves the result up/down that many scale steps (2 = a third above,
+    for harmonies); cents adds a fixed detune (for doubled vocals).
+    """
     root = NOTE_NAMES[key.upper()]
     allowed = np.array([(root + s) % 12 for s in SCALES[scale]])
     out = np.zeros_like(f0)
@@ -90,6 +98,12 @@ def target_pitch(f0: np.ndarray, key: str, scale: str, retune_ms: float, hop: in
     ok = np.isin(np.mod(cands, 12), allowed)
     dist = np.where(ok, np.abs(cands - midi[:, None]), np.inf)
     snapped = cands[np.arange(len(cands)), np.argmin(dist, axis=1)]
+    if degree:
+        notes = np.array([n for n in range(128) if n % 12 in allowed])
+        pos = np.clip(np.searchsorted(notes, snapped) + degree, 0, len(notes) - 1)
+        shift = notes[pos] - snapped
+        midi, snapped = midi + shift, snapped + shift
+    snapped = snapped + cents / 100
     if retune_ms > 0:  # glide toward the target note instead of jumping
         alpha = 1 - np.exp(-hop / (SR * retune_ms / 1000))
         smooth, prev = np.empty_like(snapped), None
@@ -101,12 +115,14 @@ def target_pitch(f0: np.ndarray, key: str, scale: str, retune_ms: float, hop: in
     return out
 
 
-def autotune(vox: np.ndarray, key: str, scale: str, retune_ms: float) -> np.ndarray:
+def autotune(vox: np.ndarray, key: str, scale: str, retune_ms: float,
+             degree: int = 0, cents: float = 0.0, f0: np.ndarray | None = None) -> np.ndarray:
     """Pitch-correct a vocal with TD-PSOLA (keeps the voice's tone, moves the notes)."""
     hop = 256
     x = vox.mean(axis=1).astype(np.float64)
-    f0 = detect_pitch(x, hop)
-    tgt = target_pitch(f0, key, scale, retune_ms, hop)
+    if f0 is None:
+        f0 = detect_pitch(x, hop)
+    tgt = target_pitch(f0, key, scale, retune_ms, hop, degree, cents)
     t_frames = np.arange(len(f0)) * hop + 512  # frame centres
     idx = np.arange(len(x))
     f_src = np.interp(idx, t_frames, f0)
@@ -247,6 +263,70 @@ def reverb(x: np.ndarray, amount: float) -> np.ndarray:
     return x + amount * wet
 
 
+def gate(x: np.ndarray, floor_db: float = -26.0) -> np.ndarray:
+    """Turn down breaths, room noise and leftover bleed between sung phrases."""
+    hop, win = SR // 100, SR // 33  # 10 ms hop, 30 ms window
+    power = np.convolve(x.mean(axis=1) ** 2, np.ones(win) / win, mode="same")[::hop]
+    level = 10 * np.log10(power + 1e-12)
+    # Threshold adapts to the recording: 40% of the way from its noise floor to its singing level.
+    noise, voice = np.percentile(level, 10), np.percentile(level, 95)
+    thresh = noise + 0.4 * (voice - noise)
+    target = np.clip((level - (thresh - 6)) / 6, 0, 1)  # 6 dB soft knee
+    # Open fast (no clipped word starts), close slowly (no chopped word endings).
+    up, down = 1 - np.exp(-1 / 0.5), 1 - np.exp(-1 / 15)  # ~5 ms attack, ~150 ms release
+    gain, g = np.empty_like(target), 0.0
+    for i, t in enumerate(target):
+        g += (up if t > g else down) * (t - g)
+        gain[i] = g
+    floor = 10 ** (floor_db / 20)
+    gain = np.interp(np.arange(len(x)), np.arange(len(gain)) * hop, floor + (1 - floor) * gain)
+    return (x * gain[:, None]).astype(np.float32)
+
+
+def peaking_eq(x: np.ndarray, freq: float, gain_db: float, q: float = 1.0) -> np.ndarray:
+    """RBJ-cookbook peaking EQ band."""
+    a_ = 10 ** (gain_db / 40)
+    w0 = 2 * np.pi * freq / SR
+    alpha = np.sin(w0) / (2 * q)
+    b = [1 + alpha * a_, -2 * np.cos(w0), 1 - alpha * a_]
+    a = [1 + alpha / a_, -2 * np.cos(w0), 1 - alpha / a_]
+    return lfilter(np.array(b) / a[0], np.array(a) / a[0], x, axis=0).astype(np.float32)
+
+
+def vocal_eq(x: np.ndarray) -> np.ndarray:
+    x = peaking_eq(x, 300, -3.5, 0.9)   # less mud / boxy room
+    x = peaking_eq(x, 3500, 4.0, 0.8)   # presence: words cut through the beat
+    return peaking_eq(x, 7500, -2.5, 2.0)  # tame harsh "s" sounds
+
+
+def delayed(x: np.ndarray, seconds: float) -> np.ndarray:
+    n = int(SR * seconds)
+    return np.concatenate([np.zeros(n, x.dtype), x[: len(x) - n]])
+
+
+def pan(mono: np.ndarray, position: float, gain_db: float) -> np.ndarray:
+    """Place a mono layer in stereo: position -1 = left, 0 = centre, 1 = right."""
+    angle = (position + 1) * np.pi / 4
+    g = 10 ** (gain_db / 20)
+    return np.stack([mono * np.cos(angle), mono * np.sin(angle)], axis=1) * g * np.sqrt(2)
+
+
+def produce_vocal(vox: np.ndarray, args) -> np.ndarray:
+    """Auto-tune the lead and, with --polish/--harmony, build the backing layers."""
+    f0 = detect_pitch(vox.mean(axis=1).astype(np.float64))
+    tune = lambda **kw: autotune(vox, args.key, args.scale, args.retune, f0=f0, **kw)[:, 0]  # noqa: E731
+    out = pan(tune(), 0.0, 0.0)
+    if args.polish:
+        print("  Adding doubled vocals ...")
+        out += pan(delayed(tune(cents=+9), 0.017), -0.9, -8.0)
+        out += pan(delayed(tune(cents=-9), 0.026), +0.9, -8.0)
+    if args.harmony:
+        print("  Adding harmony a third above ...")
+        harm = delayed(tune(degree=2), 0.011)
+        out += pan(harm, -0.35, -13.0) + pan(delayed(harm, 0.009), +0.35, -13.0)
+    return out.astype(np.float32)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("vocals", type=Path, help="vocal recording, or a full song with --isolate")
@@ -264,7 +344,12 @@ def main() -> None:
     ap.add_argument("--scale", choices=SCALES, default="major", help="scale for --autotune")
     ap.add_argument("--retune", type=float, default=0.0,
                     help="retune speed in ms: 0 = hard robotic snap, 40-80 = natural")
+    ap.add_argument("--polish", action="store_true",
+                    help="auto-tune + doubled vocals, noise gate, vocal EQ, slapback echo")
+    ap.add_argument("--harmony", action="store_true", help="add a harmony a third above the lead")
     args = ap.parse_args()
+    if args.polish or args.harmony:
+        args.autotune = True
     if args.key.upper() not in NOTE_NAMES:
         sys.exit(f"Unknown key '{args.key}'. Use e.g. C, D, F#, Bb.")
 
@@ -295,12 +380,19 @@ def main() -> None:
                       f"(confidence {confidence:.0f})")
                 args.offset = offset
 
+    if args.polish:
+        vox = gate(vox)
     if args.autotune:
         print(f"[3/4] Auto-tuning to {args.key} {args.scale} (retune {args.retune:g} ms) ...")
-        vox = autotune(vox, args.key, args.scale, args.retune)
-    print("[3/4] Processing vocal (clean-up, compression, reverb) ...")
+        vox = produce_vocal(vox, args)
+    print("[3/4] Processing vocal (clean-up, EQ, compression, reverb) ...")
     vox = sosfilt(butter(2, 90, "high", fs=SR, output="sos"), vox, axis=0).astype(np.float32)
+    if args.polish:
+        vox = vocal_eq(vox)
     vox = compress(vox)
+    if args.polish:  # quick slapback echo, darker than the dry voice so it sits behind it
+        slap = sosfilt(butter(2, 3000, "low", fs=SR, output="sos"), vox, axis=0)
+        vox = vox + 0.22 * np.stack([delayed(slap[:, 0], 0.105), delayed(slap[:, 1], 0.115)], axis=1)
     vox = reverb(vox, args.reverb)
 
     # Place the vocal on the timeline.
