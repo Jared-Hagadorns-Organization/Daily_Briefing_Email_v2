@@ -8,6 +8,7 @@ Usage:
     python mix_vocals.py vocals.wav beat_instrumental.wav
     python mix_vocals.py suno_song.mp3 beat_instrumental.wav --isolate
     python mix_vocals.py vocals.wav beat.wav --offset 4.2 --vocal-db 2 -o final.wav
+    python mix_vocals.py sang_over_speakers.m4a beat.wav --align --autotune
 
 Options worth knowing:
     --offset S     start the vocal S seconds into the beat (negative trims the
@@ -15,6 +16,8 @@ Options worth knowing:
     --vocal-db D   make the vocal louder (+) or quieter (-) relative to the beat
     --reverb R     0 = dry, 0.25 = default room, 0.5 = big arena
     --no-duck      don't dip the beat slightly while the vocal is singing
+    --align        if the beat is audible in your recording (sang along to
+                   speakers), strip it out and line the vocal up automatically
     --autotune     snap the vocal to the song's key (classic auto-tuned pop sound)
     --key K        key to tune to, e.g. D, F#, Bb (default D, matching the beat)
     --scale S      major (default), minor, or chromatic
@@ -163,13 +166,40 @@ def load(path: Path, tmp: Path) -> np.ndarray:
     return data
 
 
-def isolate_vocals(path: Path, tmp: Path) -> Path:
-    """Run Demucs and return the path of the separated vocal stem."""
+def isolate_vocals(path: Path, tmp: Path) -> tuple[Path, Path]:
+    """Run Demucs and return the paths of the (vocals, music) stems."""
     subprocess.run(
         [sys.executable, "-m", "demucs", "--two-stems", "vocals", "-o", str(tmp / "sep"), str(path)],
         check=True,
     )
-    return tmp / "sep" / "htdemucs" / path.stem / "vocals.wav"
+    stems = tmp / "sep" / "htdemucs" / path.stem
+    return stems / "vocals.wav", stems / "no_vocals.wav"
+
+
+def find_offset(music: np.ndarray, beat: np.ndarray) -> tuple[float, float]:
+    """Find where the beat starts inside a recording's music bleed.
+
+    Returns (offset_seconds, confidence). offset is negative when the beat
+    starts after the recording does, matching the --offset convention.
+    """
+    sos = butter(4, [150, 1800], "band", fs=SR, output="sos")
+    dec = 10  # work at 4.41 kHz; plenty for timing to ~2 ms
+    a = sosfilt(sos, music.mean(axis=1))[::dec][: 90 * SR // dec]  # first 90 s is enough
+    b = sosfilt(sos, beat.mean(axis=1))[::dec]
+    n = 1 << int(np.ceil(np.log2(len(a) + len(b))))
+    corr = np.fft.irfft(np.fft.rfft(a, n) * np.conj(np.fft.rfft(b, n)), n)
+    corr = np.abs(np.concatenate([corr[-(len(b) - 1):], corr[: len(a)]]))  # lags -(len(b)-1) .. len(a)-1
+    lags = np.arange(len(corr)) - (len(b) - 1)  # beat sample 0 sits at recording sample `lag`
+    # Songs repeat, so later repeats of a section can match almost as well as the
+    # true start. Only consider the beat starting between 20 s before and 60 s
+    # after the recording began, and on near-ties prefer the earliest start.
+    rate = SR / dec
+    window = (lags >= -20 * rate) & (lags <= 60 * rate)
+    best = corr[window].max()
+    candidates = np.nonzero(window & (corr >= 0.9 * best))[0]
+    peak = candidates[np.argmin(np.abs(lags[candidates]))]
+    confidence = float(corr[peak] / (np.median(corr) + 1e-12))
+    return -lags[peak] / rate, confidence
 
 
 def rms_db(x: np.ndarray) -> float:
@@ -227,6 +257,8 @@ def main() -> None:
     ap.add_argument("--reverb", type=float, default=0.25, help="reverb amount (0 = dry)")
     ap.add_argument("--isolate", action="store_true", help="strip music from the vocal file with Demucs first")
     ap.add_argument("--no-duck", action="store_true", help="don't dip the beat under the vocal")
+    ap.add_argument("--align", action="store_true",
+                    help="auto-detect --offset from beat audible in the recording (implies --isolate)")
     ap.add_argument("--autotune", action="store_true", help="pitch-correct the vocal to the key")
     ap.add_argument("--key", default="D", help="key for --autotune, e.g. D, F#, Bb (default D)")
     ap.add_argument("--scale", choices=SCALES, default="major", help="scale for --autotune")
@@ -246,13 +278,22 @@ def main() -> None:
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
-        vocal_src = args.vocals
-        if args.isolate:
+        vocal_src, music_src = args.vocals, None
+        if args.isolate or args.align:
             print("[1/4] Isolating the voice with Demucs (a few minutes on CPU) ...")
-            vocal_src = isolate_vocals(args.vocals, tmp)
+            vocal_src, music_src = isolate_vocals(args.vocals, tmp)
         print("[2/4] Loading audio ...")
         vox = load(vocal_src, tmp)
         beat = load(args.beat, tmp)
+        if args.align:
+            offset, confidence = find_offset(load(music_src, tmp), beat)
+            if confidence < 20:
+                print(f"  Couldn't hear the beat in the recording (confidence {confidence:.1f}); "
+                      f"keeping --offset {args.offset:g}. Set it by hand if the timing is off.")
+            else:
+                print(f"  Beat found in the recording; using --offset {offset:.2f} "
+                      f"(confidence {confidence:.0f})")
+                args.offset = offset
 
     if args.autotune:
         print(f"[3/4] Auto-tuning to {args.key} {args.scale} (retune {args.retune:g} ms) ...")
