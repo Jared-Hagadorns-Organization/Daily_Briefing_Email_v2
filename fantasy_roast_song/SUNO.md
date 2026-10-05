@@ -35,8 +35,8 @@ trap, heavy 808, autotune, dark, aggressive, metal, EDM drop
 ```
 [Intro - spoken]
 Yeahhh… Wizards League…
-Week Three's official, Week Four's got one game left on Monday night.
-If your game ain't over, I ain't calling it. Worst to first. Let's go.
+Week Four's in the books, and y'all are in trouble.
+Power rankings. Worst to first. Let's go.
 
 [Hook]
 If I had a hundred-fifty points (a hundred-fifty!)
@@ -52,15 +52,15 @@ He drafted every Giant and some Titans too,
 Week Three, ninety-five, Ben beat you, that's low,
 Week Four T-Mac dropped forty-four, and you still lost the show,
 You put up one-fifty-five, Matt hung one-sixty-nine,
-Oh-and-six, my guy, the Blue Tent's in decline.
+Four games, zero head-to-head wins, the Blue Tent's in decline.
 
 [Verse: #11 Leeroy]
 Number eleven, the commish, the reigning champ,
 Big Toe Suckers, and the crown's got a cramp,
 Week Three you dropped one-seventy-two and still took the L,
 Brandon hung one-seventy-eight, man, oh well,
-Now you need sixty-seven from Bijan, London and Shough,
-Monday night miracle, Leeroy, pray it's enough.
+You set the rules, you run the chat, you run the site,
+Now run your lineup, Leeroy, just one time right.
 
 [Hook]
 If I had a hundred-fifty points (a hundred-fifty!)
@@ -76,9 +76,9 @@ Bourbon in the glass while the mortgage gets hotter,
 "Trump's economy," he says, "can't afford a house,"
 Brother, you voted for it, don't be a grouch,
 JSN dropped thirty-five, Matt beat you anyway,
-Now you're up on Brandon by eight-hundredths, hey!
-Juwan versus Olave, Monday night's the fight,
-And I'll be cutting grass at noon while you sweat it tonight.
+Week Three L, and the demon water's here to stay,
+Mad I'm cutting grass at noon on a Tuesday?
+I work from home, Luke. I'll mow when I choose, hey!
 
 [Verse: #9 Jarrod]
 Nine is Jarrod, straight outta MAGAritaville,
@@ -87,8 +87,8 @@ Chicken Little Bro, but Week Three the sky held up,
 One-eighty-eight, the high score, Darnold filled the cup,
 And Bryce Young's leading the whole league in passing yards,
 Jarrod's been "Early" since the draft, give the man his cards,
-Up fifteen on Craig with one Saint left to play,
-Kendre Miller, don't you dare ruin Jarrod's day.
+Puka dropped twenty-seven, Bryce is slinging it right,
+Jarrod, you were early, and for once you were right.
 
 [Verse: #8 Kyle]
 Eight is Sheriff Kyle, all week long he'd say,
@@ -96,7 +96,7 @@ Eight is Sheriff Kyle, all week long he'd say,
 Hyped it up like the Super Bowl came to town,
 Kickoff hit, and Jayden Daniels went down,
 Week Three I beat you, one-fifty-six to one-forty-one,
-Now you're up sixty-seven on Leeroy. Sheriff, don't hype this one!
+Then you hung one-sixty-two in Week Four. Sheriff, well done.
 
 [Hook]
 If I had a hundred-fifty points (a hundred-fifty!)
@@ -135,7 +135,7 @@ Number five, Pollitto, diamond hands on the phone,
 "AMC to the moon!" Bro, leave that squeeze alone,
 Twenty-twenty-one called, it wants its meme back,
 Jarrod beat you Week Three, but you bounced right back,
-Beat me in Week Four, one-fifteen to one-oh-three,
+Beat me in Week Four while I put up one-oh-three,
 Your team's like your portfolio: lucky, not a strategy.
 
 [Verse: #4 Matt]
@@ -154,7 +154,7 @@ Mr. Anti-AI got caught using it, ain't that quaint?
 Carolina boy with a Minnesota heart,
 'Cause Favre played there two years? That's where you start??
 Skol from the Tar Heel State, so how's your Vikings QB?
-Kyler Murray's number thirty-six, a fantasy tragedy,
+Kyler Murray's QB thirty-something, a fantasy tragedy,
 Twenty-one points ALL SEASON, Brandon, do the math,
 Bryce beat that in ONE GAME, now feel the Panther wrath,
 Bryce Young's number one in yards, the hometown kid,
@@ -172,13 +172,13 @@ From the basement to the crown, c'mon!
 Two is Craig, Money Team, he's all-in on AI,
 Degen.ai told him every parlay's gonna fly,
 Week Three you smoked Andy, one-fifty-two, for sure,
-But now you're down fifteen, and Kendre Miller's the cure?
-Ask the bot if Kendre's gonna save you tonight,
+Bot picks your lineup, bot picks your bets, bot picks your chores,
+Ask the bot who wins it all, it'll tell you what's right,
 Bot said, "I'm just a language model." Aight.
 
 [Verse: #1 Jared]
 And number one? It's me, Tepper-Nom-Ass,
-Five-ten in points, most in the league, first class,
+I made the rankings, so I'm on top, first class,
 Beat the Sheriff Week Three, four rings on my hand,
 Then Week Four… Marcus Mariota? I don't understand,
 Five-point-three from my QB, Ja'Marr gave me five,
