@@ -66,6 +66,27 @@ def fit_title(text: str, width: int, height: int) -> tuple[str, int]:
     return text, size
 
 
+def hdr_to_sdr(clip: Path) -> str:
+    """Filter prefix converting iPhone/Android HDR video to normal colours.
+
+    Phones record HDR (HLG or PQ) by default; converted naively it looks grey
+    and washed out on everything else. Returns "" for ordinary video.
+    """
+    transfer = subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer",
+         "-of", "csv=p=0", str(clip)], capture_output=True, text=True,
+    ).stdout.strip().split(",")[0]  # rotated phone clips append side-data fields
+    if transfer not in ("arib-std-b67", "smpte2084"):
+        return ""
+    filters = subprocess.run(["ffmpeg", "-hide_banner", "-filters"], capture_output=True, text=True).stdout
+    if " zscale " not in filters or " tonemap " not in filters:
+        print("  Note: this is an HDR clip, but this ffmpeg can't convert HDR; colours may look washed out.")
+        return ""
+    print("  HDR clip detected; converting to standard colours ...")
+    return ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,"
+            "tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,")
+
+
 def font_file() -> Path | None:
     """A bold system font for the title."""
     for f in ("C:/Windows/Fonts/arialbd.ttf", "C:/Windows/Fonts/segoeuib.ttf",
@@ -98,14 +119,15 @@ def main() -> None:
 
     # Step 1: one clean loop of the clip at a steady frame rate (phones record
     # variable frame rates, which stutter when looped), resized if asked.
+    hdr = hdr_to_sdr(args.clip)
     if args.format == "original":
         # Cap the long side at 1920 and keep even dimensions for H.264.
         shape = ("scale='if(gt(iw,ih),min(1920,iw),-2)':'if(gt(iw,ih),-2,min(1920,ih))',"
                  "scale=trunc(iw/2)*2:trunc(ih/2)*2,setsar=1")
-        fit = f"[0:v]fps={FPS},{shape}[v]"
+        fit = f"[0:v]{hdr}fps={FPS},{shape}[v]"
     else:
         w, h = SIZES[args.format]
-        fit = (f"[0:v]fps={FPS},split[a][b];"
+        fit = (f"[0:v]{hdr}fps={FPS},split[a][b];"
                f"[a]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},gblur=sigma=30,"
                f"eq=brightness=-0.08[bg];"
                f"[b]scale={w}:{h}:force_original_aspect_ratio=decrease[fg];"
