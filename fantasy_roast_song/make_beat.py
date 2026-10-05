@@ -26,24 +26,23 @@ SR = 22050
 BEAT = 60 / BPM
 OUT = Path(__file__).parent
 
-# (section name, bars). Verse lengths follow the lyric line counts: one line per bar.
+# (section name, bars). Each person gets two lyric lines, two bars per line.
 ARRANGEMENT = [
     ("intro", 4), ("hook", 8),
-    ("verse", 6),  # 12 Jon
-    ("verse", 6),  # 11 Leeroy
+    ("verse", 4),  # 12 Jon
+    ("verse", 4),  # 11 Leeroy
+    ("verse", 4),  # 10 Luke
+    ("verse", 4),  # 9 Jarrod
     ("hook", 8),
-    ("verse", 8),  # 10 Luke
-    ("verse", 8),  # 9 Jarrod
-    ("verse", 6),  # 8 Kyle
+    ("verse", 4),  # 8 Kyle
+    ("verse", 4),  # 7 Ben
+    ("verse", 4),  # 6 Andy
+    ("verse", 4),  # 5 Pollitto
     ("hook", 8),
-    ("verse", 8),  # 7 Ben
-    ("verse", 8),  # 6 Andy
-    ("verse", 6),  # 5 Pollitto
-    ("verse", 6),  # 4 Matt
-    ("verse", 12),  # 3 Brandon
-    ("hook", 8),
-    ("verse", 6),  # 2 Craig
-    ("verse", 8),  # 1 Jared
+    ("verse", 4),  # 4 Matt
+    ("verse", 4),  # 3 Brandon
+    ("verse", 4),  # 2 Craig
+    ("verse", 4),  # 1 Jared
     ("hook", 8), ("outro", 4),
 ]
 

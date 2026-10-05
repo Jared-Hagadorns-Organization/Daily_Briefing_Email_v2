@@ -45,122 +45,56 @@ But you don't — so let me break it down
 From the basement to the crown, c'mon!
 
 **[#12 — Jon, Blue Tent FC]**
-Number twelve is Jon, the Blue Tent crew,
-He drafted every Giant and some Titans too,
-Week Three, ninety-five, Ben beat you, that's low,
-Week Four T-Mac dropped forty-four, and you still lost the show,
-You put up one-fifty-five, Matt hung one-sixty-nine,
-Four games, zero head-to-head wins, the Blue Tent's in decline.
+Number twelve is Jon, who drafted every Giant and a couple Titans too.
+T-Mac dropped forty-four and you still lost to Matt, zero head-to-head wins, Blue Tent, we feel for you.
 
 **[#11 — Leeroy, Big Toe Suckers]**
-Number eleven, the commish, the reigning champ,
-Big Toe Suckers, and the crown's got a cramp,
-Week Three you dropped one-seventy-two and still took the L,
-Brandon hung one-seventy-eight, man, oh well,
-You set the rules, you run the chat, you run the site,
-Now run your lineup, Leeroy, just one time right.
-
-**[Hook]**
+Eleven's Leeroy, the commish and the reigning champ, and the Big Toe Suckers crown has got a cramp.
+You dropped one-seventy-two in Week Three and still took the L, so put down the rulebook and set your lineup, champ.
 
 **[#10 — Luke, Rico's Roughnecks]**
-Ten is Luke, pour him up that demon water,
-Bourbon in the glass while the mortgage gets hotter,
-"Trump's economy," he says, "can't afford a house,"
-Brother, you voted for it, don't be a grouch,
-JSN dropped thirty-five, Matt beat you anyway,
-Week Three L, and the demon water's here to stay,
-Mad I'm cutting grass at noon on a Tuesday?
-I work from home, Luke. I'll mow when I choose, hey!
+Ten is Luke, sipping demon water and blaming "Trump's economy" like he didn't vote for it at all.
+You're mad I mow my grass at noon on a Tuesday, but I work from home, so I'm cutting it till fall.
 
 **[#9 — Jarrod, MAGAritaville]**
-Nine is Jarrod, straight outta MAGAritaville,
-Cold beer on the back nine, still on the clock, still,
-Chicken Little Bro, but Week Three the sky held up,
-One-eighty-eight, the high score, Darnold filled the cup,
-And Bryce Young's leading the whole league in passing yards,
-Jarrod's been "Early" since the draft, give the man his cards,
-Puka dropped twenty-seven, Bryce is slinging it right,
-Jarrod, you were early, and for once you were right.
+Nine is Jarrod, cold beer on the back nine while he's still on the clock all day.
+Chicken Little Bro, but Bryce leads the league in passing yards, so Jarrod was "Early," and he gets his say.
+
+**[Hook]**
 
 **[#8 — Kyle, SheriffKyle]**
-Eight is Sheriff Kyle, all week long he'd say,
-"Four-twenty-five, Commanders-Cowboys, that's the game today!"
-Hyped it up like the Super Bowl came to town,
-Kickoff hit, and Jayden Daniels went down,
-Week Three I beat you, one-fifty-six to one-forty-one,
-Then you hung one-sixty-two in Week Four. Sheriff, well done.
-
-**[Hook]**
+Eight is Sheriff Kyle, who hyped that four-twenty-five Commanders-Cowboys game like the Super Bowl came to town.
+Kickoff hit and Jayden Daniels went down, so Sheriff, next time keep that hype turned down.
 
 **[#7 — Ben, Fragile Scammers]**
-Number seven is Ben, blow the whistle, ref,
-Big ol' head, gotta special-order the helmet himself,
-Loves Charlotte FC, loves the flop and the roll,
-Hamstring, ankle, stretcher, then he's back for the goal,
-Nobody knows when the game's gonna end,
-"Stoppage time!" That's your season, my friend,
-But two straight W's with Bryce at QB,
-Beat Jon, then beat Andy, Ben's on a Panther spree.
+Seven's Ben, the soccer ref with a head so big his helmet's gotta be custom-made.
+Nobody knows when a soccer game ends, but Bryce gave him two straight W's, so let the Charlotte FC chant be played.
 
 **[#6 — Andy, Blousesss]**
-Number six is Andy, remember four-and-oh?
-Craig dropped you Week Three by forty-eight, so,
-Then Week Four you lost to Ben, and guess who he starts?
-Bryce Young, twenty-one points, straight through your heart,
-App State Mountaineer, said Bryce would never be the guy,
-Now Bryce leads the league in yards and Andy's asking why,
-Worst drafter in the league, the blind squirrel lost the nut,
-Mad that you were wrong, and now you're stuck in a rut.
+Six is Andy, the App State drafter who started four-and-oh and then fell flat.
+He swore Bryce would never be the guy, then lost to Ben's Bryce Young team, so now how 'bout that?
 
 **[#5 — Pollitto, Fortnite]**
-Number five, Pollitto, diamond hands on the phone,
-"AMC to the moon!" Bro, leave that squeeze alone,
-Twenty-twenty-one called, it wants its meme back,
-Jarrod beat you Week Three, but you bounced right back,
-Beat me in Week Four while I put up one-oh-three,
-Your team's like your portfolio: lucky, not a strategy.
-
-**[#4 — Matt, Bo Knows]**
-Number four is Matt, dressed like a Daytona float,
-Sequins on the fire suit, rhinestones on the coat,
-Loves NASCAR: go fast and turn left all day,
-Beat Luke in Week Three, then beat Jon the same way,
-Loveland finally scored, eleven-point-seven, clap!
-McConkey got a goose egg, Matt, check the pit crew's map.
-
-**[#3 — Brandon, Coach Cornstarch]**
-Three is Brandon: "AI's only gonna do harm!"
-Then he wrote his weekly update with a chatbot's charm,
-It flopped so hard the robot filed a complaint,
-Mr. Anti-AI got caught using it, ain't that quaint?
-Carolina boy with a Minnesota heart,
-'Cause Favre played there two years? That's where you start??
-Skol from the Tar Heel State, so how's your Vikings QB?
-Kyler Murray's QB thirty-something, a fantasy tragedy,
-Twenty-one points ALL SEASON, Brandon, do the math,
-Bryce beat that in ONE GAME, now feel the Panther wrath,
-Bryce Young's number one in yards, the hometown kid,
-You picked the Vikings anyway. Brandon, what'd you did?
+Five is Pollitto, screaming "AMC to the moon" like it's still twenty-twenty-one.
+He beat me while I put up one-oh-three, so his team's like his portfolio: dumb luck, but it won.
 
 **[Hook]**
 
+**[#4 — Matt, Bo Knows]**
+Four is Matt, dressed like a Daytona float with rhinestones on his fire-suit coat.
+He loves NASCAR and turning left all day, but he beat Luke and Jon back-to-back, so let the man gloat.
+
+**[#3 — Brandon, Coach Cornstarch]**
+Three is Brandon, Mr. "AI only does harm," who got caught using a chatbot, and he's a Vikings fan 'cause of Favre with zero Minnesota ties.
+Kyler Murray's got twenty-one points ALL SEASON, and hometown Bryce did that in one game, so Brandon, you picked the wrong guys.
+
 **[#2 — Craig, The Money Team]**
-Two is Craig, Money Team, he's all-in on AI,
-Degen.ai told him every parlay's gonna fly,
-Week Three you smoked Andy, one-fifty-two, for sure,
-Bot picks your lineup, bot picks your bets, bot picks your chores,
-Ask the bot who wins it all, it'll tell you what's right,
-Bot said, "I'm just a language model." Aight.
+Two is Craig, all-in on AI, letting degen.ai pick every parlay, every lineup, every bet.
+He asked the bot who's winning it all, and it said, "I'm just a language model," so no answer yet.
 
 **[#1 — Jared, Tepper-Nom-Ass]**
-And number one? It's me, Tepper-Nom-Ass,
-I made the rankings, so I'm on top, first class,
-Beat the Sheriff Week Three, four rings on my hand,
-Then Week Four… Marcus Mariota? I don't understand,
-Five-point-three from my QB, Ja'Marr gave me five,
-Lost to the AMC guy, now he's talking 'bout the sky,
-Still number one, and the fifth ring's coming soon,
-Hundred-fifty thousand? Nah, I'm counting championships.
+Number one is me, Tepper-Nom-Ass, four rings on my hand, and yeah, I made the rankings, so I'm first class.
+I started Marcus Mariota and lost to the AMC guy, but the fifth ring's coming, so let that one pass.
 
 **[Final Hook]**
 If I had a hundred-fifty points *(a hundred-fifty!)*
@@ -176,8 +110,8 @@ Four rings. Tepper-Nom-Ass. Bryce Young, number one in yards. Skol? Nah. Keep po
 ## Production notes
 
 ### Beat
-- **`beat.wav` / `beat.mid`:** an original retro-funk instrumental built by `make_beat.py`. It runs 104 BPM in F major: slap bass, e-piano stabs, synth brass, handclaps. The feel is in the same lane as the original, but the groove is written from scratch. It's 136 bars (~5:14), laid out one lyric line per bar, with a brass hit on the first bar of each verse for the rank reveal. The WAV is a rough synth preview. For a fuller sound, open `beat.mid` in GarageBand and swap in real instruments. `beat_preview.wav` is the first 74 seconds.
-- **`beat_pfunk.wav` / `beat_pfunk.mid` (v2, closer feel):** built by `make_beat_pfunk.py` at the reference song's 109 BPM, in a P-Funk / Earth, Wind & Fire style: driving synth bass, clavinet, a synth lead on the hooks, and horn stabs. It follows the same lyric layout (~4:59). No audio from the original was sampled or transcribed.
+- **`beat.wav` / `beat.mid`:** an original retro-funk instrumental built by `make_beat.py`. It runs 104 BPM in F major: slap bass, e-piano stabs, synth brass, handclaps. The feel is in the same lane as the original, but the groove is written from scratch. It's 88 bars (~3:23), laid out two bars per lyric line (four bars per person), with a brass hit on the first bar of each verse for the rank reveal. The WAV is a rough synth preview. For a fuller sound, open `beat.mid` in GarageBand and swap in real instruments. `beat_preview.wav` is the first 55 seconds.
+- **`beat_pfunk.wav` / `beat_pfunk.mid` (v2, closer feel):** built by `make_beat_pfunk.py` at the reference song's 109 BPM, in a P-Funk / Earth, Wind & Fire style: driving synth bass, clavinet, a synth lead on the hooks, and horn stabs. It follows the same lyric layout (~3:14). No audio from the original was sampled or transcribed.
 - The original instrumental belongs to Carolina MiC. If you want his actual beat, reach out through [Bandcamp](https://carolinamic.bandcamp.com/) or [YouTube](https://www.youtube.com/carolinamic).
 
 ### Vocals

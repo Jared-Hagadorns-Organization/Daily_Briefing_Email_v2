@@ -19,7 +19,7 @@ import httpx
 
 HERE = Path(__file__).parent
 URL = "https://api.elevenlabs.io/v1/music"
-BAR_MS = 4 * 60_000 / 104  # one lyric line per bar at 104 BPM
+MS_PER_CHAR = 70  # roughly the pace of a half-sung, half-rapped delivery
 
 STYLES = [
     "retro funk", "80s boogie", "feel-good party groove", "104 bpm", "slap bass",
@@ -52,7 +52,7 @@ def build_plan() -> dict:
         label = "Verse" if name.startswith("#") else re.sub(r" — .*", "", name)
         chunks.append({
             "text": f"[{label}]\n" + "\n".join(lines),
-            "duration_ms": int(min(120_000, max(4_000, (len(lines) + 1) * BAR_MS))),
+            "duration_ms": int(min(120_000, max(4_000, len("".join(lines)) * MS_PER_CHAR))),
             "positive_styles": STYLES + (["spoken word over the groove"] if spoken else []),
             "negative_styles": NEGATIVE,
         })
