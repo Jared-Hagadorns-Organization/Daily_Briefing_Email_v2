@@ -6453,5 +6453,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-07",
+    "picks": [
+      {
+        "ticker": "PTC",
+        "factor_summary": {
+          "momentum_5d_pct": 38.09,
+          "volume_ratio_vs_20d": 0.3,
+          "distance_from_52w_high_pct": -5.89,
+          "rsi_14": 89.2,
+          "composite_score": 7.5
+        }
+      },
+      {
+        "ticker": "STZ",
+        "factor_summary": {
+          "momentum_5d_pct": 3.61,
+          "volume_ratio_vs_20d": 0.79,
+          "distance_from_52w_high_pct": -28.69,
+          "rsi_14": 31.6,
+          "composite_score": 6.02
+        }
+      },
+      {
+        "ticker": "VRSN",
+        "factor_summary": {
+          "momentum_5d_pct": 4.58,
+          "volume_ratio_vs_20d": 0.98,
+          "distance_from_52w_high_pct": -4.59,
+          "rsi_14": 42.8,
+          "composite_score": 5.86
+        }
+      },
+      {
+        "ticker": "CIEN",
+        "factor_summary": {
+          "momentum_5d_pct": 23.47,
+          "volume_ratio_vs_20d": 0.24,
+          "distance_from_52w_high_pct": -30.72,
+          "rsi_14": 76.2,
+          "composite_score": 5.76
+        }
+      },
+      {
+        "ticker": "CEG",
+        "factor_summary": {
+          "momentum_5d_pct": 15.31,
+          "volume_ratio_vs_20d": 0.49,
+          "distance_from_52w_high_pct": -27.09,
+          "rsi_14": 65.8,
+          "composite_score": 5.71
+        }
+      }
+    ]
   }
 ]
