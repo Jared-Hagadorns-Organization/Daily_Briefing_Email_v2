@@ -6618,5 +6618,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-12",
+    "picks": [
+      {
+        "ticker": "CCI",
+        "factor_summary": {
+          "momentum_5d_pct": 19.05,
+          "volume_ratio_vs_20d": 0.54,
+          "distance_from_52w_high_pct": -14.44,
+          "rsi_14": 69.0,
+          "composite_score": 5.67
+        }
+      },
+      {
+        "ticker": "INTU",
+        "factor_summary": {
+          "momentum_5d_pct": 8.4,
+          "volume_ratio_vs_20d": 0.44,
+          "distance_from_52w_high_pct": -54.42,
+          "rsi_14": 61.5,
+          "composite_score": 4.69
+        }
+      },
+      {
+        "ticker": "BF-B",
+        "factor_summary": {
+          "momentum_5d_pct": 1.5,
+          "volume_ratio_vs_20d": 1.35,
+          "distance_from_52w_high_pct": -11.34,
+          "rsi_14": 51.6,
+          "composite_score": 4.36
+        }
+      },
+      {
+        "ticker": "FSLR",
+        "factor_summary": {
+          "momentum_5d_pct": 2.83,
+          "volume_ratio_vs_20d": 0.62,
+          "distance_from_52w_high_pct": -43.08,
+          "rsi_14": 34.0,
+          "composite_score": 3.81
+        }
+      },
+      {
+        "ticker": "FICO",
+        "factor_summary": {
+          "momentum_5d_pct": 2.51,
+          "volume_ratio_vs_20d": 0.33,
+          "distance_from_52w_high_pct": -61.69,
+          "rsi_14": 31.4,
+          "composite_score": 3.62
+        }
+      }
+    ]
   }
 ]
