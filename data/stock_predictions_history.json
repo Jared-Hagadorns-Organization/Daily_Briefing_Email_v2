@@ -6673,5 +6673,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-13",
+    "picks": [
+      {
+        "ticker": "DPZ",
+        "factor_summary": {
+          "momentum_5d_pct": -0.84,
+          "volume_ratio_vs_20d": 1.05,
+          "distance_from_52w_high_pct": -30.3,
+          "rsi_14": 54.1,
+          "composite_score": 4.47
+        }
+      },
+      {
+        "ticker": "CCI",
+        "factor_summary": {
+          "momentum_5d_pct": 15.51,
+          "volume_ratio_vs_20d": 0.2,
+          "distance_from_52w_high_pct": -16.12,
+          "rsi_14": 69.8,
+          "composite_score": 3.75
+        }
+      },
+      {
+        "ticker": "UNH",
+        "factor_summary": {
+          "momentum_5d_pct": -0.2,
+          "volume_ratio_vs_20d": 1.05,
+          "distance_from_52w_high_pct": -13.4,
+          "rsi_14": 54.1,
+          "composite_score": 3.71
+        }
+      },
+      {
+        "ticker": "FICO",
+        "factor_summary": {
+          "momentum_5d_pct": 5.01,
+          "volume_ratio_vs_20d": 0.19,
+          "distance_from_52w_high_pct": -60.42,
+          "rsi_14": 36.8,
+          "composite_score": 3.6
+        }
+      },
+      {
+        "ticker": "INTU",
+        "factor_summary": {
+          "momentum_5d_pct": 7.2,
+          "volume_ratio_vs_20d": 0.14,
+          "distance_from_52w_high_pct": -54.11,
+          "rsi_14": 67.8,
+          "composite_score": 3.58
+        }
+      }
+    ]
   }
 ]
