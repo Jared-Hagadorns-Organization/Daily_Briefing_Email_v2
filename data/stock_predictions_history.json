@@ -6728,5 +6728,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-14",
+    "picks": [
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 8.58,
+          "volume_ratio_vs_20d": 1.22,
+          "distance_from_52w_high_pct": -61.65,
+          "rsi_14": 62.8,
+          "composite_score": 4.81
+        }
+      },
+      {
+        "ticker": "EIX",
+        "factor_summary": {
+          "momentum_5d_pct": 3.95,
+          "volume_ratio_vs_20d": 2.97,
+          "distance_from_52w_high_pct": -29.84,
+          "rsi_14": 68.6,
+          "composite_score": 4.78
+        }
+      },
+      {
+        "ticker": "CCI",
+        "factor_summary": {
+          "momentum_5d_pct": 16.52,
+          "volume_ratio_vs_20d": 1.07,
+          "distance_from_52w_high_pct": -15.39,
+          "rsi_14": 72.1,
+          "composite_score": 4.04
+        }
+      },
+      {
+        "ticker": "CDW",
+        "factor_summary": {
+          "momentum_5d_pct": 12.01,
+          "volume_ratio_vs_20d": 1.75,
+          "distance_from_52w_high_pct": -2.7,
+          "rsi_14": 56.2,
+          "composite_score": 3.36
+        }
+      },
+      {
+        "ticker": "FIS",
+        "factor_summary": {
+          "momentum_5d_pct": 5.33,
+          "volume_ratio_vs_20d": 1.28,
+          "distance_from_52w_high_pct": -46.22,
+          "rsi_14": 53.4,
+          "composite_score": 3.3
+        }
+      }
+    ]
   }
 ]
