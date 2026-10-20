@@ -6948,5 +6948,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-20",
+    "picks": [
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 8.9,
+          "volume_ratio_vs_20d": 0.79,
+          "distance_from_52w_high_pct": -59.34,
+          "rsi_14": 80.9,
+          "composite_score": 3.57
+        }
+      },
+      {
+        "ticker": "PODD",
+        "factor_summary": {
+          "momentum_5d_pct": 1.54,
+          "volume_ratio_vs_20d": 1.44,
+          "distance_from_52w_high_pct": -59.01,
+          "rsi_14": 66.2,
+          "composite_score": 3.35
+        }
+      },
+      {
+        "ticker": "CHTR",
+        "factor_summary": {
+          "momentum_5d_pct": 5.88,
+          "volume_ratio_vs_20d": 0.81,
+          "distance_from_52w_high_pct": -57.03,
+          "rsi_14": 46.4,
+          "composite_score": 2.92
+        }
+      },
+      {
+        "ticker": "CPRT",
+        "factor_summary": {
+          "momentum_5d_pct": 3.89,
+          "volume_ratio_vs_20d": 1.49,
+          "distance_from_52w_high_pct": -39.88,
+          "rsi_14": 53.2,
+          "composite_score": 2.87
+        }
+      },
+      {
+        "ticker": "PYPL",
+        "factor_summary": {
+          "momentum_5d_pct": 0.82,
+          "volume_ratio_vs_20d": 2.32,
+          "distance_from_52w_high_pct": -21.75,
+          "rsi_14": 67.9,
+          "composite_score": 2.84
+        }
+      }
+    ]
   }
 ]
