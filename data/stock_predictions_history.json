@@ -7113,5 +7113,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-23",
+    "picks": [
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 10.78,
+          "volume_ratio_vs_20d": 1.56,
+          "distance_from_52w_high_pct": -54.68,
+          "rsi_14": 87.7,
+          "composite_score": 3.98
+        }
+      },
+      {
+        "ticker": "ROP",
+        "factor_summary": {
+          "momentum_5d_pct": 14.06,
+          "volume_ratio_vs_20d": 2.74,
+          "distance_from_52w_high_pct": -8.23,
+          "rsi_14": 94.0,
+          "composite_score": 3.53
+        }
+      },
+      {
+        "ticker": "SKYD",
+        "factor_summary": {
+          "momentum_5d_pct": 7.3,
+          "volume_ratio_vs_20d": 1.6,
+          "distance_from_52w_high_pct": -52.6,
+          "rsi_14": 35.3,
+          "composite_score": 3.26
+        }
+      },
+      {
+        "ticker": "FISV",
+        "factor_summary": {
+          "momentum_5d_pct": 7.65,
+          "volume_ratio_vs_20d": 1.14,
+          "distance_from_52w_high_pct": -59.84,
+          "rsi_14": 82.3,
+          "composite_score": 3.21
+        }
+      },
+      {
+        "ticker": "LMT",
+        "factor_summary": {
+          "momentum_5d_pct": 10.75,
+          "volume_ratio_vs_20d": 2.57,
+          "distance_from_52w_high_pct": -11.71,
+          "rsi_14": 82.6,
+          "composite_score": 2.91
+        }
+      }
+    ]
   }
 ]
