@@ -7223,5 +7223,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-27",
+    "picks": [
+      {
+        "ticker": "EQT",
+        "factor_summary": {
+          "momentum_5d_pct": 0.79,
+          "volume_ratio_vs_20d": 3.97,
+          "distance_from_52w_high_pct": -18.77,
+          "rsi_14": 62.0,
+          "composite_score": 4.43
+        }
+      },
+      {
+        "ticker": "LMT",
+        "factor_summary": {
+          "momentum_5d_pct": 15.86,
+          "volume_ratio_vs_20d": 2.07,
+          "distance_from_52w_high_pct": -4.93,
+          "rsi_14": 86.7,
+          "composite_score": 4.11
+        }
+      },
+      {
+        "ticker": "AKAM",
+        "factor_summary": {
+          "momentum_5d_pct": 12.89,
+          "volume_ratio_vs_20d": 1.08,
+          "distance_from_52w_high_pct": -38.87,
+          "rsi_14": 39.0,
+          "composite_score": 3.67
+        }
+      },
+      {
+        "ticker": "SKYD",
+        "factor_summary": {
+          "momentum_5d_pct": 10.15,
+          "volume_ratio_vs_20d": 0.52,
+          "distance_from_52w_high_pct": -54.43,
+          "rsi_14": 31.7,
+          "composite_score": 3.58
+        }
+      },
+      {
+        "ticker": "ROP",
+        "factor_summary": {
+          "momentum_5d_pct": 15.16,
+          "volume_ratio_vs_20d": 1.78,
+          "distance_from_52w_high_pct": -3.84,
+          "rsi_14": 94.9,
+          "composite_score": 3.48
+        }
+      }
+    ]
   }
 ]
