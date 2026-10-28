@@ -7278,5 +7278,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-10-28",
+    "picks": [
+      {
+        "ticker": "VRT",
+        "factor_summary": {
+          "momentum_5d_pct": 10.33,
+          "volume_ratio_vs_20d": 0.64,
+          "distance_from_52w_high_pct": -37.76,
+          "rsi_14": 45.5,
+          "composite_score": 7.56
+        }
+      },
+      {
+        "ticker": "PNR",
+        "factor_summary": {
+          "momentum_5d_pct": 19.58,
+          "volume_ratio_vs_20d": 0.04,
+          "distance_from_52w_high_pct": -41.36,
+          "rsi_14": 87.6,
+          "composite_score": 5.79
+        }
+      },
+      {
+        "ticker": "LII",
+        "factor_summary": {
+          "momentum_5d_pct": -5.7,
+          "volume_ratio_vs_20d": 0.71,
+          "distance_from_52w_high_pct": -39.47,
+          "rsi_14": 41.5,
+          "composite_score": 4.36
+        }
+      },
+      {
+        "ticker": "GEHC",
+        "factor_summary": {
+          "momentum_5d_pct": 9.5,
+          "volume_ratio_vs_20d": 0.33,
+          "distance_from_52w_high_pct": -14.16,
+          "rsi_14": 82.0,
+          "composite_score": 4.02
+        }
+      },
+      {
+        "ticker": "LULU",
+        "factor_summary": {
+          "momentum_5d_pct": 7.96,
+          "volume_ratio_vs_20d": 0.03,
+          "distance_from_52w_high_pct": -51.73,
+          "rsi_14": 66.8,
+          "composite_score": 3.47
+        }
+      }
+    ]
   }
 ]
