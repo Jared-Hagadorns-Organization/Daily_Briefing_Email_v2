@@ -7553,5 +7553,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-11-04",
+    "picks": [
+      {
+        "ticker": "FSLR",
+        "factor_summary": {
+          "momentum_5d_pct": 18.27,
+          "volume_ratio_vs_20d": 1.33,
+          "distance_from_52w_high_pct": -34.48,
+          "rsi_14": 73.4,
+          "composite_score": 6.91
+        }
+      },
+      {
+        "ticker": "FIS",
+        "factor_summary": {
+          "momentum_5d_pct": -16.39,
+          "volume_ratio_vs_20d": 1.3,
+          "distance_from_52w_high_pct": -53.4,
+          "rsi_14": 35.5,
+          "composite_score": 3.7
+        }
+      },
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 20.15,
+          "volume_ratio_vs_20d": 0.04,
+          "distance_from_52w_high_pct": -53.02,
+          "rsi_14": 52.8,
+          "composite_score": 3.56
+        }
+      },
+      {
+        "ticker": "FISV",
+        "factor_summary": {
+          "momentum_5d_pct": 27.23,
+          "volume_ratio_vs_20d": 0.35,
+          "distance_from_52w_high_pct": -12.83,
+          "rsi_14": 83.2,
+          "composite_score": 3.49
+        }
+      },
+      {
+        "ticker": "CVNA",
+        "factor_summary": {
+          "momentum_5d_pct": 27.79,
+          "volume_ratio_vs_20d": 0.2,
+          "distance_from_52w_high_pct": -21.14,
+          "rsi_14": 76.7,
+          "composite_score": 3.46
+        }
+      }
+    ]
   }
 ]
