@@ -7718,5 +7718,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-11-09",
+    "picks": [
+      {
+        "ticker": "APP",
+        "factor_summary": {
+          "momentum_5d_pct": 76.42,
+          "volume_ratio_vs_20d": 0.58,
+          "distance_from_52w_high_pct": -44.97,
+          "rsi_14": 79.3,
+          "composite_score": 13.64
+        }
+      },
+      {
+        "ticker": "NVDA",
+        "factor_summary": {
+          "momentum_5d_pct": -12.53,
+          "volume_ratio_vs_20d": 2.3,
+          "distance_from_52w_high_pct": -26.12,
+          "rsi_14": 26.4,
+          "composite_score": 5.91
+        }
+      },
+      {
+        "ticker": "COHR",
+        "factor_summary": {
+          "momentum_5d_pct": 14.08,
+          "volume_ratio_vs_20d": 0.85,
+          "distance_from_52w_high_pct": -46.57,
+          "rsi_14": 49.1,
+          "composite_score": 5.33
+        }
+      },
+      {
+        "ticker": "FERG",
+        "factor_summary": {
+          "momentum_5d_pct": 8.46,
+          "volume_ratio_vs_20d": 1.4,
+          "distance_from_52w_high_pct": -1.15,
+          "rsi_14": 74.9,
+          "composite_score": 4.12
+        }
+      },
+      {
+        "ticker": "RDDT",
+        "factor_summary": {
+          "momentum_5d_pct": 6.4,
+          "volume_ratio_vs_20d": 0.22,
+          "distance_from_52w_high_pct": -62.62,
+          "rsi_14": 16.0,
+          "composite_score": 4.03
+        }
+      }
+    ]
   }
 ]
