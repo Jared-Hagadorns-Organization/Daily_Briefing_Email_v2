@@ -8268,5 +8268,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-11-23",
+    "picks": [
+      {
+        "ticker": "NVDA",
+        "factor_summary": {
+          "momentum_5d_pct": 5.33,
+          "volume_ratio_vs_20d": 2.05,
+          "distance_from_52w_high_pct": -31.26,
+          "rsi_14": 34.9,
+          "composite_score": 6.49
+        }
+      },
+      {
+        "ticker": "DELL",
+        "factor_summary": {
+          "momentum_5d_pct": 4.77,
+          "volume_ratio_vs_20d": 1.44,
+          "distance_from_52w_high_pct": -42.84,
+          "rsi_14": 39.0,
+          "composite_score": 5.22
+        }
+      },
+      {
+        "ticker": "CRWD",
+        "factor_summary": {
+          "momentum_5d_pct": -8.6,
+          "volume_ratio_vs_20d": 3.19,
+          "distance_from_52w_high_pct": -26.84,
+          "rsi_14": 33.1,
+          "composite_score": 5.13
+        }
+      },
+      {
+        "ticker": "FIX",
+        "factor_summary": {
+          "momentum_5d_pct": 9.92,
+          "volume_ratio_vs_20d": 0.55,
+          "distance_from_52w_high_pct": -43.66,
+          "rsi_14": 43.5,
+          "composite_score": 4.73
+        }
+      },
+      {
+        "ticker": "WDC",
+        "factor_summary": {
+          "momentum_5d_pct": 6.06,
+          "volume_ratio_vs_20d": 0.61,
+          "distance_from_52w_high_pct": -60.06,
+          "rsi_14": 40.3,
+          "composite_score": 4.61
+        }
+      }
+    ]
   }
 ]
