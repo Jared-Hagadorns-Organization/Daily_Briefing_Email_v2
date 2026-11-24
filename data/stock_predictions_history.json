@@ -8323,5 +8323,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-11-24",
+    "picks": [
+      {
+        "ticker": "DLTR",
+        "factor_summary": {
+          "momentum_5d_pct": 11.45,
+          "volume_ratio_vs_20d": 1.4,
+          "distance_from_52w_high_pct": 0.0,
+          "rsi_14": 57.4,
+          "composite_score": 4.9
+        }
+      },
+      {
+        "ticker": "FICO",
+        "factor_summary": {
+          "momentum_5d_pct": 9.9,
+          "volume_ratio_vs_20d": 0.43,
+          "distance_from_52w_high_pct": -59.7,
+          "rsi_14": 63.1,
+          "composite_score": 4.54
+        }
+      },
+      {
+        "ticker": "AXON",
+        "factor_summary": {
+          "momentum_5d_pct": 8.95,
+          "volume_ratio_vs_20d": 0.46,
+          "distance_from_52w_high_pct": -49.62,
+          "rsi_14": 28.2,
+          "composite_score": 4.53
+        }
+      },
+      {
+        "ticker": "OKTA",
+        "factor_summary": {
+          "momentum_5d_pct": 17.88,
+          "volume_ratio_vs_20d": 0.21,
+          "distance_from_52w_high_pct": -11.37,
+          "rsi_14": 56.8,
+          "composite_score": 3.63
+        }
+      },
+      {
+        "ticker": "PANW",
+        "factor_summary": {
+          "momentum_5d_pct": 15.02,
+          "volume_ratio_vs_20d": 0.36,
+          "distance_from_52w_high_pct": -15.28,
+          "rsi_14": 52.2,
+          "composite_score": 3.57
+        }
+      }
+    ]
   }
 ]
