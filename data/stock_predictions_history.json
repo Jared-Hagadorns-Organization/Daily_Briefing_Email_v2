@@ -8433,5 +8433,60 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-11-26",
+    "picks": [
+      {
+        "ticker": "CSGP",
+        "factor_summary": {
+          "momentum_5d_pct": 13.78,
+          "volume_ratio_vs_20d": 1.22,
+          "distance_from_52w_high_pct": -50.71,
+          "rsi_14": 58.0,
+          "composite_score": 5.05
+        }
+      },
+      {
+        "ticker": "AXON",
+        "factor_summary": {
+          "momentum_5d_pct": 14.09,
+          "volume_ratio_vs_20d": 1.12,
+          "distance_from_52w_high_pct": -46.87,
+          "rsi_14": 40.2,
+          "composite_score": 4.78
+        }
+      },
+      {
+        "ticker": "HPQ",
+        "factor_summary": {
+          "momentum_5d_pct": 8.69,
+          "volume_ratio_vs_20d": 2.72,
+          "distance_from_52w_high_pct": -12.2,
+          "rsi_14": 58.9,
+          "composite_score": 4.73
+        }
+      },
+      {
+        "ticker": "MKC",
+        "factor_summary": {
+          "momentum_5d_pct": 7.6,
+          "volume_ratio_vs_20d": 1.76,
+          "distance_from_52w_high_pct": -28.42,
+          "rsi_14": 49.2,
+          "composite_score": 3.59
+        }
+      },
+      {
+        "ticker": "DELL",
+        "factor_summary": {
+          "momentum_5d_pct": -5.13,
+          "volume_ratio_vs_20d": 2.88,
+          "distance_from_52w_high_pct": -49.44,
+          "rsi_14": 46.4,
+          "composite_score": 3.55
+        }
+      }
+    ]
   }
 ]
